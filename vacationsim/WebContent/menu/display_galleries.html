@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+
+  <style type="text/css">
+    body {
+      text-align: center;
+    }
+
+    .container {
+      margin: 100px auto;
+    }
+
+    .button {
+      border: 1px solid #333;
+      background: #6479fd;
+    }
+    .iframe.none {border-style: none;} 
+
+    div.navigation {
+      position: fixed;
+      left: 50%;
+      bottom: 5px;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+    }
+  </style>
+
+  
+  <script type="text/javascript">
+    let currentGalleries = "";
+
+  </script>
+    <link rel="stylesheet" href="./css/main.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- 
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  --> 
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ 
+  <script src="./js/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js"></script>
+  <script src="./js/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js"></script>
+  <script src="./js/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico">
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg"  color="#111">
+  <link rel="canonical" href="https://codepen.io/MarcMalignan/pen/xlAgJ?depth=everything&amp;order=popularity&amp;page=62&amp;q=box&amp;show_forks=false">
+
+  <link rel="stylesheet" href="./css/menu.css">
+
+  <script src="./js/decompte.js"></script>
+  <script src="./js/util.js"></script>
+
+ 
+
+</head>
+
+<body>
+  
+  
+<p class='flash' style="font-size: large;" id="decompte"></p>
+  <div id="entete" class="title-sim">Vacation SIM Voyage&nbsp;<br>.com</div>
+
+  <script>
+    value = "value"
+  </script>
+  <div id="menu_items" class="selector open">
+    <ul>
+      <div id="items"></div>
+    </ul>
+    <button id="button-sim" style='background-color:#449d44; '></button>
+    <img id="center_image" class="pointer" src="./images/earth.gif" title="Click Me Don't Kick Me Please :)" onclick=" showGoogleMaps();return false;"
+      width="155" style=" position: absolute;left: -8px;top: -3px;">
+  </div>
+
+  <script src="./js/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+  <script src="./js/menu_event.js"></script>
+
+  <a class="" id="manual-galleries" href="#" data-popup="l"></a>
+
+  <iframe id="galleries-editor"  src="" frameborder="no"></iframe>
+
+
+  <div class='title-gallery' id="gallery_name"><br /></div>
+
+  <div class="navigation">
+    <input type="image" src="./images/back_button.png" width="70" alt="previous" onclick="getPreviousGalleries()" />
+    <input type="image" src="./images/up_button.png" height="50" alt="forward" onclick="editGalleries()" />
+    <input type="image" src="./images/forward_button.png" width="70" alt="forward" onclick="getNextGalleries()" />
+    </div>
+    
+
+  <script src="./js/wmBox.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script src="./js/galleries_init.js"></script>
+  <script src="./js/menuGalleries.js"></script>
+
+  <script>
+    $("#button-sim").click();
+    $("#button-sim").click();
+
+    $(document).ready(function () {
+      currentGalleries = getParameterByName("g");
+
+      //gallery = "default";
+
+      if (galleriesIds["welcome"] == undefined) {
+        getDBinfo(
+          function () {
+            callBD();
+          },
+          function () {
+            //console.log("after....");
+            setData();
+
+          }
+        );
+
+
+        function getDBinfo(onBefore, onAfter) {
+
+          if (onBefore) {
+            onBefore();
+          }
+          wait(2000);
+
+
+          if (onAfter) {
+            onAfter();
+          }
+        }
+
+      }
+
+      document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
+
+      setMenuGallery(currentGalleries);
+      getDBGalleries(currentGalleries, galleriesIds[currentGalleries]);
+      window.sessionStorage.setItem("currentGalleries", currentGalleries);
+
+    });
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

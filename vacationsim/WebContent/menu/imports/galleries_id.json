@@ -1,0 +1,26 @@
+{
+    "ids": [
+        {
+            "galleriesName": "welcome",
+            "id": "5bd8edd87cd59908e04f5f04"
+        },
+        {
+            "galleriesName": "bali",
+            "id": "5bd8f1e87cd59908e04f6a41"
+        },
+        {
+            "galleriesName": "voyage2019",
+            "id": "5bd8f56c7cd59908e04f736c"
+        },
+        {
+            "galleriesName": "world",
+            "id": "5bd8f4a77cd59908e04f713e"
+        },
+        {
+            "galleriesName": "solarsystem",
+            "id": "5bd8f6277cd59908e04f75bf"
+        }
+        
+    ]
+
+}

@@ -1,0 +1,157 @@
+{
+    "_id" : ObjectId("5bd8f56c7cd59908e04f736c"),
+    "background" : "https://image.slidesharecdn.com/2geographyupdatedpdf-130907232642-/95/geography-and-climate-of-southeast-asia-3-638.jpg?cb=1378596752",
+    "centerimage" : "./images/earth.gif",
+    "voyage2019" : [ 
+        {
+            "gallery" : "Bangkok",
+            "media" : "youtube",
+            "videoid" : "NuJTSpRIvP4",
+            "description" : "Bangkok"
+        }, 
+        {
+            "gallery" : "Bali",
+            "media" : "youtube",
+            "videoid" : "6c-ppDpwIeo",
+            "description" : "Bali"
+        }, 
+        {
+            "gallery" : "Hô Chi Minh",
+            "media" : "youtube",
+            "videoid" : "UjWxeLicdbU",
+            "description" : "Saigon"
+        }, 
+        {
+            "gallery" : "Manila",
+            "media" : "youtube",
+            "videoid" : "p0sI9_U6FTo",
+            "description" : "Manila"
+        }, 
+        {
+            "gallery" : "Hànôi",
+            "media" : "youtube",
+            "videoid" : "MWhox_M7WNk",
+            "description" : "Hanoi"
+        }, 
+        {
+            "gallery" : "Cebu",
+            "media" : "youtube",
+            "videoid" : "YlqVoy3lAJ8",
+            "description" : "Cebu"
+        }, 
+        {
+            "gallery" : "Korat",
+            "media" : "youtube",
+            "videoid" : "4EUXbhf06xg",
+            "description" : "korat"
+        }, 
+        {
+            "gallery" : "Surin",
+            "media" : "youtube",
+            "videoid" : "Bi8jXGWK0sE",
+            "description" : "Surin"
+        }, 
+        {
+            "gallery" : "Manado",
+            "media" : "youtube",
+            "videoid" : "fWqYqrxsjRA",
+            "description" : "Manado"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "4YGo2N19KKg",
+            "description" : "Sintra"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "hHMSctUSSeE",
+            "description" : "Approach and Landing at Skiathos Intl Airport LGSK"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "../images/earth-spinning-rotating-animation-24.gif",
+            "description" : "Our Earth"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://www.desjardins.com/ressources/images/d00-rsc-lgbt-defile-fierte.jpg?resVer=1516810668000",
+            "description" : "Desjardins Playlist|https://www.youtube.com/channel/UCr5I8xaDyQoFKsPNxDM_scw"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "A3PDXmYoF5U",
+            "description" : "You can include youtube videos easily!"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "AO_i2vFY9u4",
+            "description" : "Access to Playlist|https://www.youtube.com/playlist?list=PL4853B57D73369BCF"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/30707838_10214383721021105_3070943582765449216_o.jpg?_nc_cat=107&oh=f943c9b896cdc4b6cceb28a48c03a4b0&oe=5C5C3393",
+            "description" : "Look on Facebook|https://www.facebook.com/pierre.legault.5/media_set?set=a.10214383676299987&type=3"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://lh3.googleusercontent.com/-NoquI9qVMiE/UwdanB8ogZI/AAAAAAAAA7c/F6koGVYuY_k/w424-h318-n-rw/IMG_1691.JPG",
+            "description" : "On Google+ Mekong river at Luang Prabang, Laos|https://plus.google.com/u/0/photos/106574931658318359497/album/5982850170807462129/5982850256569139602"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "73234449",
+            "media" : "image",
+            "src" : "http://i.vimeocdn.com/video/447294219_200x150.jpg",
+            "description" : "This gallery can also play vimeo videos!"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "73234449",
+            "media" : "image",
+            "src" : "images/big/2018-08-24 003.JPG",
+            "description" : "Belle tomate du balcon"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/gallardo-0638.jpg?itok=-So1NoXA",
+            "description" : "Superbe bagnolle"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "youtube",
+            "videoid" : "9oedgxuciv",
+            "media" : "image",
+            "src" : "images/thumbs/wistia_video.jpg",
+            "description" : "Hey, the gallery plays Wistia videos too!"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://cdn-images-1.medium.com/max/600/1*IPTDavxQcLKWdB5GKQ0U_g.jpeg",
+            "description" : "Mapping [my] Self Through Portraits here|https://medium.com/@DevynSpringer/mapping-my-self-through-portraits-5830b0d12101"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32147697_10214555694200327_2732414466653159424_o.jpg?_nc_cat=102&amp;oh=e259b303f9c90ea5d3f9e8bd4f53e593&amp;oe=5C40E48B",
+            "description" : "L’image contient peut-être&nbsp;: une personne ou plus, océan, ciel, plein air et eau"
+        }, 
+        {
+            "gallery" : "Etc",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32089907_10214555697800417_7048957341886054400_n.jpg?_nc_cat=107&oh=a0065675af7728fb666cedb5dd86d106&oe=5C4FF9F0",
+            "description" : "Smile"
+        }
+    ]
+}

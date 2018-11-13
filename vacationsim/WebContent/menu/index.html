@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body { text-align:center;}
+        .container { margin:100px auto;}
+    </style>
+
+    <script type='text/javascript' src='./js/util.js'><</script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1></h1>
+        <div class="jquery-script-ads" align="center" style="margin:50px auto;">
+            <script type="text/javascript">
+            var url = "galleries.html";
+            function goBack() {
+                window.history.back();
+            }
+            function createUrl(){
+                window.location.href="galleries.html"
+                return "galleries.html";
+            }
+            </script>
+        </div>        
+        <a class="wmBox btn btn-info" id="back" href="javascript:goBack()" >Back to menu</a>
+        <a class="wmBox btn btn-danger" id="gallery" href="#" data-popup="galleries.html">Show Gallery</a>
+
+        <div id="popup">
+            <script>
+           //  console.log(window.location.href="galleries.html");
+          // console.log("yyyyyyy");
+
+        </script>    
+        </div>
+
+
+        <div id="myModal"></div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="js/wmBox.js"></script>
+    <script src="js/main.js"></script>
+</body>
+<script type="text/javascript">
+
+function bye(){
+    console.log("bye")
+}
+
+$(document).ready(function(){
+    var image = getParameterByName("image");
+    if(image) {          
+        var url = 'image=' + image;
+
+        document.body.style.backgroundColor = "#f3f3f3";
+        document.body.style.backgroundImage = "url(" + "./images/" + image + ")";
+        document.body.style.transition = "all 3s";
+        console.log(url);
+
+        // var dist = document.getElementById('popup');
+
+        // console.log(dist);
+
+        // $(this).load('galleries.html',function(){
+        //  $('#myModal').modal({show:true});
+        //  });
+
+
+
+        // $('#videoMp4').attr('src',url + ".mp4");
+        // $('#videoWebm').attr('src',url + ".webm");
+        // $('#videoOgg').attr('src',url + ".ogg");
+
+        
+    }
+});
+
+</script>
+
+</html>

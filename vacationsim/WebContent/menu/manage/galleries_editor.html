@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Accordion - Sortable</title>
+<!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"-->
+<link rel="stylesheet"
+	href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/ui-lightness/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type='text/javascript' src='../js/util.js'></script>
+<script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
+
+<script>
+	let currentGalleries = "";
+	$(function() {
+		$("#accordion")
+
+		.accordion({
+			header : "> div > h3",
+			collapsible : true,
+			active : false,
+			autoHeight : true,
+			heightStyle : "content",
+			change: function (event, ui) {
+                var activeIndex = $("#accordion").accordion("option", "active");
+                alert(activeIndex);
+            }
+		}).sortable({
+			axis : "y",
+			handle : "h3",
+			stop : function(event, ui) {
+				// IE doesn't register the blur when sorting
+				// so trigger focusout handlers to remove .ui-state-focus
+				ui.item.children("h3").triggerHandler("focusout");
+
+				// Refresh accordion to handle new order
+				$(this).accordion("refresh");
+			},
+			beforeStop : function(event, ui) {
+				 $(this).data("lastItem", ui.item);
+				    var activeAccordion=$( "#accordion" ).accordion( "option", "active" );
+
+				//alert('current galleries' + currentGalleries+" - "+ $('#info').text($("#accordion h3")));
+				    var active = $( ".selector" ).accordion( "option", "active" );
+
+				    var text= $("#accordion h3").eq(active).text();
+				    //alert("beforeStop"+text);
+				    
+				    $( ".group" ).each(function( index ) {
+				    	  console.log( index + ": " + $( this ).text()+"-->"+ $( this ).text().length );
+				    	});
+				    
+			},
+			change: function (event, ui) {
+	             var activeIndex = $("#accordion").accordion("option", "active");
+	                var hidId = $("#accordion input[type=hidden][class=HiddenId]")[activeIndex];
+	              // alert("change"+$(hidId).val());            
+	       }
+		});
+	});
+	
+	 $("#accordion").on("accordionbeforeactivate", function(event, ui) {
+
+		    var cellArrow = $('> .cellArrow',ui.newHeader);
+		    alert(cellArrow.html());
+		  });
+
+</script>
+</head>
+<body>
+
+	<div id="accordion">
+		<div class="group">
+			<h3>Section 1</h3>
+			<div>
+				<p>Mauris mauris ante,
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			currentGalleries = getParameterByName("g");
+			console.log("-->" + currentGalleries)
+
+			let array = currentGalleries.split("-");
+			setAccordionFromSession(array[0].toLowerCase(), array[1]);
+
+			$("#dialog").dialog('option', 'title', currentGalleries);
+
+		});
+	</script>
+</body>
+</html>

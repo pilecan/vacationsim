@@ -1,0 +1,241 @@
+{
+    "_id" : ObjectId("5bd8f1e87cd59908e04f6a41"),
+    "background" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/30706223_10214383681740123_3441096306854985728_o.jpg?_nc_cat=100&_nc_ht=scontent.fymq1-1.fna&oh=90f4a4c77ec18985db9bd1b541f2f072&oe=5C43A109",
+    "centerimage" : "./images/earth.gif",
+    "bali" : [ 
+        {
+            "gallery" : "Bali",
+            "media" : "youtube",
+            "videoid" : "IDmNK2-ydNI",
+            "description" : "Bali by Drone"
+        }, 
+        {
+            "gallery" : "Bali",
+            "media" : "image",
+            "src" : "https://upload.wikimedia.org/wikipedia/commons/9/97/Bali-regions-map.jpg",
+            "description" : "See Bali on Wikipedia|https://en.wikipedia.org/wiki/Bali"
+        }, 
+        {
+            "gallery" : "Bali",
+            "media" : "image",
+            "src" : "http://www.balitrips.net/BaliMap/the-island-of-bali.gif",
+            "description" : "See Bali geography and cities|http://www.balitrips.net/BaliMap/balimap.html"
+        }, 
+        {
+            "gallery" : "Depensar",
+            "media" : "youtube",
+            "videoid" : "8va9J-YiqK8",
+            "description" : "Denpasar Bali"
+        }, 
+        {
+            "gallery" : "Depensar",
+            "media" : "image",
+            "src" : "https://upload.wikimedia.org/wikipedia/commons/f/f8/Aerial_view_of_Bajra_Sandhi_Monument_Denpasar_Bali_Indonesia.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;denpasar bali&nbsp;»"
+        }, 
+        {
+            "gallery" : "Depensar",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/31357696_10214469807493213_8183035927317184512_o.jpg?_nc_cat=105&_nc_ht=scontent.fymq1-1.fna&oh=3bcce6ad8ef5c94f4eb111004e76088f&oe=5C846CB4",
+            "description" : "Denpasar Market |https://www.facebook.com/photo.php?fbid=10214469807453212&set=a.10214469788452737&type=3&theater++"
+        }, 
+        {
+            "gallery" : "Depensar",
+            "media" : "image",
+            "src" : "https://imgcld.yatra.com/ytimages/image/upload/t_seo_Flight_w_768_h_380_c_fill_q_60_e_blur:10/v1504184402/Bali_airport.jpg",
+            "description" : "Ngurah Rai International Airport "
+        }, 
+        {
+            "gallery" : "Badung",
+            "media" : "youtube",
+            "videoid" : "Tse-2P_mKak",
+            "description" : "EXPLORING NORTH BADUNG – SOUTH BALI"
+        }, 
+        {
+            "gallery" : "Badung",
+            "media" : "image",
+            "src" : "https://gedeardinatour.files.wordpress.com/2011/01/badung-map.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;badung – south bali&nbsp;»|https://gedeardinatour.wordpress.com/about-bali/badung/"
+        }, 
+        {
+            "gallery" : "Tabanan",
+            "media" : "youtube",
+            "videoid" : "2fyahL1rBtk",
+            "description" : "Bali - Tabanan"
+        }, 
+        {
+            "gallery" : "Tabanan",
+            "media" : "image",
+            "src" : "https://4.bp.blogspot.com/-lG6zmjYDtd4/V-xyQDWtISI/AAAAAAAABLM/McDowTvAdq4u0idF8cp1qAhD3lny-yZbACLcB/s1600/pura-ulun-danu-bratan-temple-bali-attractions-tabanan.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;bali - tabanan&nbsp;»|http://www.baliglory.com/2016/09/bali-attractions-tabanan-objek-wisata.html"
+        }, 
+        {
+            "gallery" : "Tabanan",
+            "media" : "image",
+            "src" : "http://dwipatrips.com/wiki/lib/exe/fetch.php?cache=&amp;w=708&amp;h=598&amp;media=bali:tabanan-map.png",
+            "description" : "Tabanan Map"
+        }, 
+        {
+            "gallery" : "Jembrana",
+            "media" : "youtube",
+            "videoid" : "MFDDS1NtPZc",
+            "description" : "Bali Jembrana"
+        }, 
+        {
+            "gallery" : "Jembrana",
+            "media" : "image",
+            "src" : "https://1.bp.blogspot.com/-7y3n-nLWJoI/WWSbQfaVnnI/AAAAAAAAAWQ/U2I5ra7MnwoRqBXcO1NywZX2IqqdQAHcgCLcBGAs/s1600/Jembrana.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;bali jembrana&nbsp;»|https://www.dibaliweb.com/2017/07/culture-of-jembrana-bali.html"
+        }, 
+        {
+            "gallery" : "Jembrana",
+            "media" : "image",
+            "src" : "https://gedeardinatour.files.wordpress.com/2011/01/jembrana-map.jpg",
+            "description" : "see gedeardinatour|https://gedeardinatour.wordpress.com/about-bali/jembrana/"
+        }, 
+        {
+            "gallery" : "Buleleng",
+            "media" : "youtube",
+            "videoid" : "TyVOqz4zpHk",
+            "description" : "Aerial Landscape Buleleng, Bali"
+        }, 
+        {
+            "gallery" : "Buleleng",
+            "media" : "image",
+            "src" : "https://storage.googleapis.com/allindonesiatoursim/2017/06/stock-photo-32489431.jpg",
+            "description" : "allindonesiatourism.com|https://allindonesiatourism.com/attraction/bali/things-to-do-in-buleleng-bali"
+        }, 
+        {
+            "gallery" : "Buleleng",
+            "media" : "image",
+            "src" : "http://www.balitrips.net/BaliMap/buleleng-map.jpg",
+            "description" : "http://www.balitrips.net|http://www.balitrips.net/BaliMap/Bulelenginfo.html"
+        }, 
+        {
+            "gallery" : "Bangli",
+            "media" : "youtube",
+            "videoid" : "Km61CM-WOe0",
+            "description" : "Hidden Paradise of Bangli, Bali"
+        }, 
+        {
+            "gallery" : "Bangli",
+            "media" : "image",
+            "src" : "http://2.bp.blogspot.com/-9GkD94bc72k/T7Wb25H752I/AAAAAAAAAT0/_05guB6s278/s1600/Pande+Kadek+Heryana+saputra+-+Apel+Photography+-+Desa+PENGLIPURAN+Vilage+Bangli+Bali+Indonesia+(1).jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;bangli bali&nbsp;»|https://www.indonesia-tourism.com/forum/showthread.php?51781-Bangli-Regency-One-of-Tourism-Village-in-Bali"
+        }, 
+        {
+            "gallery" : "Bangli",
+            "media" : "image",
+            "src" : "http://www.kdbalidesigns.com/images/bali_map_bangli.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;bangli bali map&nbsp;»|http://www.kdbalidesigns.com/aboutbalimapbangli.htm"
+        }, 
+        {
+            "gallery" : "Karangasem",
+            "media" : "youtube",
+            "videoid" : "hQhyCy1dubA",
+            "description" : "Bali Karangasem"
+        }, 
+        {
+            "gallery" : "Karangasem",
+            "media" : "image",
+            "src" : "https://cdn.raftingbali.net/wp-content/uploads/2016/08/Tree-House-Karangasem-Bali.jpg",
+            "description" : "www.raftingbali.net|https://www.raftingbali.net/tree-house-karangasem/"
+        }, 
+        {
+            "gallery" : "Karangasem",
+            "media" : "youtube",
+            "videoid" : "gVfINLK-eFI",
+            "description" : "Volcano Gunung Agung from the relax beach resort in Candidasa"
+        }, 
+        {
+            "gallery" : "Karangasem",
+            "media" : "youtube",
+            "videoid" : "31ApjlcMZt0",
+            "description" : "Things To Do In Candidasa"
+        }, 
+        {
+            "gallery" : "Karangasem",
+            "media" : "image",
+            "src" : "https://www.researchgate.net/profile/Margo_Purnomo2/publication/319664019/figure/fig1/AS:538551738736640@1505412148956/Map-of-KSPN-Tulamben-Amed-area-Karangasem-Regency-Bali-Province.png",
+            "description" : "www.researchgate.net Karangasem|https://www.researchgate.net/figure/Map-of-KSPN-Tulamben-Amed-area-Karangasem-Regency-Bali-Province_fig1_319664019"
+        }, 
+        {
+            "gallery" : "Gianyar",
+            "media" : "youtube",
+            "videoid" : "vLhJ0DQrHO8",
+            "description" : "Exploring Ubud Bali"
+        }, 
+        {
+            "gallery" : "Gianyar",
+            "media" : "youtube",
+            "videoid" : "3sE2VgGs5aY",
+            "description" : "Blusukan ke Desa Adat Batuan, Gianyar, Bali"
+        }, 
+        {
+            "gallery" : "Gianyar",
+            "media" : "image",
+            "src" : "http://jonathanlee.org/media/Bali-travel-Gianyar-market-1.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;bali bali gianyar&nbsp;»|http://jonathanlee.org/2013/08/19/travelogue-traveling-around-bali/bali-travel-gianyar-market-1/"
+        }, 
+        {
+            "gallery" : "Gianyar",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/30705956_10214396222133625_5790571317598093312_o.jpg?_nc_cat=107&_nc_ht=scontent.fymq1-1.fna&oh=b248bd7be1c2027733a17fc8a7316ce3&oe=5C44A7AB",
+            "description" : "L’image contient peut-être&nbsp;: une personne ou plus, plein air et nature"
+        }, 
+        {
+            "gallery" : "Gianyar",
+            "media" : "image",
+            "src" : "http://3.bp.blogspot.com/-0p-y_pn9Vws/UEq71RGNJeI/AAAAAAAACV8/CAKG-DD3EnQ/s1600/gianyar-map.jpg",
+            "description" : "Bali gianyar «&nbs map&nbsp;»|http://dunia-bali.blogspot.com/2012/09/map-of-gianyar-city.html"
+        }, 
+        {
+            "gallery" : "klungkung",
+            "media" : "youtube",
+            "videoid" : "MolrXxiyrKE",
+            "description" : "Klungkung Palace, Bali, Indonesia HD"
+        }, 
+        {
+            "gallery" : "klungkung",
+            "media" : "image",
+            "src" : "http://static.asiawebdirect.com/m/bangkok/portals/bali-indonesia-com/homepage/magazine/klungkung-palace/allParagraphs/00/BucketList/0/image2/klungkung-water.jpg",
+            "description" : "Palace «&nbsp;klungkung bali&nbsp;»|http://www.bali-indonesia.com/magazine/klungkung-palace.htm"
+        }, 
+        {
+            "gallery" : "klungkung",
+            "media" : "image",
+            "src" : "http://w0.fast-meteo.com/locationmaps/Klungkung.10.gif",
+            "description" : "«&nbsp;klungkung bali map&nbsp;»"
+        }, 
+        {
+            "gallery" : "Nusa",
+            "media" : "youtube",
+            "videoid" : "gk745S5JeHg",
+            "description" : "Nusa Penida, Bali"
+        }, 
+        {
+            "gallery" : "Nusa",
+            "media" : "youtube",
+            "videoid" : "YzcLZRx-CoY",
+            "description" : "Nusa Lembongan, Bali"
+        }, 
+        {
+            "gallery" : "Nusa",
+            "media" : "youtube",
+            "videoid" : "ACV60SJx5N4",
+            "description" : "Nusa Dua Bali, Bali"
+        }, 
+        {
+            "gallery" : "Nusa",
+            "media" : "image",
+            "src" : "http://www.wonderfulbali.com/wp-content/uploads/2015/04/3nusa.jpg",
+            "description" : "www.wonderfulbali.com Nusa(s) Map|https://www.wonderfulbali.com/nusa-penida-map/"
+        }, 
+        {
+            "gallery" : "Nusa",
+            "media" : "image",
+            "src" : "https://allindonesiatravel.com/images/nusa-dua-bali-map.jpg",
+            "description" : "https://allindonesiatravel.com/nusa-dua-bali-accommodations-things-to-do/"
+        }
+    ]
+}

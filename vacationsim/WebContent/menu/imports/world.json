@@ -1,0 +1,115 @@
+{
+    "_id" : ObjectId("5bd8f4a77cd59908e04f713e"),
+    "background" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Continental_models-Australia.gif/1200px-Continental_models-Australia.gif",
+    "centerimage" : "./images/earth.gif",
+    "world" : [ 
+        {
+            "gallery" : "Continent",
+            "media" : "image",
+            "src" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Continental_models-Australia.gif/1200px-Continental_models-Australia.gif",
+            "description" : "Continent on Wikipedia|https://en.wikipedia.org/wiki/Continent"
+        }, 
+        {
+            "gallery" : "Continent",
+            "media" : "youtube",
+            "videoid" : "lPNrtjboISg",
+            "description" : "How the World Map Looks Wildly Different Than You Think"
+        }, 
+        {
+            "gallery" : "Africa",
+            "media" : "youtube",
+            "videoid" : "5ZblKmQc09g",
+            "description" : "Africa:"
+        }, 
+        {
+            "gallery" : "Africa",
+            "media" : "image",
+            "src" : "https://geology.com/world/africa-map.gif",
+            "description" : "Africa on Wikipedia|https://en.wikipedia.org/wiki/Africa"
+        }, 
+        {
+            "gallery" : "Asia",
+            "media" : "youtube",
+            "videoid" : "cubqi49cRzI",
+            "description" : "Countries Of Asia"
+        }, 
+        {
+            "gallery" : "Asia",
+            "media" : "youtube",
+            "videoid" : "ZsVC6q18KYE",
+            "description" : "All Asian Countries Size Comparison"
+        }, 
+        {
+            "gallery" : "Asia",
+            "media" : "image",
+            "src" : "https://i.pinimg.com/originals/f6/c4/93/f6c493ab4b1e085b6f194b8a202a62b3.png",
+            "description" : "résultats de recherche d'images pour «&nbsp;asia countries&nbsp;»|https://www.pinterest.ca/pin/513480794997920058/"
+        }, 
+        {
+            "gallery" : "Asia",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/23905292_801723486696886_1651559412635176719_n.jpg?_nc_cat=108&_nc_ht=scontent.fymq1-1.fna&oh=a2a3e06e754bbbf76d2f7ac15bd3f3ab&oe=5C4678C4",
+            "description" : "L’image contient peut-être&nbsp;: ciel, nuage et plein air"
+        }, 
+        {
+            "gallery" : "Artantica",
+            "media" : "youtube",
+            "videoid" : "GOwuniIgYXM",
+            "description" : "Vangelis - Theme from Antarctica|https://www.youtube.com/watch?v=GOwuniIgYXM"
+        }, 
+        {
+            "gallery" : "Artantica",
+            "media" : "youtube",
+            "videoid" : "0Qbvs-Jd9VY",
+            "description" : "Vangelis - Antarctic Echoes|https://www.youtube.com/watch?v=0Qbvs-Jd9VY"
+        }, 
+        {
+            "gallery" : "Artantica",
+            "media" : "image",
+            "src" : "https://www.mapsofworld.com/antarctica/maps/antarctica-map.gif",
+            "description" : "antarctica map|https://www.mapsofworld.com/antarctica/"
+        }, 
+        {
+            "gallery" : "Artantica",
+            "media" : "image",
+            "src" : "https://cosmos-images2.imgix.net/file/spina/photo/12939/171123-antarctica-full.jpg",
+            "description" : "résultats de recherche d'images pour «&nbsp;artantica map&nbsp;»|https://cosmosmagazine.com/geoscience/measuring-the-heat-beneath-the-ice"
+        }, 
+        {
+            "gallery" : "Eurasia",
+            "media" : "youtube",
+            "videoid" : "8XujwjkpRW8",
+            "description" : "WORLD HISTORY MAP: Eurasia 5000years"
+        }, 
+        {
+            "gallery" : "Europe",
+            "media" : "youtube",
+            "videoid" : "UY9P0QSxlnI",
+            "description" : "Europe countries"
+        }, 
+        {
+            "gallery" : "N america",
+            "media" : "youtube",
+            "videoid" : "0IKcS4DlaTw",
+            "description" : "The History of North America: Every Year"
+        }, 
+        {
+            "gallery" : "S America",
+            "media" : "youtube",
+            "videoid" : "UULp33MNNNE",
+            "description" : "The History of South America: Every Year"
+        }, 
+        {
+            "gallery" : "Oceania",
+            "media" : "youtube",
+            "videoid" : "R80eBIdUyOs",
+            "description" : "Where is Oceania?"
+        }, 
+        {
+            "gallery" : "Oceania",
+            "media" : "youtube",
+            "videoid" : "QgQrW9kAu10",
+            "description" : "All Oceania Countries Size Comparison"
+        }
+    ]
+}

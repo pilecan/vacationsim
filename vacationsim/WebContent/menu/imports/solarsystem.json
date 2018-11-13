@@ -1,0 +1,67 @@
+{
+    "_id" : ObjectId("5bd8f6277cd59908e04f75bf"),
+    "background" : "https://cdn-ed.versobooks.com/blog_posts/000002/953/429540-galaxy-nebula-outer-space-stars-17dc614bdd3673496aa4aadbf1e0a0f2-.jpg",
+    "centerimage" : "https://7551bdfc54adf45425bb-e1819ba959867bdb3382b3652a5f5ff1.ssl.cf5.rackcdn.com/animations/b7b0e81603cc2b33d502bb8e6280c096/51d/1428011655_Yukisungif.gif",
+    "solarsystem" : [ 
+        {
+            "gallery" : "Earth",
+            "media" : "image",
+            "src" : "../images/earth-spinning-rotating-animation-24.gif",
+            "description" : "Our Earth"
+        }, 
+        {
+            "gallery" : "Jupiter",
+            "media" : "image",
+            "src" : "http://bestanimations.com/Earth&Space/Planets/jupiter-planet-animation.gif",
+            "description" : "Jupiter"
+        }, 
+        {
+            "gallery" : "Venus",
+            "media" : "image",
+            "src" : "https://media.giphy.com/media/NQQhxUuXqrTlC/giphy.gif",
+            "description" : "Venus"
+        }, 
+        {
+            "gallery" : "Mars",
+            "media" : "image",
+            "src" : "http://fc08.deviantart.net/fs70/f/2013/212/d/f/spinning_planet_mars_by_msmonsterduck-d6fyzfg.gif",
+            "description" : "Mars"
+        }, 
+        {
+            "gallery" : "Neptune",
+            "media" : "image",
+            "src" : "https://66.media.tumblr.com/0bf841ab072eae197bba7a62068e5a78/tumblr_oqhfz7K2CP1vjhboso1_500.gif",
+            "description" : "Neptune"
+        }, 
+        {
+            "gallery" : "Uranus",
+            "media" : "image",
+            "src" : "https://media.giphy.com/media/GF9yhDsNXpW3m/giphy.gif",
+            "description" : "Uranus"
+        }, 
+        {
+            "gallery" : "Mercury",
+            "media" : "image",
+            "src" : "https://media.giphy.com/media/lIeUAWuLK7cv6/giphy.gif",
+            "description" : "Mercury"
+        }, 
+        {
+            "gallery" : "Saturn",
+            "media" : "image",
+            "src" : "http://bestanimations.com/Earth&Space/Planets/saturn-planet-animation-1.gif",
+            "description" : "Saturn"
+        }, 
+        {
+            "gallery" : "Asteroid",
+            "media" : "image",
+            "src" : "https://media.giphy.com/media/ofcnu370H6ArC/giphy.gif",
+            "description" : "Asteroid"
+        }, 
+        {
+            "gallery" : "Comet",
+            "media" : "image",
+            "src" : "https://apod.nasa.gov/apod/fap/image/0204/cometiz_karrer_big.gif",
+            "description" : "Comet"
+        }
+    ]
+}
