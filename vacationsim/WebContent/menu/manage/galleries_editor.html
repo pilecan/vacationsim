@@ -25,19 +25,15 @@
 			active : false,
 			autoHeight : true,
 			heightStyle : "content",
-			change: function (event, ui) {
-                var activeIndex = $("#accordion").accordion("option", "active");
-                alert(activeIndex);
-            }
+
 		}).sortable({
 			axis : "y",
 			handle : "h3",
 			stop : function(event, ui) {
-				// IE doesn't register the blur when sorting
-				// so trigger focusout handlers to remove .ui-state-focus
 				ui.item.children("h3").triggerHandler("focusout");
-
-				// Refresh accordion to handle new order
+				
+				setNewSession();
+			    
 				$(this).accordion("refresh");
 			},
 			beforeStop : function(event, ui) {
@@ -50,9 +46,6 @@
 				    var text= $("#accordion h3").eq(active).text();
 				    //alert("beforeStop"+text);
 				    
-				    $( ".group" ).each(function( index ) {
-				    	  console.log( index + ": " + $( this ).text()+"-->"+ $( this ).text().length );
-				    	});
 				    
 			},
 			change: function (event, ui) {
@@ -90,7 +83,7 @@
 			let array = currentGalleries.split("-");
 			setAccordionFromSession(array[0].toLowerCase(), array[1]);
 
-			$("#dialog").dialog('option', 'title', currentGalleries);
+		$("#dialog").dialog('option', 'title', currentGalleries);
 
 		});
 	</script>
