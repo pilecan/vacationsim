@@ -27,7 +27,7 @@ function setAccordionFromSession(galleriesName, currentGallery){
 			objJSON = JSON.parse(new Object(obj));
 			
 			if (objJSON.gallery == currentGallery){
-				console.log(galleriesName+"|"+index+objJSON.gallery );
+				console.log(galleriesName+"|"+index+" "+JSON.stringify(objJSON) );
 				
 				if (firstIndex == 0){
 					firstIndex = index;
@@ -37,21 +37,26 @@ function setAccordionFromSession(galleriesName, currentGallery){
 						"<h3>"+objJSON.description.split("|")[0]+"</h3>" +
 								"<div>";
 			
+				
+				let desclink = objJSON.description.split("|");
+				// caractere alt+255 comme séparateur
 				if (objJSON.media == "image"){
-					line += "->'title: "+objJSON.description+"'<br/>";
-					line += "->'media: "+objJSON.media+"'<br/>";
-					line += "->'source: "+objJSON.src+"<br/>'";
-					line += "->'description: "+objJSON.description+"'<br/>";
+					line += " title: "+desclink[0]+" <br>";
+					line += " media: "+objJSON.media+" <br>";
+					line += " <span style='white-space: nowrap;'>src: "+objJSON.src+" </span><br>";
+					line += " <span style='white-space: nowrap;'>description: "+desclink[0]+" </span><br>";
+					line += " <span style='white-space: nowrap;'>link: "+desclink[1]+" </span><br>";
 				} else {
-					line += "->'title: "+objJSON.description+"'<br/>";
-					line += "->'media: "+objJSON.media+"<br/>'";
-					line += "->'videoid: "+objJSON.videoid+"<br/>'";
-					line += "->'description: "+objJSON.description+"'<br/>";
+					line += " title: "+desclink[0]+" <br>";
+					line += " media: "+objJSON.media+" <br>";
+					line += " videoid: "+objJSON.videoid+" <br>";
+					line += " <span style='white-space: nowrap;'>description: "+desclink[0]+" </span><br>";
+					line += " <span style='white-space: nowrap;'>link: "+desclink[1]+" </span><br>";
 				}
 				
 				line += "</div></div>";
 				mapJSON[key] = objJSON;
-				console.log(">>>>>>>>>>>>>>>>>>"+JSON.stringify(mapJSON[key]));
+				//console.log(">>>>>>>>>>>>>>>>>>"+JSON.stringify(mapJSON[key]));
 				
 			}
 			index++;
@@ -61,27 +66,44 @@ function setAccordionFromSession(galleriesName, currentGallery){
 
 	}
 	document.getElementById("accordion").innerHTML = line;
+	var singleQuoted = $.map($( this ).text().split("<br>"), function(substr, i) {
+		   return (i % 2) ? substr : null;
+		});
+
 
     $( '#accordion' ).accordion( "refresh" );
 
 }
 
-function setNewSession(){
+function setNewSession(currentGalleries, currentGallery){
     $( ".group" ).each(function( index ) {
-    	  console.log( index + ": " + $( this ).text()+"-->"+ $( this ).text().length );
-    	  key = currentGalleriesName+"|"+(index+firstIndex);
-  		  //obj = (window.sessionStorage.getItem(key));
-  		  //objJSON = JSON.parse(new Object(obj));
-  		  //console.log(objJSON.description.split("|")[0]);
-  		  
-  		//var str = "the word you need is 'hello' 'hi' 'bonjour'";
-  		var singleQuoted = $.map($( this ).text().split("'"), function(substr, i) {
+    	 // console.log( index + ": " + $( this ).html());
+    	  key = currentGalleries+"|"+(index+firstIndex);
+      	  
+    	let obj = new Object();
+		obj.gallery = currentGallery;
+  		var singleQuoted = $.map($( this ).text().split(" "), function(substr, i) {
+  			//console.log(substr)
+  			if (substr.indexOf(": ") != -1){
+  				let line = substr.split(": ");
+  	  			eval("obj."+line[0]+"='"+line[1]+"'" );
+  			}
   		   return (i % 2) ? substr : null;
   		});
-
-  		console.log(singleQuoted.join("\n"));
-  		  
-  		  //window.sessionStorage.setItem(key,));
+  		
+		obj.gallery = currentGallery;
+		if (obj.link != "undefined"){
+			obj.description = obj.description+"|"+obj.link
+		}
+		
+		delete obj.title;
+		delete obj.link;
+//
+  		objJSON = JSON.stringify(obj);
+  		console.log(objJSON);
+  		
+  		
+         window.sessionStorage.setItem(key,objJSON);
 
     });	
 }

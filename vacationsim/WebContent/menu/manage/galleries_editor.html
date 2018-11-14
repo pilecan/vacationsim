@@ -16,6 +16,7 @@
 
 <script>
 	let currentGalleries = "";
+    let currentGallery = "";
 	$(function() {
 		$("#accordion")
 
@@ -32,7 +33,7 @@
 			stop : function(event, ui) {
 				ui.item.children("h3").triggerHandler("focusout");
 				
-				setNewSession();
+				setNewSession(currentGalleries, currentGallery);
 			    
 				$(this).accordion("refresh");
 			},
@@ -81,7 +82,10 @@
 			console.log("-->" + currentGalleries)
 
 			let array = currentGalleries.split("-");
-			setAccordionFromSession(array[0].toLowerCase(), array[1]);
+			currentGalleries = array[0].toLowerCase();
+			currentGallery = array[1];
+			
+			setAccordionFromSession(currentGalleries, currentGallery);
 
 		$("#dialog").dialog('option', 'title', currentGalleries);
 
