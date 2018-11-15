@@ -31,8 +31,6 @@
 		}
 	);
 
-
-
 	function callBD() {
 		let request = new XMLHttpRequest();
 		try {
@@ -115,8 +113,6 @@
 					error = true;
 				}
 			};
-
-
 
 			request.send(null);
 
