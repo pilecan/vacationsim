@@ -138,9 +138,7 @@ function getDBGalleries(galleries_name, id) {
 
 	try {
 		var request = new XMLHttpRequest();
-		request.open("GET",
-			xxx(abc) + "/" + id + iii
-
+		request.open("GET",xxx(abc) + "/" + id + iii
 		);
 
 		var rq = null;
