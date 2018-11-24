@@ -1,26 +1,41 @@
+
 function setMenuGallery(currentGalleries) {
-	if (galleryArray[currentGalleries] == undefined) {
+	if (menuGalleries[currentGalleries] == undefined) {
 		console.log("currentGalleries = " + currentGalleries + " not found...");
 		currentGalleries = "welcome";
 	}
 
-	//console.log("----->"+backgroundImage[currentGalleries]);
+	
+	
+	menuGalleries[currentGalleries] = window.sessionStorage.getItem("menuGalleries-"+currentGalleries);
+
+	centerImage[currentGalleries] = window.sessionStorage.getItem("centerimage-"+currentGalleries);
+	
+	backgroundImage[currentGalleries] = window.sessionStorage.getItem("background-"+currentGalleries);
 
 
 	document.body.style.backgroundImage = "url(" + backgroundImage[currentGalleries] + ")";
 
-	currentGalleriesNumber = getIndexOfGalleries(galleryArray, currentGalleries);
+	currentGalleriesNumber = getIndexOfGalleries(menuGalleries, currentGalleries);
 
 	//console.log("currentGalleries = "+currentGalleries);
 
-	document.getElementById("center_image").src = centerImage[currentGalleries];
+	try {
+		document.getElementById("center_image").src = centerImage[currentGalleries];
+	} catch (err) {
+		window.parent.parent.document.getElementById("center_image").src = centerImage[currentGalleries];
+	}
 
-	let arrayGallery = galleryArray[currentGalleries].split("\|");
+	let arrayGallery = menuGalleries[currentGalleries].split("\|");
 
 	let angle = 0;
 	let inclinaison = 360 / Object.keys(arrayGallery).length;
 
-	document.getElementById("items").innerHTML = "";
+	try {
+		document.getElementById("items").innerHTML = "";
+	} catch (err) {
+		window.parent.parent.document.getElementById("items").innerHTML = "";
+	}
 
 
 	for (index = 0; index < Object.keys(arrayGallery).length; index++) {
@@ -32,9 +47,21 @@ function setMenuGallery(currentGalleries) {
 		line += '<input id="' + (index + 1) + '" name="' + arrayGallery[index] + '" type="checkbox" title="' + arrayGallery[index] + '" onchange="clickItemMenu(this)">';
 		line += '<label for="' + (index + 1) + '" style="transform: rotate(-' + angle + 'deg);">' + arrayGallery[index] + '</label>';
 		line += '</li>';
-		document.getElementById("items").innerHTML += line;
+		try {
+			document.getElementById("items").innerHTML += line;
+		} catch (err) {
+			window.parent.parent.document.getElementById("items").innerHTML += line;
+		}
 	}
 
+}
+
+function resetMenuGalleries(currentGalleries){
+	
+	menuGalleries[currentGalleries] =  window.sessionStorage.getItem("menuGalleries-"+currentGalleries);
+	centerImage[currentGalleries] =  window.sessionStorage.getItem("centerimage-"+currentGalleries);
+	setMenuGallery(currentGalleries);
+	
 }
 
 
@@ -113,7 +140,6 @@ function editGalleries() {
 	$("#menu_items").hide();
 
 	$(".wmBox_overlay").hide();
-
 	
 	var width = $(document).width();
 	var height = $(document).height();

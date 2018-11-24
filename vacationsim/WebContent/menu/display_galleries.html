@@ -101,7 +101,7 @@
 
   <script src="./js/util_db.js"></script>
   <script src="./js/galleries_init.js"></script>
-  <script src="./js/menuGalleries.js"></script>
+  <script src="./js/menu_galleries.js"></script>
 
   <script>
     $("#button-sim").click();
@@ -112,7 +112,7 @@
 
       //gallery = "default";
 
-      if (galleriesIds["welcome"] == undefined) {
+	if (window.sessionStorage.getItem("currentGalleries") == null){
         getDBinfo(
           function () {
             callBD();
@@ -123,7 +123,6 @@
 
           }
         );
-
 
         function getDBinfo(onBefore, onAfter) {
 

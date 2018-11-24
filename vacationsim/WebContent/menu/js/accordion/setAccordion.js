@@ -1,23 +1,72 @@
 let firstIndex = 0;
 let objJSON = null;
-let mapJSON = [];
-let currentGalleriesName = null;
 
+
+/**************************************************************************************/	
 function setAccordionFromSession(galleriesName, currentGallery) {
-	currentGalleriesName = galleriesName;
+	
+	if (currentGallery != undefined){
+		setAccordionFromSessionCurrentGallery(galleriesName, currentGallery);
+	} else {
+	   setAccordionFromSessionGalleries(galleriesName); 
 
+	}
+	
+}
+	
+/**************************************************************************************/	
+function setAccordionFromSessionGalleries(galleriesName ) {
+	
+	let arrayGalleries = [];
+
+	let key = galleriesName + "|0";
+	let obj = (window.sessionStorage.getItem(key));
+
+	let index = 0;
+	while (obj != null && obj != undefined) {
+		key = galleriesName + "|" + index;
+		obj = (window.sessionStorage.getItem(key));
+		if (obj != null) {
+			objJSON = JSON.parse(new Object(obj));
+			
+			if (arrayGalleries[objJSON.gallery] != undefined){
+			    arrayGalleries[objJSON.gallery] += objJSON.description.split("|")[0]+"<br>";
+				
+			} else {
+			    arrayGalleries[objJSON.gallery] = objJSON.description.split("|")[0]+"<br>";
+
+			}
+
+		}
+		index++;
+
+
+	}
+	//document.getElementById("accordion").innerHTML = line;
+
+	let line = "";
+	for (gallery in arrayGalleries){
+		//console.log(gallery+" -> "+arrayGalleries[gallery])
+		line += "<div class='group'><h3>" + gallery
+			+ "</h3><div>"+arrayGalleries[gallery]+"</div></div>";
+	}
+
+	document.getElementById("accordion").innerHTML = line;
+		
+	$('#accordion').accordion("refresh");
+	
+}
+
+
+/**************************************************************************************/	
+function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 	let line = "";
 
 	let key = galleriesName + "|0";
 	let obj = (window.sessionStorage.getItem(key));
 
-	objJSON = JSON.parse(new Object(obj));
-
 	firstIndex = 0;
 
-	// document.getElementById("accordion").innerHTML = "";
-
-	let isFinish = false;
 	let index = 0;
 	while (obj != null) {
 		key = galleriesName + "|" + index;
@@ -26,39 +75,12 @@ function setAccordionFromSession(galleriesName, currentGallery) {
 			objJSON = JSON.parse(new Object(obj));
 
 			if (objJSON.gallery == currentGallery) {
-				//console.log(galleriesName + "|" + index + " "+ JSON.stringify(objJSON));
 
 				if (firstIndex == 0) {
 					firstIndex = index;
 				}
-
-				line += "<div class='group'>" + "<h3>"
-						+ objJSON.description.split("|")[0] + "</h3>" + "<div>";
-
-				let desclink = objJSON.description.split("|");
-				// caractere alt+255 comme séparateur
-				if (objJSON.media == "image") {
-					line += " title: " + desclink[0] + " <br>";
-					line += " media: " + objJSON.media + " <br>";
-					line += " <span style='white-space: nowrap;'>src: "
-							+ objJSON.src + " </span><br>";
-					line += " <span style='white-space: nowrap;'>description: "
-							+ desclink[0] + " </span><br>";
-					line += " <span style='white-space: nowrap;'>link: "
-							+ desclink[1] + " </span><br>";
-				} else {
-					line += " title: " + desclink[0] + " <br>";
-					line += " media: " + objJSON.media + " <br>";
-					line += " videoid: " + objJSON.videoid + " <br>";
-					line += " <span style='white-space: nowrap;'>description: "
-							+ desclink[0] + " </span><br>";
-					line += " <span style='white-space: nowrap;'>link: "
-							+ desclink[1] + " </span><br>";
-				}
-
-				line += "</div></div>";
-				mapJSON[key] = objJSON;
-				// console.log(">>>>>>>>>>>>>>>>>>"+JSON.stringify(mapJSON[key]));
+				
+				line = setLine(line, objJSON) ;
 
 			}
 			index++;
@@ -67,24 +89,71 @@ function setAccordionFromSession(galleriesName, currentGallery) {
 
 	}
 	document.getElementById("accordion").innerHTML = line;
-	var singleQuoted = $.map($(this).text().split("<br>"), function(substr, i) {
+	
+/*	var singleQuoted = $.map($(this).text().split("<br>"), function(substr, i) {
 		return (i % 2) ? substr : null;
 	});
+*/	
 
 	$('#accordion').accordion("refresh");
 
 }
 
+/**************************************************************************************/	
+function setLine(line, objJSON) {
+	line += "<div class='group'><h3>" + objJSON.description.split("|")[0]
+			+ "</h3><div>";
+
+	let desclink = objJSON.description.split("|");
+	// caractere alt+255 comme séparateur
+	if (objJSON.media == "image") {
+		line += " title: " + desclink[0] + " <br>";
+		line += " media: " + objJSON.media + " <br>";
+		line += " <span style='white-space: nowrap;'>src: " + objJSON.src
+				+ " </span><br>";
+		line += " <span style='white-space: nowrap;'>description: "
+				+ desclink[0] + " </span><br>";
+		line += " <span style='white-space: nowrap;'>link: " + desclink[1]
+				+ " </span><br>";
+	} else {
+		line += " title: " + desclink[0] + " <br>";
+		line += " media: " + objJSON.media + " <br>";
+		line += " videoid: " + objJSON.videoid + " <br>";
+		line += " <span style='white-space: nowrap;'>description: "
+				+ desclink[0] + " </span><br>";
+		line += " <span style='white-space: nowrap;'>link: " + desclink[1]
+				+ " </span><br>";
+	}
+
+	line += "</div></div>";
+	
+	return line;
+
+}
+
+/**************************************************************************************/	
 function setNewSession(currentGalleries, currentGallery) {
-	$(".group").each(
-			function(index) {
+	if (currentGallery != undefined){
+		setNewSessionGallery(currentGalleries, currentGallery);
+		console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries+"-"+currentGallery);
+	} else {
+		setNewSessionGalleries(currentGalleries); 
+		console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries);
+	}	
+	updateDB(currentGalleries);
+
+
+}
+
+/**************************************************************************************/	
+function setNewSessionGallery(currentGalleries, currentGallery) {
+	$(".group").each(function(index) {
 				// console.log( index + ": " + $( this ).html());
 				key = currentGalleries + "|" + (index + firstIndex);
 
 				let obj = new Object();
 				obj.gallery = currentGallery;
-				var singleQuoted = $.map($(this).text().split(" "), function(
-						substr, i) {
+				var singleQuoted = $.map($(this).text().split(" "), function(substr, i) {
 					// console.log(substr)
 					if (substr.indexOf(": ") != -1) {
 						let line = substr.split(": ");
@@ -107,13 +176,70 @@ function setNewSession(currentGalleries, currentGallery) {
 				delete obj.link;
 				//
 				objJSON = JSON.stringify(obj);
-				console.log(objJSON);
+				//console.log(objJSON);
 
 				window.sessionStorage.setItem(key, objJSON);
 
 			});
 
-	updateDB(currentGalleries);
 
+}
+
+
+/**************************************************************************************/	
+function setNewSessionGalleries(currentGalleries) {
+ 
+	 let elements = document.querySelectorAll('div > h3');
+	 let arrayGalleries = [];
+
+	  for (let element of elements) {
+		  console.log(element.innerText);
+	    let index = 0;
+	    let value = "";
+	    let isFinish = false;
+	    while (isFinish == false){
+	    	value = window.sessionStorage.getItem(currentGalleries+"|"+index);
+	    	if (value != null) {
+				objJSON = JSON.parse(new Object(value));
+
+		    	//console.log(">"+objJSON.gallery);
+		    	
+		    	
+		    	if (objJSON.gallery == element.innerText){
+		    		if (arrayGalleries[objJSON.gallery] != undefined){
+			    		arrayGalleries[objJSON.gallery] += value+"****";
+						
+					} else {
+			    		arrayGalleries[objJSON.gallery] = value+"****";
+					}
+		    	}
+
+	    	} else {
+	    		isFinish = true;
+	    	}
+	    	index++;
+	    	
+	    }
+	  }
+	  
+	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,"");
+	  let galleries_line = "";
+	  index = 0
+	  for (let element of elements) {
+		  
+		  console.log(element.innerText);
+
+		  galleries_line += element.innerText+"|";
+		  let work = arrayGalleries[element.innerText];
+	      values = work.split("****");
+	      for (let i=0;i<values.length-1;i++){
+			    window.sessionStorage.setItem(currentGalleries+"|"+index,values[i]);
+			    index++;
+	      }
+		
+	  }
+	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,galleries_line+"All");
+	  
+	  setMenuGallery(currentGalleries);
 }
 

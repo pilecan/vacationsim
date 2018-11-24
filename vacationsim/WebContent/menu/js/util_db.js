@@ -1,7 +1,6 @@
 /****************************************************************************** */
 function getDBGalleries(galleries_name, id) {
 
-
 	if (sessionStorage.getItem(galleries_name + "|0") != undefined) {
 		console.log(galleries_name + " loaded!")
 		return;
@@ -43,11 +42,8 @@ function getDBGalleries(galleries_name, id) {
 
 /** ************************************************************************ */
 function updateDB(currentGalleries) {
-
 	let objJSON = createRequest(currentGalleries);
-	
 	let id = window.sessionStorage.getItem("galleriesIds-" + currentGalleries);
-
 
 	$.ajax({
 		url : xxx(abc)+"/"+id + iii,
@@ -56,9 +52,10 @@ function updateDB(currentGalleries) {
 		contentType: "application/json;charset=utf-8",
 		cache : true
 	}).done(function(server_data) {
-		console.log(server_data)
+		//console.log(server_data)
+		console.log("done :)")
 	}).fail(function() {
-		console.log("failed")
+		console.log("failed :(")
 	});	
 }
 

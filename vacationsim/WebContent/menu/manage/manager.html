@@ -14,7 +14,10 @@
   </style>
 
   <script src="../js/util.js"></script>
-
+<script type='text/javascript' src='../js/util_db.js'></script>
+<script type='text/javascript' src='../js/galleries_init.js'></script>
+<script type='text/javascript' src='../js/menu_galleries.js'></script>
+<script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
 
 
   <script>
@@ -43,6 +46,23 @@
          // $("#button-sim").parent().show();
          // window.parent.document.getElementById("button-sim").show();
          $("#button-sim", window.parent.document).show();
+         
+
+         let istrue = window.sessionStorage.getItem("changed") ;
+         
+         if (window.sessionStorage.getItem("changed") == "true"){
+        	 
+        	 let array =   window.parent.document.getElementById("gallery_name").innerHTML;
+        	 
+        	 setNewSession(array[0], array[1]);
+			 
+             console.log("galleriesssssssssssssss"+window.parent.document.getElementById("gallery_name").innerHTML + window.sessionStorage.getItem("changed"));
+     	     window.sessionStorage.setItem("changed",false);
+             
+             window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+        	 
+         }
+
 
         },
         height: 'auto',

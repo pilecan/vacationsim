@@ -1,4 +1,4 @@
-	let galleryArray = [];
+	let menuGalleries = [];
 	let titleGalleries = Array();
 	let backgroundImage = [];
 	let centerImage = [];
@@ -21,8 +21,9 @@
 	// On appel la fonction
 	getDBinfo(
 		function () {
-
-			callBD();
+			if (window.sessionStorage.getItem("currentGalleries") == null){
+				callBD();
+			}
 
 		},
 		function () {
@@ -99,12 +100,13 @@
 
 								galArray[galleries_name] += "All";
 								galArray[galleries_name] = galArray[galleries_name].replace("undefined", "");
-								window.sessionStorage.setItem("galleryArray-" + galleries_name, galArray[galleries_name]);
+								window.sessionStorage.setItem("menuGalleries-" + galleries_name, galArray[galleries_name]);
 
 								//console.log(galArray[galleries_name]);
 								gallery_group = [];
 							}
-
+							
+							window.sessionStorage.setItem("changed",false);
 							//console.log("---------------------------------------------")
 						}
 					}
@@ -133,9 +135,9 @@
 			let key = sessionStorage.key(i);
 			//console.log(key)
 
-			if (key.indexOf("galleryArray") != -1) {
+			if (key.indexOf("menuGalleries") != -1) {
 				name = key.split("-");
-				galleryArray[name[1]] = window.sessionStorage.getItem(key);
+				menuGalleries[name[1]] = window.sessionStorage.getItem(key);
 
 			} else if (key.indexOf("background") != -1) {
 				name = key.split("-");
@@ -151,48 +153,7 @@
 		}
 
 
-		titleGalleries = Object.keys(galleryArray);
+		titleGalleries = Object.keys(menuGalleries);
 	}
 
-	/* 
-
-	initVacationSIM()
-	.then(function(values) {
-	  console.log('Async success!');
-	  galleryArray = values.galArray;
-	  backgroundImage = values.bgImage;
-	  centerImage = values.ctImage;
-	  galleriesIds = values.galIds;
-
-	})
-	.catch(function(err) {
-	  console.log('Caught an error!', err);
-	});
-	 */
-
-
-	/* 	function getRandomNumber() {
-			return new Promise(function(resolve, reject) {
-			  setTimeout(function() {
-				let randomValue = Math.random();
-				let error = randomValue > .8 ? true : false;
-				let values = {randomValue,error}
-		  
-				if (error) {
-				  reject(new Error('Ooops, something broke!'));
-				} else {
-				  resolve(values);
-				}
-			  }, 2000);
-			}); 
-		  }
-		  
-		  getRandomNumber()
-			.then(function(values) {
-			  console.log('Async success!', values.randomValue,values.error);
-			})
-			.catch(function(err) {
-			  console.log('Caught an error!', err);
-			});
-
-		*/
+	
