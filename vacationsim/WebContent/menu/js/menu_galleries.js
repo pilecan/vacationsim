@@ -23,7 +23,13 @@ function setMenuGallery(currentGalleries) {
 	try {
 		document.getElementById("center_image").src = centerImage[currentGalleries];
 	} catch (err) {
-		window.parent.parent.document.getElementById("center_image").src = centerImage[currentGalleries];
+		try {
+			window.parent.document.getElementById("center_image").src = centerImage[currentGalleries];
+		} catch (err) {
+			window.parent.parent.document.getElementById("center_image").src = centerImage[currentGalleries];
+			
+		}
+		
 	}
 
 	let arrayGallery = menuGalleries[currentGalleries].split("\|");
@@ -34,7 +40,12 @@ function setMenuGallery(currentGalleries) {
 	try {
 		document.getElementById("items").innerHTML = "";
 	} catch (err) {
-		window.parent.parent.document.getElementById("items").innerHTML = "";
+		try {
+			window.parent.document.getElementById("items").innerHTML = "";
+		} catch (err) {
+			window.parent.parent.document.getElementById("items").innerHTML = "";
+
+		}
 	}
 
 
@@ -50,7 +61,11 @@ function setMenuGallery(currentGalleries) {
 		try {
 			document.getElementById("items").innerHTML += line;
 		} catch (err) {
-			window.parent.parent.document.getElementById("items").innerHTML += line;
+			try {
+				window.parent.document.getElementById("items").innerHTML += line;
+			} catch (err) {
+				window.parent.parent.document.getElementById("items").innerHTML += line;
+			}
 		}
 	}
 

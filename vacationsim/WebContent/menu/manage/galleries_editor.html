@@ -35,11 +35,9 @@
 			handle : "h3",
 			stop : function(event, ui) {
 				ui.item.children("h3").triggerHandler("focusout");
-				
-/* 				 setNewSession(currentGalleries, currentGallery);
- */
-				 window.sessionStorage.setItem("changed",true);
-
+ 		
+				setNewSession(currentGalleries, currentGallery);
+				window.sessionStorage.setItem("changed",true);
 			    
 				$(this).accordion("refresh");
 			},

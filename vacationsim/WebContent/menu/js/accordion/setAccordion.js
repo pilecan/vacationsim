@@ -135,12 +135,11 @@ function setLine(line, objJSON) {
 function setNewSession(currentGalleries, currentGallery) {
 	if (currentGallery != undefined){
 		setNewSessionGallery(currentGalleries, currentGallery);
-		console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries+"-"+currentGallery);
+	//	console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries+"-"+currentGallery);
 	} else {
 		setNewSessionGalleries(currentGalleries); 
-		console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries);
+	//	console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries);
 	}	
-	updateDB(currentGalleries);
 
 
 }

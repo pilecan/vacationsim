@@ -27,6 +27,10 @@
         show: "fade",
         hide: "fade",
         modal: true,
+        height: 'auto',
+        width: 'auto',
+        resizable: false,
+        title: 'Welcome',
         open: function (ev, ui) {
           $('#accordionIframe').src;
           
@@ -48,27 +52,64 @@
          $("#button-sim", window.parent.document).show();
          
 
-         let istrue = window.sessionStorage.getItem("changed") ;
          
-         if (window.sessionStorage.getItem("changed") == "true"){
-        	 
-        	 let array =   window.parent.document.getElementById("gallery_name").innerHTML;
-        	 
-        	 setNewSession(array[0], array[1]);
-			 
-             console.log("galleriesssssssssssssss"+window.parent.document.getElementById("gallery_name").innerHTML + window.sessionStorage.getItem("changed"));
-     	     window.sessionStorage.setItem("changed",false);
-             
-             window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
-        	 
-         }
-
 
         },
-        height: 'auto',
-        width: 'auto',
-        resizable: false,
-        title: 'Welcome'
+        beforeClose: function closeDialog() {
+            //alert('Closing Dialog Now...');
+            console.log( "xxx--->"+ window.sessionStorage.getItem("currentGalleries"));
+            
+            if (window.sessionStorage.getItem("changed") == "true")  {
+            	
+            	if (confirm("Do want to save your modification(s)?")){
+    	           	 updateDB(window.sessionStorage.getItem("currentGalleries"));
+    				 
+    	             console.log(window.sessionStorage.getItem("currentGalleries")+ " galleries saved : "+window.parent.document.getElementById("gallery_name").innerHTML + window.sessionStorage.getItem("changed"));
+    	     	     window.sessionStorage.setItem("changed",false);
+    	             
+    	             window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+            		
+            	} else {
+            		window.sessionStorage.setItem("currentGalleries","");
+                    getDBinfo(
+                            function () {
+                              callBD();
+                            },
+                            function () {
+                              //console.log("after....");
+                              setData();
+
+                            }
+                          );
+
+                          function getDBinfo(onBefore, onAfter) {
+
+                            if (onBefore) {
+                              onBefore();
+                            }
+                            wait(2000);
+
+
+                            if (onAfter) {
+                              onAfter();
+                            }
+                          }
+
+                        
+            		var url = window.location.host ;    
+             		if (url.indexOf('localhost') > -1){
+            		   url += '/vacationsim/';
+             		}            		
+             		url += "?g="+window.sessionStorage.getItem("currentGalleries"); 
+            		console.log(url);
+            		window.location.href = url;           		
+            	}
+            	
+            }
+           	 
+           	 
+            
+       }
       });
 
       $("#opener").click(function () {
