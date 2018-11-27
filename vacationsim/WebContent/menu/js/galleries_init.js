@@ -17,12 +17,14 @@
 			onAfter();
 		}
 	}
-
+	
 	// On appel la fonction
 	getDBinfo(
 		function () {
+			console.log("init ---->"+window.sessionStorage.getItem("currentGalleries"));
 			if (window.sessionStorage.getItem("currentGalleries") == null){
 				callBD();
+				wait(100);
 			}
 
 		},

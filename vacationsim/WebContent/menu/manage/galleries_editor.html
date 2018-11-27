@@ -45,12 +45,9 @@
 				 $(this).data("lastItem", ui.item);
 				    var activeAccordion=$( "#accordion" ).accordion( "option", "active" );
 
-				//alert('current galleries' + currentGalleries+" - "+ $('#info').text($("#accordion h3")));
 				    var active = $( ".selector" ).accordion( "option", "active" );
 
 				    var text= $("#accordion h3").eq(active).text();
-				    //alert("beforeStop"+text);
-				    
 				    
 			},
 			change: function (event, ui) {

@@ -21,6 +21,16 @@
 
 
   <script>
+  
+  function wait(ms) {
+		var d = new Date();
+		var d2 = null;
+		do {
+			d2 = new Date();
+		}
+		while (d2 - d < ms);
+	}
+  
     $(function () {
       $("#dialog").dialog({
         autoOpen: true,
@@ -63,46 +73,51 @@
             	
             	if (confirm("Do want to save your modification(s)?")){
     	           	 updateDB(window.sessionStorage.getItem("currentGalleries"));
-    				 
+ 
+    	           	 //remove temp
+					let obj = (window.sessionStorage.getItem("temp|0"));
+					let index = 0;
+					while (obj != null && obj != undefined) {
+						window.sessionStorage.removeItem("temp|"+index)
+						index++;
+						console.log(index)
+						obj = window.sessionStorage.getItem("temp|"+index)
+					}
+					
+					window.sessionStorage.removeItem("temp-"+window.sessionStorage.getItem("currentGalleries"));
+    	           	 
     	             console.log(window.sessionStorage.getItem("currentGalleries")+ " galleries saved : "+window.parent.document.getElementById("gallery_name").innerHTML + window.sessionStorage.getItem("changed"));
     	     	     window.sessionStorage.setItem("changed",false);
     	             
     	             window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
             		
             	} else {
-            		window.sessionStorage.setItem("currentGalleries","");
-                    getDBinfo(
-                            function () {
-                              callBD();
-                            },
-                            function () {
-                              //console.log("after....");
-                              setData();
+            		currentGalleries = window.sessionStorage.getItem("currentGalleries");
+                
+    	           	 //transfert and remove temp
+					let key = currentGalleries + "|0";
+					let obj = (window.sessionStorage.getItem("temp|0"));
+				
+					let index = 0;
+					while (obj != null && obj != undefined) {
+						window.sessionStorage.setItem(key,obj)
+						window.sessionStorage.removeItem("temp|"+index)
+						index++;
+						obj = (window.sessionStorage.getItem("temp|"+index));
+						key = currentGalleries + "|" + index;
+					}
+					
+					obj = window.sessionStorage.getItem("temp-"+currentGalleries);
+					window.sessionStorage.setItem("menuGalleries-"+currentGalleries,obj);
+					window.sessionStorage.removeItem("temp-"+currentGalleries);
 
-                            }
-                          );
+					setMenuGallery(currentGalleries); 
+					
+            		//parent.location.reload(true);
+            		
+            		//window.parent.location = url;
 
-                          function getDBinfo(onBefore, onAfter) {
-
-                            if (onBefore) {
-                              onBefore();
-                            }
-                            wait(2000);
-
-
-                            if (onAfter) {
-                              onAfter();
-                            }
-                          }
-
-                        
-            		var url = window.location.host ;    
-             		if (url.indexOf('localhost') > -1){
-            		   url += '/vacationsim/';
-             		}            		
-             		url += "?g="+window.sessionStorage.getItem("currentGalleries"); 
-            		console.log(url);
-            		window.location.href = url;           		
+            		
             	}
             	
             }

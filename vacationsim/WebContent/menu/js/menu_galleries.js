@@ -5,20 +5,15 @@ function setMenuGallery(currentGalleries) {
 		currentGalleries = "welcome";
 	}
 
-	
-	
 	menuGalleries[currentGalleries] = window.sessionStorage.getItem("menuGalleries-"+currentGalleries);
 
 	centerImage[currentGalleries] = window.sessionStorage.getItem("centerimage-"+currentGalleries);
 	
 	backgroundImage[currentGalleries] = window.sessionStorage.getItem("background-"+currentGalleries);
 
-
 	document.body.style.backgroundImage = "url(" + backgroundImage[currentGalleries] + ")";
 
 	currentGalleriesNumber = getIndexOfGalleries(menuGalleries, currentGalleries);
-
-	//console.log("currentGalleries = "+currentGalleries);
 
 	try {
 		document.getElementById("center_image").src = centerImage[currentGalleries];

@@ -5,6 +5,20 @@ let objJSON = null;
 /**************************************************************************************/	
 function setAccordionFromSession(galleriesName, currentGallery) {
 	
+	let key = galleriesName + "|0";
+	let obj = (window.sessionStorage.getItem(key));
+
+	let index = 0;
+	while (obj != null && obj != undefined) {
+		window.sessionStorage.setItem("temp|"+index,obj);
+		index++;
+		key = galleriesName + "|" + index;
+		obj = (window.sessionStorage.getItem(key));
+	}
+	
+	obj = window.sessionStorage.getItem("menuGalleries-"+galleriesName);
+	window.sessionStorage.setItem("temp-"+galleriesName,obj);
+	
 	if (currentGallery != undefined){
 		setAccordionFromSessionCurrentGallery(galleriesName, currentGallery);
 	} else {
