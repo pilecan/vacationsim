@@ -24,6 +24,11 @@
 				$(this).find('iframe').remove();
 				$("#menu_items").show();
 				$("#button-sim").show();
+			    $("#btn-prev").show();
+			    $("#btn-edit").show();
+			    $("#btn-next").show();
+
+				
 				document.getElementById("gallery_name").innerHTML=jsUcfirst(currentGalleries);
 				$("#button-sim").click();
 			});

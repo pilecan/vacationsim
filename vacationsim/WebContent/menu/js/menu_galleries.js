@@ -151,6 +151,11 @@ function editGalleries() {
 	wait(100);
 
 	$("#menu_items").hide();
+	
+    $("#btn-prev").hide();
+    $("#btn-edit").hide();
+    $("#btn-next").hide();
+
 
 	$(".wmBox_overlay").hide();
 	

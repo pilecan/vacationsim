@@ -44,6 +44,8 @@ function clickItemMenu(element) {
   wait(100);
 
   $("#menu_items").hide();
+  $("#btn-prev").hide();
+  $("#btn-next").hide();
 
 newGalleries = lastGalleries != currentGalleries;
  
