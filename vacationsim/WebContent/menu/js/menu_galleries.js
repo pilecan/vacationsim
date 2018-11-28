@@ -1,5 +1,5 @@
 
-function setMenuGallery(currentGalleries) {
+function setMenuGallery(currentGalleries,isModification) {
 	if (menuGalleries[currentGalleries] == undefined) {
 		console.log("currentGalleries = " + currentGalleries + " not found...");
 		currentGalleries = "welcome";
@@ -11,7 +11,9 @@ function setMenuGallery(currentGalleries) {
 	
 	backgroundImage[currentGalleries] = window.sessionStorage.getItem("background-"+currentGalleries);
 
-	document.body.style.backgroundImage = "url(" + backgroundImage[currentGalleries] + ")";
+	if (!isModification){
+		document.body.style.backgroundImage = "url(" + backgroundImage[currentGalleries] + ")";
+	}
 
 	currentGalleriesNumber = getIndexOfGalleries(menuGalleries, currentGalleries);
 
@@ -24,7 +26,6 @@ function setMenuGallery(currentGalleries) {
 			window.parent.parent.document.getElementById("center_image").src = centerImage[currentGalleries];
 			
 		}
-		
 	}
 
 	let arrayGallery = menuGalleries[currentGalleries].split("\|");
@@ -43,26 +44,28 @@ function setMenuGallery(currentGalleries) {
 		}
 	}
 
-
+	let line = "";
 	for (index = 0; index < Object.keys(arrayGallery).length; index++) {
 		angle = index * inclinaison;
 
-		let line = '<li style="transform: rotate(' + angle + 'deg);">';
+		line += '<li style="transform: rotate(' + angle + 'deg);">';
 		//removeAccents(arrayGallery[index].toLowerCase().replace(" ",""))
 
 		line += '<input id="' + (index + 1) + '" name="' + arrayGallery[index] + '" type="checkbox" title="' + arrayGallery[index] + '" onchange="clickItemMenu(this)">';
 		line += '<label for="' + (index + 1) + '" style="transform: rotate(-' + angle + 'deg);">' + arrayGallery[index] + '</label>';
 		line += '</li>';
+	}
+	
+	try {
+		document.getElementById("items").innerHTML = line;
+	} catch (err) {
 		try {
-			document.getElementById("items").innerHTML += line;
+			window.parent.document.getElementById("items").innerHTML = line;
 		} catch (err) {
-			try {
-				window.parent.document.getElementById("items").innerHTML += line;
-			} catch (err) {
-				window.parent.parent.document.getElementById("items").innerHTML += line;
-			}
+			window.parent.parent.document.getElementById("items").innerHTML = line;
 		}
 	}
+	
 
 }
 
@@ -70,7 +73,7 @@ function resetMenuGalleries(currentGalleries){
 	
 	menuGalleries[currentGalleries] =  window.sessionStorage.getItem("menuGalleries-"+currentGalleries);
 	centerImage[currentGalleries] =  window.sessionStorage.getItem("centerimage-"+currentGalleries);
-	setMenuGallery(currentGalleries);
+	setMenuGallery(currentGalleries,false);
 	
 }
 
@@ -106,7 +109,7 @@ function getNextGalleries() {
 	//console.log(titleGalleries[currentGalleriesNumber]);
 	document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
 
-	setMenuGallery(currentGalleries)
+	setMenuGallery(currentGalleries,false)
 
 	getDBGalleries(currentGalleries, galleriesIds[currentGalleries]);
 	window.sessionStorage.setItem("currentGalleries", currentGalleries);
@@ -129,7 +132,7 @@ function getPreviousGalleries() {
 	//console.log(titleGalleries[currentGalleriesNumber]);
 	document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
 
-	setMenuGallery(currentGalleries)
+	setMenuGallery(currentGalleries,false)
 
 	getDBGalleries(currentGalleries, galleriesIds[currentGalleries]);
 	window.sessionStorage.setItem("currentGalleries", currentGalleries);
@@ -152,7 +155,7 @@ function editGalleries() {
 	$(".wmBox_overlay").hide();
 	
 	var width = $(document).width();
-	var height = $(document).height();
+	var height = $(document).height()-200;
 
 	document.getElementById('galleries-editor').setAttribute("src", "./manage/manager.html?g=" + document.getElementById("gallery_name").innerHTML);
  	document.getElementById('galleries-editor').setAttribute("width", width);

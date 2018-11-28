@@ -33,6 +33,7 @@
   
     $(function () {
       $("#dialog").dialog({
+    	
         autoOpen: true,
         show: "fade",
         hide: "fade",
@@ -59,7 +60,7 @@
 
          // $("#button-sim").parent().show();
          // window.parent.document.getElementById("button-sim").show();
-         $("#button-sim", window.parent.document).show();
+       //  $("#button-sim", window.parent.document).show();
          
 
          
@@ -80,17 +81,16 @@
 					while (obj != null && obj != undefined) {
 						window.sessionStorage.removeItem("temp|"+index)
 						index++;
-						console.log(index)
 						obj = window.sessionStorage.getItem("temp|"+index)
 					}
 					
 					window.sessionStorage.removeItem("temp-"+window.sessionStorage.getItem("currentGalleries"));
-    	           	 
-    	             console.log(window.sessionStorage.getItem("currentGalleries")+ " galleries saved : "+window.parent.document.getElementById("gallery_name").innerHTML + window.sessionStorage.getItem("changed"));
-    	     	     window.sessionStorage.setItem("changed",false);
+    	            window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
     	             
-    	             window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
-            		
+ 					setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
+
+    	     	    window.sessionStorage.setItem("changed",false);
+           		
             	} else {
             		currentGalleries = window.sessionStorage.getItem("currentGalleries");
                 
@@ -110,14 +110,8 @@
 					obj = window.sessionStorage.getItem("temp-"+currentGalleries);
 					window.sessionStorage.setItem("menuGalleries-"+currentGalleries,obj);
 					window.sessionStorage.removeItem("temp-"+currentGalleries);
-
-					setMenuGallery(currentGalleries); 
 					
-            		//parent.location.reload(true);
-            		
-            		//window.parent.location = url;
-
-            		
+   	     	     	window.sessionStorage.setItem("changed",false);
             	}
             	
             }

@@ -28,7 +28,7 @@
     div.navigation {
       position: fixed;
       left: 50%;
-      bottom: 5px;
+      bottom: -50px;
       transform: translate(-50%, -50%);
       margin: 0 auto;
     }
@@ -68,8 +68,7 @@
 <body>
   
   
-<p class='flash' style="font-size: large;" id="decompte"></p>
-  <div id="entete" class="title-sim">Vacation SIM Voyage&nbsp;<br>.com</div>
+  <div style="z-index: -1000;" id="entete" class="title-sim">Vacation SIM Voyage&nbsp;<br>.com</div>
 
   <script>
     value = "value"
@@ -97,8 +96,12 @@
     <input type="image" src="./images/back_button.png" width="70" alt="previous" onclick="getPreviousGalleries()" />
     <input type="image" src="./images/up_button.png" height="50" alt="forward" onclick="editGalleries()" />
     <input type="image" src="./images/forward_button.png" width="70" alt="forward" onclick="getNextGalleries()" />
+<div>    
+<p class='flash' style="font-size: large;" id="decompte"></p>
+</div>    
     </div>
     
+
 
   <script src="./js/wmBox.js"></script>
   <script src="./js/main.js"></script>
@@ -131,7 +134,7 @@
 
       document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
 
-      setMenuGallery(currentGalleries);
+      setMenuGallery(currentGalleries,false);
       getDBGalleries(currentGalleries, galleriesIds[currentGalleries]);
       window.sessionStorage.setItem("currentGalleries", currentGalleries);
 

@@ -206,7 +206,7 @@ function setNewSessionGalleries(currentGalleries) {
 	 let arrayGalleries = [];
 
 	  for (let element of elements) {
-		  console.log(element.innerText);
+		//  console.log(element.innerText);
 	    let index = 0;
 	    let value = "";
 	    let isFinish = false;
@@ -240,7 +240,7 @@ function setNewSessionGalleries(currentGalleries) {
 	  index = 0
 	  for (let element of elements) {
 		  
-		  console.log(element.innerText);
+		//  console.log(element.innerText);
 
 		  galleries_line += element.innerText+"|";
 		  let work = arrayGalleries[element.innerText];
@@ -253,6 +253,6 @@ function setNewSessionGalleries(currentGalleries) {
 	  }
 	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,galleries_line+"All");
 	  
-	  setMenuGallery(currentGalleries);
+	 // setMenuGallery(currentGalleries);
 }
 
