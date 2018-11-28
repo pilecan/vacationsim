@@ -64,20 +64,15 @@ function createRequest(currentGalleries){
 	let json = ""; 
 	let jsonRequest = "";
 	while (json != null) {
-
 		json = window.sessionStorage.getItem(currentGalleries + "|"+ (index));
-
 		jsonRequest += json+","
-
-		
 		index++;
 	}
 	jsonRequest = jsonRequest.replace(",null,","");
 	
-	//jsonRequest = '{ "_id" : ObjectId("5bd8edd87cd59908e04f5f04"),'+
 	jsonRequest = '{'+
-	    '"background" : "./images/background.jpg",'+
-	    '"centerimage" : "./images/earth.gif",'+
+	    '"background" : "'+window.sessionStorage.getItem("background-"+currentGalleries)+'",'+
+	    '"centerimage" : "'+window.sessionStorage.getItem("centerimage-"+currentGalleries)+'",'+
 		'"'+currentGalleries+'" : [\n'+jsonRequest+'\n]}';
 
 	//console.log(jsonRequest);
