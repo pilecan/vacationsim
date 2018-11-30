@@ -60,13 +60,11 @@
          $("#btn-edit", window.parent.document).show();
          $("#btn-next", window.parent.document).show();
          
-         console.log("console from button")
+		window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
 
         },
         beforeClose: function closeDialog() {
-            //alert('Closing Dialog Now...');
-            console.log( "xxx--->"+ window.sessionStorage.getItem("currentGalleries"));
-            
+
             if (window.sessionStorage.getItem("changed") == "true")  {
             	
             	if (confirm("Do want to save your modification(s)?")){

@@ -61,8 +61,8 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 	let line = "";
 	for (gallery in arrayGalleries){
 		//console.log(gallery+" -> "+arrayGalleries[gallery])
-		line += "<div class='group'><h3>" + gallery
-			+ "</h3><div>"+arrayGalleries[gallery]+"</div></div>";
+		line += "<div class='group'><h3> <span style='margin-left:30px'>" + gallery
+			+ "</span></h3><div>"+arrayGalleries[gallery]+"</div></div>";
 	}
 
 	document.getElementById("accordion").innerHTML = line;
@@ -115,8 +115,8 @@ function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 
 /**************************************************************************************/	
 function setLine(line, objJSON) {
-	line += "<div class='group'><h3>"+objJSON.description.split("|")[0]
-			+ "</h3><div>";
+	line += "<div class='group'><h3><span style='margin-left:30px'>"+objJSON.description.split("|")[0]
+			+ "</span></h3><div>";
 
 	let desclink = objJSON.description.split("|");
 	// caractere alt+255 comme séparateur
@@ -149,10 +149,8 @@ function setLine(line, objJSON) {
 function setNewSession(currentGalleries, currentGallery) {
 	if (currentGallery != undefined){
 		setNewSessionGallery(currentGalleries, currentGallery);
-	//	console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries+"-"+currentGallery);
 	} else {
 		setNewSessionGalleries(currentGalleries); 
-	//	console.log("Update current galleries >>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+currentGalleries);
 	}	
 
 
@@ -256,3 +254,14 @@ function setNewSessionGalleries(currentGalleries) {
 	 // setMenuGallery(currentGalleries);
 }
 
+function resetSession(currentGalleries){
+	let obj = (window.sessionStorage.getItem("temp|0"));
+	let index = 0;
+	while (obj != null && obj != undefined) {
+		window.sessionStorage.setItem(currentGalleries+"|"+index,obj);
+		index++;
+		obj = window.sessionStorage.getItem("temp|"+index);
+	}	
+	
+
+}

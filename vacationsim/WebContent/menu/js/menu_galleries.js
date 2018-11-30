@@ -168,3 +168,12 @@ function editGalleries() {
 	document.getElementById("galleries-editor").click();
 
 }
+
+/****************************************************************************** */
+function reloadGalleries() {
+
+    $("#galleries-editor", window.parent.document).setAttribute("src", "./manage/manager.html?g=" + $("#gallery_name", window.parent.document).innerHTML);
+	$("#galleries-editor", window.parent.document).click();
+
+}
+

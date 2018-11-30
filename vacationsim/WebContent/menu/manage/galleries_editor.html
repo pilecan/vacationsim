@@ -19,14 +19,15 @@
 
   <style type="text/css">
   
+
 #collum {
     position: absolute;
     width: 310px; height: 70%;
     border: 1px solid #000
 }
-.blocks1 {display: inline-block; border: solid 1px black; width: 580px;height: 220px;  overflow: auto;
+.blocks1 {display: inline-block; border: solid 1px gray; width: 581px;height: 220px;  overflow: auto;
 }
-.blocks2 {display: inline-block; border: solid 1px black; width: 580px;height: 55px;}
+.blocks2 {padding-top:4px; padding-left:15px;display: inline-block; border: solid 1px gray; width: 568px;height: 46px;}
   
  .overlay{
     background: black;
@@ -72,9 +73,8 @@ a.boxclose{
 
 .boxclose:before {
     content: "×";
-
 }
-
+ 
 .box h2{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
@@ -127,42 +127,55 @@ a.boxclose{
 }
 </style>  
  
-</style>
-
 <script>
+let currentGalleries = "";
+let currentGallery = "";
+let currentAccorion = "";
 
-$(function() {
-    $('#help').click(function(){
-        $('#overlay').fadeIn(200,function(){
-            $('#box').animate({'top':'20px'},200);
-        });
-        return false;
-    });
-    $('#boxclose').click(function(){
-        $('#box').animate({'top':'-300px'},500,function(){
-            $('#overlay').fadeOut('fast');
-        });
-    });
- 
-});
+	$(function() {
+	    $('#help').click(function(){
+	        $('#overlay').fadeIn(200,function(){
+	            $('#box').animate({'top':'20px'},200);
+	        });
+	        return false;
+	    });
+	    $('#boxclose').click(function(){
+	        $('#box').animate({'top':'-300px'},500,function(){
+	            $('#overlay').fadeOut('fast');
+	        });
+	    });
+	 
+	});
 
-	let currentAccorion = "";
 
 	function closeSave(){
 		window.parent.$("#dialog").dialog('close');
 	}
 	function closeQuit(){
 		window.parent.$("#dialog").dialog('close');
-		window.sessionStorage.setItem("changed",false);
 	}
 
-	function add(){
+	function addGallery(){
 		console.log(currentAccorion+" - "+currentAccorion.length);
 	}
 
+	function deleteGallery(){
+		console.log(currentAccorion+" - "+currentAccorion.length);
+	}
+	
+	function resetAccordion(){
+		resetSession(currentGalleries)
+		let request = currentGalleries+"-"+currentGallery;
+		if (currentGallery == undefined ){
+			request = currentGalleries;
+		} 
 
-	let currentGalleries = "";
-    let currentGallery = "";
+		window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + request);
+		window.parent.document.getElementById("accordionIframe").click();
+		
+	    window.sessionStorage.setItem("changed",false);
+	}
+	
 	$(function() {
 		$("#accordion")
 
@@ -205,7 +218,7 @@ $(function() {
 </head>
 <body>
 	<div>
-		<div id="accordion" class="blocks1">
+		<div id="accordion" class="accordion blocks1">
 			<div class="group">
 				<h3>Section 1</h3>
 				<div>
@@ -214,27 +227,28 @@ $(function() {
 			</div>
 		</div>
 		<div class="blocks2">
-				<div class="btn-group" style="width:100%">
-				  <button style="width:18%" onclick="add()">Add</button>
-				  <button style="width:18%" onclick="closeSave()">Save</button>
-				  <button style="width:18%">Reset</button>
-				  <button style="width:18%" onclick="closeQuit()">Quit</button>
-				  <button id="help" style="width:5%">?</button>
-				</div>
-				<div class="overlay" id="overlay" style="display:none;"></div>
-				 
-				<div class="box" id="box">
-				 <a class="boxclose" id="boxclose"></a>
-				 <h2>Help!</h2>
-				 <p>
-				  <li>Drag & Drop title to Change Order
-				  <li>Click on Title to Open and Modify
-				  <li>Click Save to Record Modifications and Quit
-				  <li>Click Reset to Cancel Modifications
-				  <li>Click Quit to Cancel Modifications and Quit
-				  <li>Click ? for Help (this)
-				 </p>
-				</div>
+			<div class="btn-group" style="width:100%">
+			  <button style="width:17%" onclick="closeSave()">Save</button>
+			  <button style="width:17%" onclick="addGallery()">Add</button>
+			  <button style="width:17%" onclick="deleteGallery()">Delete</button>
+			  <button style="width:17%" onclick="resetAccordion()">Reset</button>
+			  <button style="width:17%" onclick="closeQuit()">Quit</button>
+			  <button id="help" style="width:10%">?</button>
+			</div>
+			<div class="overlay" id="overlay" style="display:none;"></div>
+			 
+		</div>
+		<div class="box" id="box">
+		 <a class="boxclose" id="boxclose"></a>
+		 <h2>Help!</h2>
+		 <p>
+		  <li>Drag & Drop title to Change Order
+		  <li>Click on Title to Open and Modify
+		  <li>Click Save/Quit and Record Modifications and 
+		  <li>Click Reset to Cancel Modifications
+		  <li>Click Quit and Cancel Modifications
+		  <li>Click ? for Help (this)
+		 </p>
 		</div>
 	</div>
 	<script>
@@ -242,7 +256,6 @@ $(function() {
 	
 		$(document).ready(function() {
 			currentGalleries = getParameterByName("g");
-			console.log("-->" + currentGalleries)
 
 			let array = currentGalleries.split("-");
 			currentGalleries = array[0].toLowerCase();
