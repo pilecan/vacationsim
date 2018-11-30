@@ -17,7 +17,150 @@
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
 
+  <style type="text/css">
+  
+#collum {
+    position: absolute;
+    width: 310px; height: 70%;
+    border: 1px solid #000
+}
+.blocks1 {display: inline-block; border: solid 1px black; width: 580px;height: 220px;  overflow: auto;
+}
+.blocks2 {display: inline-block; border: solid 1px black; width: 580px;height: 55px;}
+  
+ .overlay{
+    background: black;
+    opacity: .5;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+}
+.box{
+    position:fixed;
+    top:-300px;
+    left:15%;
+    right:15%;
+    background-color:#fff;
+    color:#7F7F7F;
+    padding:20px;
+    border:2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    -khtml-border-radius:20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index:101;
+}
+a.boxclose{
+    float:right;
+    margin-top:-30px;
+    margin-right:-30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+.boxclose:before {
+    content: "×";
+
+}
+
+.box h2{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+}
+
+.box p{
+    background-color:lightblue;
+    color:blue;
+  
+}
+
+.btn-group button {
+    background-color: #F7F7F7; 
+    border: 1px solid gray; /* Green border */
+    color: #87AFC3; /* White text */
+    font-weight: 1000;
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    -moz-border-radius:30px;
+    -webkit-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -khtml-border-radius: 30px;
+    -khtml-border-radius: 30px;
+    
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #FCF6D5;
+}
+</style>  
+ 
+</style>
+
 <script>
+
+$(function() {
+    $('#help').click(function(){
+        $('#overlay').fadeIn(200,function(){
+            $('#box').animate({'top':'20px'},200);
+        });
+        return false;
+    });
+    $('#boxclose').click(function(){
+        $('#box').animate({'top':'-300px'},500,function(){
+            $('#overlay').fadeOut('fast');
+        });
+    });
+ 
+});
+
+	let currentAccorion = "";
+
+	function closeSave(){
+		window.parent.$("#dialog").dialog('close');
+	}
+	function closeQuit(){
+		window.parent.$("#dialog").dialog('close');
+		window.sessionStorage.setItem("changed",false);
+	}
+
+	function add(){
+		console.log(currentAccorion+" - "+currentAccorion.length);
+	}
+
+
 	let currentGalleries = "";
     let currentGallery = "";
 	$(function() {
@@ -30,25 +173,24 @@
 			autoHeight : true,
 			heightStyle : "content",
 
+		})
+		.accordion({ activate: function(event, ui) {
+			currentAccorion = ui.newHeader.text();
+		}
 		}).sortable({
 			axis : "y",
 			handle : "h3",
 			stop : function(event, ui) {
 				ui.item.children("h3").triggerHandler("focusout");
- 		
 				setNewSession(currentGalleries, currentGallery);
 				window.sessionStorage.setItem("changed",true);
-			    
 				$(this).accordion("refresh");
 			},
 			beforeStop : function(event, ui) {
 				 $(this).data("lastItem", ui.item);
 				    var activeAccordion=$( "#accordion" ).accordion( "option", "active" );
-
 				    var active = $( ".selector" ).accordion( "option", "active" );
-
 				    var text= $("#accordion h3").eq(active).text();
-				    
 			},
 			change: function (event, ui) {
 	             var activeIndex = $("#accordion").accordion("option", "active");
@@ -57,26 +199,47 @@
 		});
 	});
 	
-	 $("#accordion").on("accordionbeforeactivate", function(event, ui) {
-
-		    var cellArrow = $('> .cellArrow',ui.newHeader);
-		    alert(cellArrow.html());
-		  });
+	
 
 </script>
 </head>
 <body>
-
-	<div id="accordion">
-		<div class="group">
-			<h3>Section 1</h3>
-			<div>
-				<p>Mauris mauris ante,
+	<div>
+		<div id="accordion" class="blocks1">
+			<div class="group">
+				<h3>Section 1</h3>
+				<div>
+					<p>Mauris mauris ante,
+				</div>
 			</div>
 		</div>
+		<div class="blocks2">
+				<div class="btn-group" style="width:100%">
+				  <button style="width:18%" onclick="add()">Add</button>
+				  <button style="width:18%" onclick="closeSave()">Save</button>
+				  <button style="width:18%">Reset</button>
+				  <button style="width:18%" onclick="closeQuit()">Quit</button>
+				  <button id="help" style="width:5%">?</button>
+				</div>
+				<div class="overlay" id="overlay" style="display:none;"></div>
+				 
+				<div class="box" id="box">
+				 <a class="boxclose" id="boxclose"></a>
+				 <h2>Help!</h2>
+				 <p>
+				  <li>Drag & Drop title to Change Order
+				  <li>Click on Title to Open and Modify
+				  <li>Click Save to Record Modifications and Quit
+				  <li>Click Reset to Cancel Modifications
+				  <li>Click Quit to Cancel Modifications and Quit
+				  <li>Click ? for Help (this)
+				 </p>
+				</div>
+		</div>
 	</div>
-
 	<script>
+	
+	
 		$(document).ready(function() {
 			currentGalleries = getParameterByName("g");
 			console.log("-->" + currentGalleries)

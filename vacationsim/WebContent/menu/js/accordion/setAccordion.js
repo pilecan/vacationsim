@@ -115,7 +115,7 @@ function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 
 /**************************************************************************************/	
 function setLine(line, objJSON) {
-	line += "<div class='group'><h3>" + objJSON.description.split("|")[0]
+	line += "<div class='group'><h3>"+objJSON.description.split("|")[0]
 			+ "</h3><div>";
 
 	let desclink = objJSON.description.split("|");

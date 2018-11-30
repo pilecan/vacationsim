@@ -160,7 +160,7 @@ function editGalleries() {
 	$(".wmBox_overlay").hide();
 	
 	var width = $(document).width();
-	var height = $(document).height()-200;
+	var height = $(document).height()-100;
 
 	document.getElementById('galleries-editor').setAttribute("src", "./manage/manager.html?g=" + document.getElementById("gallery_name").innerHTML);
  	document.getElementById('galleries-editor').setAttribute("width", width);
