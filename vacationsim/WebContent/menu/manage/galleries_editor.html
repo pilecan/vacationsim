@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jQuery UI Accordion - Sortable</title>
-<!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"-->
 <link rel="stylesheet"
 	href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.11/themes/ui-lightness/jquery-ui.css">
 <link rel="stylesheet" href="../css/manager.css">
@@ -17,57 +15,13 @@
 <script type='text/javascript' src='../js/galleries_init.js'></script>
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
-
-  
+<script type='text/javascript' src="../js/galleries/manage_gallery.js"></script>
  
 <script>
 let currentGalleries = "";
 let currentGallery = "";
 let currentAccorion = "";
 
-	$(function() {
-	    $('#help').click(function(){
-	        $('#overlay').fadeIn(200,function(){
-	            $('#box').animate({'top':'20px'},200);
-	        });
-	        return false;
-	    });
-	    $('#boxclose').click(function(){
-	        $('#box').animate({'top':'-300px'},500,function(){
-	            $('#overlay').fadeOut('fast');
-	        });
-	    });
-	 
-	});
-
-
-	function closeSave(){
-		window.parent.$("#dialog").dialog('close');
-	}
-	function closeQuit(){
-		window.parent.$("#dialog").dialog('close');
-	}
-
-	function addGallery(){
-		console.log(currentAccorion+" - "+currentAccorion.length);
-	}
-
-	function deleteGallery(){
-		console.log(currentAccorion+" - "+currentAccorion.length);
-	}
-	
-	function resetAccordion(){
-		resetSession(currentGalleries)
-		let request = currentGalleries+"-"+currentGallery;
-		if (currentGallery == undefined ){
-			request = currentGalleries;
-		} 
-
-		window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + request);
-		window.parent.document.getElementById("accordionIframe").click();
-		
-	    window.sessionStorage.setItem("changed",false);
-	}
 	
 	$(function() {
 		$("#accordion")
@@ -80,9 +34,10 @@ let currentAccorion = "";
 			heightStyle : "content",
 
 		})
-		.accordion({ activate: function(event, ui) {
-			currentAccorion = ui.newHeader.text();
-		}
+		.accordion({ 
+			activate: function(event, ui) {
+				currentAccorion = ui.newHeader.text();
+			}
 		}).sortable({
 			axis : "y",
 			handle : "h3",
@@ -105,27 +60,227 @@ let currentAccorion = "";
 		});
 	});
 	
-	
+	$(function() {
+	    $('#help').click(function(){
+	        $('#overlay').fadeIn(200,function(){
+	            $('#box').animate({'top':'20px'},200);
+	        });
+	        return false;
+	    });
+	    $('#boxclose').click(function(){
+	        $('#box').animate({'top':'-300px'},500,function(){
+	            $('#overlay').fadeOut('fast');
+	        });
+	    });
+	 
+	});
 
+	$(function() {
+	    $('#helpform').click(function(){
+	        $('#overlayform').fadeIn(200,function(){
+	            $('#boxform').animate({'top':'20px'},200);
+	        });
+	        return false;
+	    });
+	    $('#boxformclose').click(function(){
+	        $('#boxform').animate({'top':'-300px'},500,function(){
+	            $('#overlayform').fadeOut('fast');
+	        });
+	    });
+	 
+	});
+
+	
+	
+	function saveFormGallery(){
+		console.log("submit......")
+		console.log("title ->"+document.galleryForm.title.value)
+
+		let isValid = validForm();
+ 		if (isValid){
+			document.getElementById("accordion").style.display = "block";
+	  		document.getElementById("galleryPopup").style.display = "none";
+	 		document.getElementById("groupButton1").style.display = "block";
+	  		document.getElementById("groupButton2").style.display = "none";
+		}
+		
+ 
+ 		return isValid;
+		
+	}
+	
+	function resetFormGallery(){
+		console.log("submit......")
+		document.galleryForm.reset();
+	}
+	
+	function saveGallery(){
+		window.parent.$("#dialog").dialog('close');
+	}
+
+	function closeQuit(){
+		window.parent.$("#dialog").dialog('close');
+	}
+
+	function addGallery(){
+		console.log(currentAccorion+" - "+currentAccorion.length);
+		document.galleryForm.reset();
+
+		document.getElementById("groupButton1").style.display = "none";
+  		document.getElementById("groupButton2").style.display = "block";
+		document.getElementById("accordion").style.display = "none";
+  		document.getElementById("galleryPopup").style.display = "block";
+	}
+
+	function modifyGallery(){
+		console.log(currentGalleries+"-"+currentGallery+" = "+currentAccorion+" = "+currentAccorion.length);
+		if (currentAccorion.length != 0){
+			obj = getGallery(currentGalleries,currentGallery,currentAccorion);
+			console.log(obj);
+			document.galleryForm.title.value = obj.description.split("|")[0];
+			document.galleryForm.description.value = obj.description.split("|")[0];
+			document.galleryForm.media.value = obj.media;
+			if (obj.media == "image"){
+				document.galleryForm.image_text.value = obj.src;
+				
+			} else if (obj.media == "youtube"){
+				document.galleryForm.youtube_text.value = obj.videoid;
+			}
+			
+			showField();
+			document.galleryForm.link.value = obj.description.split("|")[1];
+			
+			document.getElementById("groupButton1").style.display = "none";
+	  		document.getElementById("groupButton2").style.display = "block";
+			document.getElementById("accordion").style.display = "none";
+	  		document.getElementById("galleryPopup").style.display = "block";
+			
+		}
+		
+	}
+	
+	function cancelGallery(){
+		console.log(currentAccorion+" - "+currentAccorion.length);
+ 		document.getElementById("groupButton1").style.display = "block";
+  		document.getElementById("groupButton2").style.display = "none";
+		document.getElementById("accordion").style.display = "block";
+  		document.getElementById("galleryPopup").style.display = "none";
+	}
+
+	
+	function deleteGallery(){
+		console.log(currentAccorion+" - "+currentAccorion.length);
+	}
+	
+	function resetAccordion(){
+		resetSession(currentGalleries)
+		let request = currentGalleries+"-"+currentGallery;
+		if (currentGallery == undefined ){
+			request = currentGalleries;
+		} 
+
+		window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + request);
+		window.parent.document.getElementById("accordionIframe").click();
+		
+	    window.sessionStorage.setItem("changed",false);
+	}
+	
+	function validForm(){
+		
+		let message = "";
+
+		if (document.getElementById("title").value == "" ){
+			message += "Enter Title.\n";
+		}
+		
+		if (document.getElementById("youtube_text").value == "" 
+		&& document.getElementById("image_text").value == "" 
+		|| document.getElementById("media").value == "Select a Media"){
+			message += "Select Media and Enter value in field Media or youtube.\n";
+		}
+
+		if (document.getElementById("description").value == "" ){
+			message += "Enter Description.";
+		}
+		
+		if (message != ""){
+			alert(message);
+		}
+		
+		return (message == "");
+	}
+
+	function showField(){
+	  	var media = document.getElementById("media").value;
+	  	if (media == "image"){
+	  		document.getElementById("image").style.display = "block";
+	  		document.getElementById("youtube").style.display = "none";
+		} else if (media == "youtube"){
+	  		document.getElementById("image").style.display = "none";
+	  		document.getElementById("youtube").style.display = "block";
+		} else if (media == "Select a Media"){
+	  		document.getElementById("image").style.display = "none";
+	  		document.getElementById("youtube").style.display = "none";
+	  	}
+		
+	}
 </script>
 </head>
 <body>
 	<div>
-		<div id="accordion" class="accordion blocks1">
-			<div class="group">
-				<h3>Section 1</h3>
-				<div>
-					<p>Mauris mauris ante,
+		<div id="top">
+			<div id="accordion" class="accordion blockAccordion" style="display:block">
+				<div class="group">
+					<h3>Oups!</h3>
+					<div>
+						<p>Little problem here ;)</p>
+					</div>
 				</div>
 			</div>
+			
+			<div id="galleryPopup" class="form-popup blockAccordion" style="display:none;">
+			  <form name="galleryForm" action="#"  class="form-container">
+			  
+			    <label for="title"><b>Title</b></label>
+			    <input id="title" type="text" placeholder="Enter Title here" name="title" required>
+				
+				<select id="media" onchange="showField()" style="width: 100%; height: 30px; " required >
+				  <option>Select a Media</option>
+				  <option>image</option>
+				  <option>youtube</option>
+				</select>
+				<br>
+				<br>
+				
+				<span id ="image" style="display:none">
+			    	<label for="image"><b>URL image</b></label>
+				    <input id ="image_text" type="text" placeholder="Enter URL image here" name="image" >
+				</span>
+				
+				<span id ="youtube" style="display:none">
+			    	<label for="youtube"><b>Youtube video ID</b></label>
+				    <input id ="youtube_text"  type="text" placeholder="Enter youtube ID here" name="youtube" >
+				</span>
+				
+			    <label for="description"><b>Description</b></label>
+			    <input id="description" type="text" placeholder="Enter Description here" name="description" required>
+			
+			    <label for="link"><b>Link</b></label>
+			    <input id="link" type="text" placeholder="Enter Link here (Optional)" name="link">
+			
+			  </form>
+			</div>
+
 		</div>
-		<div class="blocks2">
+		
+		<div id="groupButton1" class="groupButton1" style="display:block">
 			<div class="btn-group" style="width:100%">
-			  <button style="width:17%" onclick="closeSave()">Save</button>
-			  <button style="width:17%" onclick="addGallery()">Add</button>
-			  <button style="width:17%" onclick="deleteGallery()">Delete</button>
-			  <button style="width:17%" onclick="resetAccordion()">Reset</button>
-			  <button style="width:17%" onclick="closeQuit()">Quit</button>
+			  <button style="width:15%" onclick="saveGallery()">Save</button>
+			  <button style="width:15%" onclick="addGallery()">Add</button>
+			  <button style="width:15%" onclick="modifyGallery()">Modify</button>
+			  <button style="width:15%" onclick="deleteGallery()">Delete</button>
+			  <button style="width:15%" onclick="resetAccordion()">Reset</button>
+			  <button style="width:15%" onclick="closeQuit()">Quit</button>
 			  <button id="help" style="width:10%">?</button>
 			</div>
 			<div class="overlay" id="overlay" style="display:none;"></div>
@@ -137,9 +292,35 @@ let currentAccorion = "";
 		 <p>
 		  <li>Drag & Drop title to Change Order
 		  <li>Click on Title to Open and Modify
-		  <li>Click Save/Quit and Record Modifications and 
+		  <li>Click Save/Quit and Record Modifications 
 		  <li>Click Reset to Cancel Modifications
 		  <li>Click Quit and Cancel Modifications
+		  <li>Click ? for Help (this)
+		 </p>
+		</div>
+
+		<div id="groupButton2" class="groupButton2" style="display:none;">
+			<div class="btn-group" style="width:100%">
+			  <button style="width:30%" onclick="return saveFormGallery();">Save</button>
+			  <button style="width:30%" onclick="resetFormGallery()">Reset</button>
+			  <button style="width:30%" onclick="cancelGallery()">Cancel</button>
+			  <button id="helpform" style="width:10%">?</button>
+			</div>
+			<div class="overlay" id="overlayform" style="display:none;"></div>
+			 
+		</div>
+
+
+		<div class="boxform" id="boxform">
+		 <a class="boxformclose" id="boxformclose"></a>
+		 <h2>Help!</h2>
+		 <p>
+		  <li>Enter Title of your image or video
+		  <li>Enter the Type of Media (image or video)  
+		  <li>Enter the URL of you image or the youtube ID  
+		  <li>Enter a Description
+		  <li>Enter a URL Link to Open in other Window 
+		  <li>Note: Description will blink when a Link is associated
 		  <li>Click ? for Help (this)
 		 </p>
 		</div>

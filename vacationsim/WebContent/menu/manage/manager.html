@@ -42,6 +42,10 @@
         width: 'auto',
         resizable: false,
         title: 'Welcome',
+       /*  my: "center",
+        at: "center",
+        of: window, */
+        //position: {my: "center",  at: "center", of: $("body"),within: $("body") },
         open: function (ev, ui) {
           $('#accordionIframe').src;
           
@@ -126,7 +130,7 @@
 
 <body>
   <div id="dialog">
-    <iframe id="accordionIframe" class="none" src=""  width="600" height="300"></iframe>
+    <iframe id="accordionIframe" class="none" src=""  width="600" height="400"></iframe>
   </div>
   <script>
     $(document).ready(function () {
@@ -134,7 +138,11 @@
       //console.log(currentGalleries)
 	  document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries);
  	  document.getElementById("accordionIframe").click();
-      $("#dialog").dialog('option', 'title', currentGalleries);
+      
+ 	  $("#dialog").dialog('option', 'title', currentGalleries);
+      let position = $('.selector').dialog('option', 'position');
+      //setter
+      $('.selector').dialog('option', 'position', 'top');
 
     });
   </script>

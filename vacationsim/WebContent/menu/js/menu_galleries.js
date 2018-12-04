@@ -161,6 +161,9 @@ function editGalleries() {
 	
 	var width = $(document).width();
 	var height = $(document).height()-100;
+	
+	console.log("width : "+width)
+	console.log("height : "+height)
 
 	document.getElementById('galleries-editor').setAttribute("src", "./manage/manager.html?g=" + document.getElementById("gallery_name").innerHTML);
  	document.getElementById('galleries-editor').setAttribute("width", width);
