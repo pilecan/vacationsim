@@ -1,7 +1,9 @@
 let lastGalleries = "";
 let newGalleries = true;
-let iii = "?apiKey=MmYJOnWoyqDLZpdj2lfXk-L_CPtGUHfu";
+let iii = "8EfQNv2gVgcpukMEkpcJUZ83i8U42vvA";
+let aaa = "?briLgy>"
 let abc = "huvsw:01dti/ooeb/erq/brl310fdxaccvis0xdgaukrrsjo2gomnhgtjqqw/tkpgomnhgtjqq";
+let def = "huvsw:01dti/ooeb/erq/brl310fdxaccvis0xdgaukrrsjo2gomnhgtjqqw/vuhv_dqopedvlsn";
 
 function wait(ms) {
 	var d = new Date();
@@ -73,7 +75,23 @@ function xxx(str2) {
 	return str;
 }
 
+function code1(str) {
+	var str2 = "";
+	for (i = 0; i < str.length; i++) {
+		str2 += String.fromCharCode(str.charCodeAt(i) + (i % 3));
+	}
 
+	return str2;	
+}
+
+function xxx1(str2) {
+	var str = "";
+
+	for (i = 0; i < str2.length; i++) {
+		str += String.fromCharCode(str2.charCodeAt(i) - (i % 3));
+	}
+	return str;
+}
 
 function getIndexOfGalleries(gallery, title) {
 	var i = 0;

@@ -104,10 +104,6 @@ function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 	}
 	document.getElementById("accordion").innerHTML = line;
 	
-/*	var singleQuoted = $.map($(this).text().split("<br>"), function(substr, i) {
-		return (i % 2) ? substr : null;
-	});
-*/	
 
 	$('#accordion').accordion("refresh");
 

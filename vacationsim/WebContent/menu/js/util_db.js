@@ -10,7 +10,7 @@ function getDBGalleries(galleries_name, id) {
 
 	try {
 		var request = new XMLHttpRequest();
-		request.open("GET",xxx(abc) + "/" + id + iii
+		request.open("GET",xxx(abc) + "/" + id + xxx1(aaa)+iii
 		);
 
 		var rq = null;
@@ -46,7 +46,7 @@ function updateDB(currentGalleries) {
 	let id = window.sessionStorage.getItem("galleriesIds-" + currentGalleries);
 
 	$.ajax({
-		url : xxx(abc)+"/"+id + iii,
+		url : xxx(abc)+"/"+id + xxx1(aaa)+iii,
 		data : objJSON,
 		type : "PUT",
 		contentType: "application/json;charset=utf-8",
@@ -79,3 +79,32 @@ function createRequest(currentGalleries){
 
 	return jsonRequest;
 }
+
+function getUser(user,psw){
+    try {
+        var request = new XMLHttpRequest();
+        request.open("GET",
+//            "https://api.mlab.com/api/1/databases/vacationsim/collections/user_collection?apiKey=8EfQNv2gVgcpukMEkpcJUZ83i8U42vvA&q={\'username\':\'"+user+"\'}"
+        	  xxx(def)+xxx1(aaa)+iii+"&q={\'username\':\'"+user+"\'}"
+        );
+
+        var rq = null;
+        request.onload = function () {
+            if (request.readyState === request.DONE) {
+                if (request.status === 200) {
+                    let jsonResponse = JSON.parse(request.responseText);
+
+                    let obj = new Object(jsonResponse);
+                    console.log("User = "+request.responseText);
+                    console.log("password = "+obj[0].password+" = "+md5(psw)+" "+(obj[0].password == md5(psw)));
+                }
+            }
+        };
+
+        request.send(null);
+    } catch (err) {
+    	console.err(err)
+    }
+	
+}
+

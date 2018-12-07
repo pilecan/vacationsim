@@ -39,7 +39,7 @@
 		try {
 			var rw = "";
 			request.open("GET",
-				xxx(abc)+iii
+				xxx(abc)+xxx1(aaa)+iii
 			);
 
 			request.onload = function () {
