@@ -10,9 +10,12 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script type='text/javascript' src="../js/q.js"></script>
+<script type='text/javascript' src="../js/md5.min.js"></script>
 <script type='text/javascript' src='../js/util.js'></script>
 <script type='text/javascript' src='../js/util_db.js'></script>
 <script type='text/javascript' src='../js/galleries_init.js'></script>
+<script type='text/javascript' src='../js/login.js'></script>
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
 <script type='text/javascript' src="../js/galleries/manage_gallery.js"></script>
@@ -22,7 +25,7 @@
 <body>
 	<div>
 		<div id="top">
-			<div id="accordion" class="accordion blockAccordion animate" style="display:block">
+			<div id="accordion" class="accordion blockAccordion animate" style="display:none">
 				<div class="group">
 					<h3>Oups!</h3>
 					<div>
@@ -118,12 +121,15 @@
 		</div>
 	</div>
 	
-<div id="loginForm" class="modal" style="display:none;">
   
-  <form class="modal-content animate" action="#">
+</div>
+
+<div id="loginForm" class="modal" style="display:none;">
+
+  <form name="loginForm" class="modal-content animate" action="#" onsubmit="return validUser(this);">
     <div class="imgcontainer">
       <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <!--  img src="../images/img_avatar2.png" alt="Avatar" class="avatar" -->
+      <img src="../images/superman_small.gif" width="100px"  alt="Avatar">
     </div>
 
     <div class="container">
@@ -146,7 +152,6 @@
   </form>
 </div>
 
-
 	
 	<script>
 	
@@ -159,8 +164,13 @@
 			currentGallery = array[1];
 			
 			setAccordionFromSession(currentGalleries, currentGallery);
-
-		$("#dialog").dialog('option', 'title', currentGalleries);
+			
+			$("#dialog").dialog('option', 'title', currentGalleries);
+			if (window.sessionStorage.getItem("user") == null){
+				window.document.getElementById("loginForm").style.display = "block";
+			} else {
+			}
+			window.document.getElementById("accordion").style.display = "block";
 
 		});
 	</script>

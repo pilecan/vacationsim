@@ -10,7 +10,7 @@ function getDBGalleries(galleries_name, id) {
 
 	try {
 		var request = new XMLHttpRequest();
-		request.open("GET",xxx(abc) + "/" + id + xxx1(aaa)+iii
+		request.open("GET",xxx(abc) + "/" + id + xxx1(aaa)+iii,false
 		);
 
 		var rq = null;
@@ -80,16 +80,32 @@ function createRequest(currentGalleries){
 	return jsonRequest;
 }
 
+
+async function checkUserValid(user,psw,callback){
+	let url = xxx(def)+xxx1(aaa)+iii+"&q={\'username\':\'"+user+"\'}";
+	 $.ajax({
+	    url : url,
+	    method : "GET",
+		contentType: "application/json;charset=utf-8"
+	}).done(function(server_data) {
+		callback(server_data)
+		//console.log("done :)")
+	}).fail(function() {
+		callback("failed :(")
+	});	
+}
+
 function getUser(user,psw){
-    try {
+	  return new Promise(async function(resolve, reject) {
+        console.log("User = "+user+" - "+psw);
         var request = new XMLHttpRequest();
         request.open("GET",
-//            "https://api.mlab.com/api/1/databases/vacationsim/collections/user_collection?apiKey=8EfQNv2gVgcpukMEkpcJUZ83i8U42vvA&q={\'username\':\'"+user+"\'}"
-        	  xxx(def)+xxx1(aaa)+iii+"&q={\'username\':\'"+user+"\'}"
+        	  xxx(def)+xxx1(aaa)+iii+"&q={\'username\':\'"+user+"\'}",false
         );
-
         var rq = null;
         request.onload = function () {
+        	//let isValid = false;
+
             if (request.readyState === request.DONE) {
                 if (request.status === 200) {
                     let jsonResponse = JSON.parse(request.responseText);
@@ -97,14 +113,34 @@ function getUser(user,psw){
                     let obj = new Object(jsonResponse);
                     console.log("User = "+request.responseText);
                     console.log("password = "+obj[0].password+" = "+md5(psw)+" "+(obj[0].password == md5(psw)));
-                }
+                    resolve(obj[0].password == md5(psw));
+              }
+                
             }
-        };
+        }
 
         request.send(null);
-    } catch (err) {
-    	console.err(err)
-    }
-	
+   
+
+	  });	
+}
+
+function getUserQ(user,psw){
+	 var response = Q.defer();
+	    var request = new XMLHttpRequest();
+	    request.open("GET", xxx(def)+xxx1(aaa)+iii+"&q={\'username\':\'"+user+"\'}", false);
+	    request.onreadystatechange = function () {
+	        if (request.readyState === 4) {
+	            if (request.status === 200) {
+	                response.resolve(request.responseText);
+                   // console.log("User = "+request.responseText);
+	            } else {
+	                response.reject("HTTP " + request.status + " for url");
+	            }   
+	        }
+	    };
+	   setTimeout(response.reject, 2000);
+	    request.send('');
+	    return response.promise;	
 }
 

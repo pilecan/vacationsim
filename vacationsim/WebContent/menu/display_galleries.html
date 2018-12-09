@@ -47,6 +47,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  
   <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
  
   <script src="./js/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js"></script>
@@ -60,7 +61,7 @@
 
   <script src="./js/decompte.js"></script>
   <script src="./js/util.js"></script>
-
+  
  
 
 </head>
@@ -70,6 +71,14 @@
   
   <div id="entete" class="title-sim">Vacation SIM Voyage&nbsp;<br>.com</div>
 
+  <div id="userlog" class="userlog flash">Tripperman  
+    <img width="50px" src="./images/superman_small.gif">
+  
+
+  </div>
+     
+  
+
   <script>
     value = "value"
   </script>
@@ -77,9 +86,9 @@
     <ul>
       <div id="items"></div>
     </ul>
-    <button id="button-sim" style='background-color:#449d44; '></button>
+    <button id="button-sim" style=" position: absolute;left: -3px;top: -12px;" ></button>
     <img id="center_image" class="pointer" src="./images/earth.gif" title="Click Me Don't Kick Me Please :)" onclick=" showGoogleMaps();return false;"
-      width="155" style=" position: absolute;left: -8px;top: -3px;">
+      width="155" style=" position: absolute;left: -8px;top: -6px;">
   </div>
 
   <script src="./js/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
@@ -99,9 +108,8 @@
 <div>    
 <p class='flash' style="font-size: large;" id="decompte"></p>
 </div>    
-    </div>
-    
-
+</div>
+  
 
   <script src="./js/wmBox.js"></script>
   <script src="./js/main.js"></script>
@@ -110,6 +118,7 @@
   <script src="./js/util_db.js"></script>
   <script src="./js/galleries_init.js"></script>
   <script src="./js/menu_galleries.js"></script>
+
 
   <script>
     $("#button-sim").click();
@@ -120,7 +129,7 @@
 
       //gallery = "default";
       
-     getUser("toto","toto88");
+    // getUser("toto","toto88");
 
 	if (window.sessionStorage.getItem("currentGalleries") == null){
         getDBinfo(

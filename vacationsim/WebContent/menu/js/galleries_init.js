@@ -10,7 +10,7 @@
 		if (onBefore) {
 			onBefore();
 		}
-		wait(2000);
+		//wait(2000);
 
 
 		if (onAfter) {
@@ -24,7 +24,7 @@
 			console.log("init ---->"+window.sessionStorage.getItem("currentGalleries"));
 			if (window.sessionStorage.getItem("currentGalleries") == null){
 				callBD();
-				wait(100);
+				//wait(100);
 			}
 
 		},
@@ -39,7 +39,7 @@
 		try {
 			var rw = "";
 			request.open("GET",
-				xxx(abc)+xxx1(aaa)+iii
+				xxx(abc)+xxx1(aaa)+iii,false
 			);
 
 			request.onload = function () {

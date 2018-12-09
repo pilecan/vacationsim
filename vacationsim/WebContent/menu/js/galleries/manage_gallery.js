@@ -97,8 +97,7 @@ let currentAccorion = "";
 	}
 	
 	function saveGallery(){
-  		document.getElementById("loginForm").style.display = "block";
-		//window.parent.$("#dialog").dialog('close');
+		window.parent.$("#dialog").dialog('close');
 		
 	}
 
@@ -286,3 +285,29 @@ function getGallery(currentGalleries, currentGallery, currentSearh) {
 
 	return null;
 }
+
+function validUser(loginForm){
+	 getUserQ(loginForm.username.value,loginForm.password.value).then(processUserResponse,errorHandler);
+}
+
+function processUserResponse(responseText){
+	let obj = new Object(JSON.parse(responseText));
+
+  	if (obj[0] == undefined || md5(document.loginForm.password.value) != obj[0].password){
+  		alert("invalid user name or password");
+ 	   window.parent.$("#dialog").dialog('close');
+  		
+
+  	} else if (obj[0].password == md5(document.loginForm.password.value)) {
+  		alert("Welcome again "+obj[0].username)
+        window.sessionStorage.setItem("user",obj[0].username);
+  	  window.parent.parent.document.getElementById("userlog").innerHTML = obj[0].username;
+  		window.parent.$("#dialog").dialog('close');
+  	}
+  	
+}
+
+function errorHandler(statusCode){
+	console.log("failed with status", status);
+}
+	
