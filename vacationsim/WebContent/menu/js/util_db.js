@@ -20,10 +20,11 @@ function getDBGalleries(galleries_name, id) {
 					var jsonResponse = JSON.parse(request.responseText);
 
 					rq = eval("jsonResponse." + galleries_name);
-					//console.log(rq);
 					for (i = 0; i < rq.length; i++) {
-						window.sessionStorage.setItem(galleries_name + "|" + i, JSON.stringify(rq[i]));
-
+						//console.log(rq[i].description);
+						if (rq[i].description != undefined){
+							window.sessionStorage.setItem(galleries_name + "|" + i, JSON.stringify(rq[i]));
+						}
 					}
 				}
 			}

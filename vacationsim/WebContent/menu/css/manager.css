@@ -8,7 +8,20 @@
 .groupButton1 {padding-top:12px; padding-left:0px;display: inline-block; width: 579px;height: 46px;}
 .groupButton2 {padding-top:12px; margin-left:0px; display: inline-block;  width: 579px;height: 46px;}
   
- 
+
+#flip {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+
+
+
+
+/********************************** help one *****************************************/
  .overlay{
     background: black;
     opacity: .5;
@@ -19,18 +32,25 @@
     right:0px;
     z-index:100;
 }
-.overlayform{
-    background: black;
-    opacity: .5;
-    position:fixed;
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    z-index:100;
+
+.box h2{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
 }
 
-.box{
+.box p{
+    background-color:lightblue;
+    color:blue;
+  
+}.box{
     position:fixed;
     top:-300px;
     left:15%;
@@ -64,6 +84,85 @@ a.boxclose{
 
 .boxclose:before {
     content: "x";
+}
+
+/*************************************** messagebox ******************************/
+.overlaymessagebox{
+    background: black;
+    opacity: .5;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+}
+
+.messagebox h2{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+}
+
+.messagebox p{
+    background-color:lightblue;
+    color:blue;
+  
+}
+
+.messagebox{
+    position:fixed;
+    top:-300px;
+    left:15%;
+    right:15%;
+    background-color:#fff;
+    color:#7F7F7F;
+    padding:20px;
+    border:2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    -khtml-border-radius:20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index:101;
+}
+a.messageboxclose{
+    float:right;
+    margin-top:-30px;
+    margin-right:-30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+.messageboxclose:before {
+    content: "x";
+}
+ 
+/********************************** help two *****************************************/
+.overlayform{
+    background: black;
+    opacity: .5;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
 }
  
 .boxform h2{
@@ -121,7 +220,18 @@ a.boxformclose{
     content: "x";
 }
  
-.box h2{
+/********************************** login form *****************************************/
+ .overlayloginform{
+    background: black;
+    opacity: .5;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+}
+.loginform h3{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
     padding:10px;
@@ -134,13 +244,66 @@ a.boxformclose{
     -khtml-border-top-right-radius: 10px;
 }
 
-.box p{
+.loginform p{
     background-color:lightblue;
     color:blue;
   
 }
 
+.loginform{
+    position:fixed;
+    top:-5000px;
+    left:40%;
+    right:40%;
+    background-color:#fff;
+    color:#7F7F7F;
+    padding:20px;
+    border:2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    -khtml-border-radius:20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index:1001;
+}/* 
+a.loginformclose{
+    float:right;
+    margin-top:-30px;
+    margin-right:-30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+ */
+/* .loginformclose:before {
+    content: "x";
+} */
 
+.loginform h3{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+}
+
+.loginform p{
+    background-color:lightblue;
+    color:blue;
+  
+}
 
 .btn-group button {
     background-color: #F7F7F7; 

@@ -25,7 +25,7 @@
 <body>
 	<div>
 		<div id="top">
-			<div id="accordion" class="accordion blockAccordion animate" style="display:none">
+			<div id="accordion" class="accordion blockAccordion animate" style="display:block">
 				<div class="group">
 					<h3>Oups!</h3>
 					<div>
@@ -77,7 +77,7 @@
 			  <button style="width:15%" onclick="deleteGallery()">Delete</button>
 			  <button style="width:15%" onclick="resetAccordion()">Reset</button>
 			  <button style="width:15%" onclick="closeQuit()">Quit</button>
-			  <button id="help" style="width:10%">?</button>
+			  <button  id="help" style="width:10%">?</button>
 			</div>
 			<div class="overlay" id="overlay" style="display:none;"></div>
 			 
@@ -100,7 +100,7 @@
 			  <button style="width:30%" onclick="return saveFormGallery();">Save</button>
 			  <button style="width:30%" onclick="resetFormGallery()">Reset</button>
 			  <button style="width:30%" onclick="cancelGallery()">Cancel</button>
-			  <button id="helpform" style="width:10%">?</button>
+			  <button  id="helpform" style="width:10%">?</button>
 			</div>
 			<div class="overlay" id="overlayform" style="display:none;"></div>
 		</div>
@@ -118,39 +118,49 @@
 		  <li>Note: Description will blink when a Link is associated
 		  <li>Click ? for Help (this)
 		 </p>
+		 
 		</div>
-	</div>
+
+		<div class="messagebox" id="messagebox">
+			 <a class="messageboxclose" id="messageboxclose"></a>
+			 <h2>Message</h2>
+			 <p>
+			 <div id="message_content">Select and Open a Galley to modify it!</div>
+			 </p>
+		 
+		</div>
+		
+		<div class="loginform" id="loginform">
+		 <a class="loginformclose" id="loginformclose"></a>
+		 <h3> <img id="flip" src="../images/superman_small.gif" width="50px"  alt="Avatar"> Login</h3>
+		   <p>
+  			<form name="loginform" class="modal-content animate" action="#" onsubmit="return validUser(this);">
+		   
+		   	<div class="container">
+		      <label for="uname"><b>Username</b></label>
+		      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
+		
+		      <label for="psw"><b>Password</b></label>
+		      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+		        
+		      <button type="submit">Login</button>
+		      <label>
+		        <input type="checkbox" checked="checked" name="remember"> Remember me
+		      </label>
+		    </div>
+		    </form>
+		    </p>
+		</div>
+		
+    	<button style="display:none" id="login"></button>
+		<div class="overlay" id="overlayloginform" style="display:none"></div>
+		
+   		<button style="display:none" id="message"></button>
+		<div class="overlay" id="overlaymessagebox" style="display:none"></div>
+		
+ </div>
 	
   
-</div>
-
-<div id="loginForm" class="modal" style="display:none;">
-
-  <form name="loginForm" class="modal-content animate" action="#" onsubmit="return validUser(this);">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="../images/superman_small.gif" width="100px"  alt="Avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('loginForm').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
 
 	
 	<script>
@@ -167,11 +177,23 @@
 			
 			$("#dialog").dialog('option', 'title', currentGalleries);
 			if (window.sessionStorage.getItem("user") == null){
-				window.document.getElementById("loginForm").style.display = "block";
-			} else {
-			}
-			window.document.getElementById("accordion").style.display = "block";
+			//     $('#login').click();
 
+		  		//document.loginform.username.value = "Tripperman";
+		  		//document.loginform.password.value = "Tripperman";
+
+			} else {
+				//window.document.getElementById("accordion").style.display = "block";
+		  		//document.getElementById("groupButton1").style.display = "block";
+			}
+/* 			
+			if (window.sessionStorage.getItem("user") == null){
+		    	  window.parent.parent.document.getElementById("userlog").innerHTML = "Tripperman";
+		  	} else {
+		  	  window.parent.parent.document.getElementById("userlog").innerHTML = window.sessionStorage.getItem("user");
+
+		  	}			
+ */
 		});
 	</script>
 </body>

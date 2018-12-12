@@ -165,6 +165,7 @@ function editGalleries() {
 	console.log("width : "+width)
 	console.log("height : "+height)
 	
+    //document.getElementById("loggon" ).click();
 
 	document.getElementById('galleries-editor').setAttribute("src", "./manage/manager.html?g=" + document.getElementById("gallery_name").innerHTML);
  	document.getElementById('galleries-editor').setAttribute("width", width);

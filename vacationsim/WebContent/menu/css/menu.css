@@ -17,13 +17,13 @@ body {
 .userlog {
  position: absolute;
     top: 20px;
-    right: 20px;	
+    right: 60px;	
 }
 
-img.imglog {
+.imglog {
  position: absolute;
     top: 20px;
-    right: 20px;	
+    right: 10px;	
 }
 
 
@@ -214,7 +214,7 @@ body {
 
 body {font-family: Arial, Helvetica, sans-serif;}
 
-#loginForm {
+#loginform {
 	left: 108px;
 	top: -6px;
 	
@@ -323,4 +323,6 @@ span.psw {
        width: 100%;
     }
 }
+
+
 

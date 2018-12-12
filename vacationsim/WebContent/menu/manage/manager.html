@@ -5,6 +5,14 @@
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  
+  <!-- Remember to include jQuery :) -->
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
   <title>JS Bin</title>
 
   <style type="text/css">
@@ -12,122 +20,22 @@
       border-style: none;
     }
   </style>
+  
+<link rel="stylesheet" href="../css/manager.css">
 
-  <script src="../js/util.js"></script>
+<script src="../js/util.js"></script>
+<script type='text/javascript' src="../js/q.js"></script>
+<script type='text/javascript' src="../js/md5.min.js"></script>
 <script type='text/javascript' src='../js/util_db.js'></script>
 <script type='text/javascript' src='../js/galleries_init.js'></script>
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
+<script type='text/javascript' src='../js/galleries/main_dialog.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
+<script type='text/javascript' src="../js/galleries/manage_gallery.js"></script>
 
 
   <script>
-  
-  function wait(ms) {
-		var d = new Date();
-		var d2 = null;
-		do {
-			d2 = new Date();
-		}
-		while (d2 - d < ms);
-	}
-  
-    $(function () {
-      $("#dialog").dialog({
-    	
-        autoOpen: true,
-        show: "fade",
-        hide: "fade",
-        modal: true,
-        height: 'auto',
-        width: 'auto',
-        resizable: false,
-        title: 'Welcome',
-       /*  my: "center",
-        at: "center",
-        of: window, */
-        //position: {my: "center",  at: "center", of: $("body"),within: $("body") },
-        open: function (ev, ui) {
-          $('#accordionIframe').src;
-          
-        },
-        close: function (ev, ui) {
-        	
-          //$("#button-sim").parent().click();
-         //window.parent.document.getElementById("button-sim").click();
-         $("#button-sim", window.parent.document).click();
-         $("#button-sim", window.parent.document).click();
-
-         // wait(500);
-
-         $("#menu_items", window.parent.document).show();
-
-         $("#btn-prev", window.parent.document).show();
-         $("#btn-edit", window.parent.document).show();
-         $("#btn-next", window.parent.document).show();
-         
-		window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
-
-        },
-        beforeClose: function closeDialog() {
-        	
-        	
-
-            if (window.sessionStorage.getItem("changed") == "true" && window.sessionStorage.getItem("user") != null)   {
-
-            	if (confirm("Do want to save your modification(s)?")){
-    	           	 updateDB(window.sessionStorage.getItem("currentGalleries"));
- 
-    	           	 //remove temp
-					let obj = (window.sessionStorage.getItem("temp|0"));
-					let index = 0;
-					while (obj != null && obj != undefined) {
-						window.sessionStorage.removeItem("temp|"+index)
-						index++;
-						obj = window.sessionStorage.getItem("temp|"+index)
-					}
-					
-					window.sessionStorage.removeItem("temp-"+window.sessionStorage.getItem("currentGalleries"));
-    	            window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
-    	             
- 					setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
-
-    	     	    window.sessionStorage.setItem("changed",false);
-           		
-            	} else {
-            		currentGalleries = window.sessionStorage.getItem("currentGalleries");
-                
-    	           	 //transfert and remove temp
-					let key = currentGalleries + "|0";
-					let obj = (window.sessionStorage.getItem("temp|0"));
-				
-					let index = 0;
-					while (obj != null && obj != undefined) {
-						window.sessionStorage.setItem(key,obj)
-						window.sessionStorage.removeItem("temp|"+index)
-						index++;
-						obj = (window.sessionStorage.getItem("temp|"+index));
-						key = currentGalleries + "|" + index;
-					}
-					
-					obj = window.sessionStorage.getItem("temp-"+currentGalleries);
-					window.sessionStorage.setItem("menuGalleries-"+currentGalleries,obj);
-					window.sessionStorage.removeItem("temp-"+currentGalleries);
-					
-   	     	     	window.sessionStorage.setItem("changed",false);
-            	}
-            	
-            }
-           	 
-           	 
-            
-       }
-      });
-
-      $("#opener").click(function () {
-        $("#dialog").dialog("open");
-        return false;
-      });
-    });
+  let galleries = "";
   </script>
 </head>
 
@@ -137,17 +45,51 @@
   </div>
   
   
+  		<div class="loginform" id="loginform">
+		 <a class="loginformclose" id="loginformclose"></a>
+		 <h3> <img id="flip" src="../images/superman_small.gif" width="50px"  alt="Avatar"> Login</h3>
+		   <p>
+  			<form name="loginform" class="modal-content animate" action="#" onsubmit="return validUser(this);">
+		   
+		   	<div class="container">
+		      <label for="uname"><b>Username</b></label>
+		      <input id="username" type="text" value = "pile" placeholder="Enter Username" name="uname" required>
+		
+		      <label for="psw"><b>Password</b></label>
+		      <input id="password" type="password" value = "pile"  placeholder="Enter Password" name="psw" required>
+		        
+		      <button type="submit">Login</button> <button type="button" onclick="closeLogin()">Cancel</button>
+		      <label>
+		        <input type="checkbox" checked="checked" name="remember"> Remember me
+		      </label>
+		    </div>
+		    </form>
+		    </p>
+		</div>
+		
+    	<button style="display:none" id="login"></button>
+		<div class="overlay" id="overlayloginform" style="display:none"></div>
+  
+  
   <script>
     $(document).ready(function () {
-      let currentGalleries = getParameterByName("g");
-      //console.log(currentGalleries)
-	  document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries);
- 	  document.getElementById("accordionIframe").click();
+      galleries = getParameterByName("g");
       
- 	  $("#dialog").dialog('option', 'title', currentGalleries);
-      let position = $('.selector').dialog('option', 'position');
-      //setter
-      $('.selector').dialog('option', 'position', 'top');
+      if (window.sessionStorage.getItem("user") == null){
+      	$('#login').click();
+      } else {
+    	$("#dialog").dialog('open');
+         
+  	      document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + window.parent.document.getElementById("gallery_name").innerHTML);
+	 	  document.getElementById("accordionIframe").click();
+	      
+	 	  $("#dialog").dialog('option', 'title', galleries);
+	      let position = $('.selector').dialog('option', 'position');
+	      //setter
+	      $('.selector').dialog('option', 'position', 'top');
+      }
+      
+
 
     });
   </script>
