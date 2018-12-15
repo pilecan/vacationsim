@@ -15,6 +15,7 @@ function setGalleryFromSession(){
 	while (isFinish == false) {
 		key = galleries_name+"|"+x;
 		obj = (window.sessionStorage.getItem(key));
+		//console.log(obj)
 		var data = new Object();
 		if (obj == undefined){
 			arrayGallery[lastGalleries] = arrayData;

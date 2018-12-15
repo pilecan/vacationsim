@@ -86,7 +86,7 @@ function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 	while (obj != null) {
 		key = galleriesName + "|" + index;
 		obj = (window.sessionStorage.getItem(key));
-		if (obj != null) {
+		if (obj != null && obj != "undefined") {
 			objJSON = JSON.parse(new Object(obj));
 
 			if (objJSON.gallery == currentGallery) {
@@ -118,25 +118,27 @@ function setLine(line, objJSON) {
 	let desclink = objJSON.description.split("|");
 	// caractere alt+255 comme séparateur
 	if (objJSON.media == "image") {
-		line += " title: " + desclink[0] + " <br>";
-		line += " media: " + objJSON.media + " <br>";
-		line += " <span style='white-space: nowrap;'>src: " + objJSON.src
+		line += " <span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";
+		line += " Media: " + objJSON.media + " <br>";
+		line += " <span style='white-space: nowrap;'>Src: " + objJSON.src
 				+ " </span><br>";
-		line += " <span style='white-space: nowrap;'>description: "
-				+ desclink[0] + " </span><br>";
-		if (desclink[1] != undefined){
-			line += " <span style='white-space: nowrap;'>link: " + desclink[1]
+		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1] != ""){
+			line += " <span style='white-space: nowrap;'>Link: " + desclink[1]
 			+ " </span><br>";
+		} else {
+			line += " <span style='white-space: nowrap;'>Link: No link "
+
 		}
 	} else {
-		line += " title: " + desclink[0] + " <br>";
-		line += " media: " + objJSON.media + " <br>";
-		line += " videoid: " + objJSON.videoid + " <br>";
-		line += " <span style='white-space: nowrap;'>description: "
-				+ desclink[0] + " </span><br>";
-		if (desclink[1] != undefined){
-			line += " <span style='white-space: nowrap;'>link: " + desclink[1]
+		line += " <span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";		
+		line += " Media: " + objJSON.media + " <br>";
+		line += " Videoid: " + objJSON.videoid + " <br>";
+		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1] != ""){
+			line += " <span style='white-space: nowrap;'>Link: " + desclink[1]
 			+ " </span><br>";
+		} else {
+			line += " <span style='white-space: nowrap;'>Link: No link "
+
 		}
 	}
 
@@ -166,12 +168,11 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 				let obj = new Object();
 				obj.gallery = currentGallery;
 				var singleQuoted = $.map($(this).text().split(" "), function(substr, i) {
-					// console.log(substr)
+					console.log(substr)
 					if (substr.indexOf(": ") != -1) {
 						let line = substr.split(": ");
 						try {
-							eval("obj." + line[0] + "='" + line[1] + "'");
-
+							eval("obj." + line[0].toLowerCase() + "='" + line[1] + "'");
 						} catch (err) {
 							//console.log(err);
 						}
@@ -180,7 +181,7 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 				});
 
 				obj.gallery = currentGallery;
-				if (obj.link != "undefined") {
+				if (obj.link != "undefined" && obj.link != "No link") {
 					obj.description = obj.description + "|" + obj.link
 				}
 
@@ -201,11 +202,11 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 /**************************************************************************************/	
 function setNewSessionGalleries(currentGalleries) {
  
-	 let elements = document.querySelectorAll('#accordion > div > h3');
+	 let elements = document.querySelectorAll('> div > h3');
 	 let arrayGalleries = [];
 
 	  for (let element of elements) {
-		//  console.log(element.innerText);
+		console.log(element.innerText);
 	    let index = 0;
 	    let value = "";
 	    let isFinish = false;

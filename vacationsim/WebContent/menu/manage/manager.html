@@ -36,6 +36,7 @@
 
   <script>
   let galleries = "";
+
   </script>
 </head>
 
@@ -53,10 +54,10 @@
 		   
 		   	<div class="container">
 		      <label for="uname"><b>Username</b></label>
-		      <input id="username" type="text" value = "pile" placeholder="Enter Username" name="uname" required>
+		      <input id="username" type="text" placeholder="Enter Username" value= "pile" name="uname" required>
 		
 		      <label for="psw"><b>Password</b></label>
-		      <input id="password" type="password" value = "pile"  placeholder="Enter Password" name="psw" required>
+		      <input id="password" type="password" placeholder="Enter Password" value= "pile"  name="psw" required>
 		        
 		      <button type="submit">Login</button> <button type="button" onclick="closeLogin()">Cancel</button>
 		      <label>
@@ -74,6 +75,7 @@
   <script>
     $(document).ready(function () {
       galleries = getParameterByName("g");
+
       
       if (window.sessionStorage.getItem("user") == null){
       	$('#login').click();

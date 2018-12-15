@@ -231,7 +231,7 @@ a.boxformclose{
     right:0px;
     z-index:100;
 }
-.loginform h3{
+.loginform h2{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
     padding:10px;
@@ -286,7 +286,7 @@ a.loginformclose{
     content: "x";
 } */
 
-.loginform h3{
+.loginform h2{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
     padding:10px;

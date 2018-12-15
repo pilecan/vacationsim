@@ -66,7 +66,9 @@ function createRequest(currentGalleries){
 	let jsonRequest = "";
 	while (json != null) {
 		json = window.sessionStorage.getItem(currentGalleries + "|"+ (index));
-		jsonRequest += json+","
+		if (json != ""){
+			jsonRequest += json+","
+		}
 		index++;
 	}
 	jsonRequest = jsonRequest.replace(",null,","");

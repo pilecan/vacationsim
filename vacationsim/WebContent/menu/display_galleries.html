@@ -76,8 +76,6 @@
 
   <div id="userlog" class="userlog flash">Tripperman  </div>
   <div id="imglog" class="imglog"> <img  width="50px" src="./images/superman_small.gif"></div>
-     
-  
 
   <script>
     value = "value"
@@ -117,28 +115,30 @@
 
 
   <script>
-    $("#button-sim").click();
-    $("#button-sim").click();
-
-    $(document).ready(function () {
-      currentGalleries = getParameterByName("g");
-
-      //gallery = "default";
-      
-    // getUser("toto","toto88");
-
-	if (window.sessionStorage.getItem("currentGalleries") == null){
-        getDBinfo(
-          function () {
-            callBD();
-          },
-          function () {
-            setData();
-
-          }
-        );
  
-      }
+    $(document).ready(function () {
+   	  	$("#button-sim").click();
+   	    $("#button-sim").click();
+   		 currentGalleries = getParameterByName("g");
+   
+      
+	    if (window.sessionStorage.getItem("user") != null){
+	      	  document.getElementById("userlog").innerHTML = window.sessionStorage.getItem("user");
+	    } else {
+	      	  document.getElementById("userlog").innerHTML = "Tripperman!";
+	    }
+ 
+		if (window.sessionStorage.getItem("currentGalleries") == null){
+	        getDBinfo(
+	          function () {
+	            callBD();
+	          },
+	          function () {
+	            setData();
+	
+	          }
+	        );
+ 	   }
 
       document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
 
