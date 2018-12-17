@@ -62,7 +62,7 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 	let line = "";
 	for (gallery in arrayGalleries){
 		//console.log(gallery+" -> "+arrayGalleries[gallery])
-		line += "<div class='group'><h3> <span style='margin-left:30px'>" + gallery
+		line += "<div class='group'><h3><span style='margin-left:30px'>" + gallery
 			+ "</span></h3><div>"+arrayGalleries[gallery]+"</div></div>";
 	}
 
@@ -167,8 +167,9 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 
 				let obj = new Object();
 				obj.gallery = currentGallery;
+				//alt 255 for spance
 				var singleQuoted = $.map($(this).text().split(" "), function(substr, i) {
-					console.log(substr)
+					//console.log(substr)
 					if (substr.indexOf(": ") != -1) {
 						let line = substr.split(": ");
 						try {
@@ -202,11 +203,11 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 /**************************************************************************************/	
 function setNewSessionGalleries(currentGalleries) {
  
-	 let elements = document.querySelectorAll('> div > h3');
+	 let elements = document.querySelectorAll('#accordion > div > h3');
 	 let arrayGalleries = [];
 
 	  for (let element of elements) {
-		console.log(element.innerText);
+		//console.log(element.innerText);
 	    let index = 0;
 	    let value = "";
 	    let isFinish = false;

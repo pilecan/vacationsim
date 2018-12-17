@@ -18,6 +18,7 @@
 <script type='text/javascript' src='../js/login.js'></script>
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
+<script type='text/javascript' src="../js/galleries/menus.js"></script>
 <script type='text/javascript' src="../js/galleries/manage_gallery.js"></script>
  
 
@@ -34,11 +35,16 @@
 				</div>
 			</div>
 			
-			<div id="galleryPopup" class="form-popup blockAccordion animate" style="display:none;">
+			<!-- ------------------- New Image or Video ------------------------>
+			<div id="galleryform" class="form-popup blockAccordion animate" style="display:none;">
 			  <form name="galleryForm" action="#"  class="form-container">
+
+				<span id="galleriesfield" style="display:none;">
+				    <label for="galleryname"><b>Group Galleries Name</b></label>
+				    <input id="galleryname" type="text" placeholder="Enter Group Galleries Name here" name="galleryname" required>
+				</span>
 			  
 			    <label for="media"><br><b>Media</b><br></label>
-				
 				<select id="media" onchange="showMediaTextField()" style="width: 100%; height: 30px; " required >
 				  <option>Select a Media</option>
 				  <option>image</option>
@@ -49,12 +55,12 @@
 				
 				<span id ="image" style="display:none">
 			    	<label for="image"><b>URL image</b></label>
-				    <input id ="image_text" type="text" placeholder="Enter URL image here" name="image" >
+				    <input id ="image_url" type="text" placeholder="Enter URL image here" name="image" >
 				</span>
 				
 				<span id ="youtube" style="display:none">
 			    	<label for="youtube"><b>Youtube video ID</b></label>
-				    <input id ="youtube_text"  type="text" placeholder="Enter youtube ID here" name="youtube" >
+				    <input id ="youtube_id"  type="text" placeholder="Enter youtube ID here" name="youtube" >
 				</span>
 				
 			    <label for="description"><b>Description</b></label>
@@ -65,13 +71,26 @@
 			
 			  </form>
 			</div>
+			
+			<!-- ------------------- New topic ------------------------>
 
+<!-- 			<div id="newgalleryform" class="form-popup blockAccordion animate" style="display:none;">
+			  <form name="newgalleryform" action="#"  class="form-container">
+				
+			    <label for="group_galleries_name"><b>Group Galleries Name</b></label>
+			    <input id="group_galleries_name" type="text" placeholder="Enter Group Galleries Name here" name="group_galleries_name" required>
+			
+			  </form>
+			</div>
+ -->			
 		</div>
 		
+		<!-- ------------------- Boutons edition ------------------------>
 		<div id="groupButton1" class="groupButton1" style="display:block">
 			<div class="btn-group" style="width:100%">
 			  <button style="width:15%" onclick="saveGallery()">Save</button>
 			  <button style="width:15%" onclick="addGallery()">Add</button>
+			  <button  id="add" style="display:none"></button>
 			  <button style="width:15%" onclick="modifyGallery()">Modify</button>
 			  <button style="width:15%" onclick="deleteGallery()">Delete</button>
 			  <button style="width:15%" onclick="resetAccordion()">Reset</button>
@@ -79,19 +98,8 @@
 			  <button  id="help" style="width:10%">?</button>
 			</div>
 			<div class="overlay" id="overlay" style="display:none;"></div>
+			<div class="overlayaddform" id="overlayaddform" style="display:none;"></div>
 			 
-		</div>
-		<div class="box" id="box">
-		 <a class="boxclose" id="boxclose"></a>
-		 <h2>Help!</h2>
-		 <p>
-		  <li>Drag & Drop title to Change Order
-		  <li>Click on Title to Open and Modify
-		  <li>Click Save/Quit and Record Modifications 
-		  <li>Click Reset to Cancel Modifications
-		  <li>Click Quit and Cancel Modifications
-		  <li>Click ? for Help (this)
-		 </p>
 		</div>
 
 		<div id="groupButton2" class="groupButton2" style="display:none;">
@@ -105,16 +113,28 @@
 		</div>
 
 
+		<div class="box" id="box">
+		 <a class="boxclose" id="boxclose"></a>
+		 <h2>Help!</h2>
+		 <p>
+		  <li>Drag & Drop title to Change Order
+		  <li>Click on Title to Open and Modify
+		  <li>Click Save/Quit and Record Modifications 
+		  <li>Click Reset to Cancel Modifications
+		  <li>Click Quit and Cancel Modifications
+		  <li>Click ? for Help (this)
+		 </p>
+		</div>
+
 		<div class="boxform" id="boxform">
 		 <a class="boxformclose" id="boxformclose"></a>
 		 <h2>Help!</h2>
 		 <p>
-		  <li>Enter Title of your image or video
 		  <li>Enter the Type of Media (image or video)  
-		  <li>Enter the URL of you image or the youtube ID  
+		  <li>Enter the URL of image or the youtube ID  
 		  <li>Enter a Description
 		  <li>Enter a URL Link to Open in other Window 
-		  <li>Note: Description will blink when a Link is associated
+		  <li>Note: Description will be clickable when a Link is associated
 		  <li>Click ? for Help (this)
 		 </p>
 		 
@@ -128,31 +148,26 @@
 			 </p>
 		 
 		</div>
-		
-		<div class="loginform" id="loginform">
-		 <a class="loginformclose" id="loginformclose"></a>
-		 <h3> <img id="flip" src="../images/superman_small.gif" width="50px"  alt="Avatar"> Login</h3>
+
+ 		<div class="addform" id="addform">
+		 <a class="addformclose" id="addformclose"></a>
+		 <h3>New Topic or Group of Galleries?</h3>
 		   <p>
-  			<form name="loginform" class="modal-content animate" action="#" onsubmit="return validUser(this);">
+  			<form name="addform" class="modal-content animate" action="#" onsubmit="return selectAdd();">
 		   
 		   	<div class="container">
-		      <label for="uname"><b>Username</b></label>
-		      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
-		
-		      <label for="psw"><b>Password</b></label>
-		      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+			  <input type="radio" name="new" id="topic">Topic<br>
+			  <input type="radio" name="new" id="galleries">Galleries<br>
 		        
-		      <button type="submit">Login</button>
+		      <button type="submit">Select</button> 
 		      <label>
-		        <input type="checkbox" checked="checked" name="remember"> Remember me
 		      </label>
 		    </div>
 		    </form>
 		    </p>
 		</div>
+
 		
-    	<button style="display:none" id="login"></button>
-		<div class="overlay" id="overlayloginform" style="display:none"></div>
 		
    		<button style="display:none" id="message"></button>
 		<div class="overlay" id="overlaymessagebox" style="display:none"></div>
@@ -172,7 +187,19 @@
 			currentGalleries = array[0].toLowerCase();
 			currentGallery = array[1];
 			
+		   // alert("editor galleries(" +currentGalleries+")  - "+window.sessionStorage.getItem("currentGalleries")+" == "+currentGallery) 
+		    
+		    if (currentGalleries == ""){
+		    	modeModification = "addGalleries";
+		    	currentGalleries = window.sessionStorage.getItem("currentGalleries");
+		    	window.document.getElementById("galleriesfield").style.display = "block";
+		    	window.document.getElementById("galleryform").style.display = "block";
+		    	window.document.getElementById("accordion").style.display = "none";
+				document.getElementById("groupButton1").style.display = "none";
+				document.getElementById("groupButton2").style.display = "block";
+		    }
 			setAccordionFromSession(currentGalleries, currentGallery);
+
 			
 			$("#dialog").dialog('option', 'title', currentGalleries);
 			if (window.sessionStorage.getItem("user") == null){
@@ -181,18 +208,7 @@
 		  		//document.loginform.username.value = "Tripperman";
 		  		//document.loginform.password.value = "Tripperman";
 
-			} else {
-				//window.document.getElementById("accordion").style.display = "block";
-		  		//document.getElementById("groupButton1").style.display = "block";
 			}
-/* 			
-			if (window.sessionStorage.getItem("user") == null){
-		    	  window.parent.parent.document.getElementById("userlog").innerHTML = "Tripperman";
-		  	} else {
-		  	  window.parent.parent.document.getElementById("userlog").innerHTML = window.sessionStorage.getItem("user");
-
-		  	}			
- */
 		});
 	</script>
 </body>

@@ -1,124 +1,3 @@
-let currentGalleries = "";
-let currentGallery = "";
-let currentAccordion = "";
-let modeModification = "";
-
-$(function() {
-	$("#accordion")
-			.accordion({
-				header : "> div > h3",
-				collapsible : true,
-				active : false,
-				autoHeight : true,
-				heightStyle : "content",
-
-			})
-			.accordion({
-				activate : function(event, ui) {
-					currentAccordion = ui.newHeader.text();
-				}
-			})
-			.sortable(
-					{
-						axis : "y",
-						handle : "h3",
-						stop : function(event, ui) {
-							ui.item.children("h3").triggerHandler("focusout");
-							setNewSession(currentGalleries, currentGallery);
-							window.sessionStorage.setItem("changed", true);
-							$(this).accordion("refresh");
-						},
-						beforeStop : function(event, ui) {
-							$(this).data("lastItem", ui.item);
-							var activeAccordion = $("#accordion").accordion(
-									"option", "active");
-							var active = $(".selector").accordion("option",
-									"active");
-							var text = $("#accordion h3").eq(active).text();
-						},
-						change : function(event, ui) {
-							var activeIndex = $("#accordion").accordion(
-									"option", "active");
-							var hidId = $("#accordion input[type=hidden][class=HiddenId]")[activeIndex];
-						}
-					});
-});
-
-$(function() {
-	$('#help').click(function() {
-		$('#overlay').fadeIn(200, function() {
-			$('#box').animate({
-				'top' : '20px'
-			}, 200);
-		});
-		return false;
-	});
-	$('#boxclose').click(function() {
-		$('#box').animate({
-			'top' : '-300px'
-		}, 500, function() {
-			$('#overlay').fadeOut('fast');
-		});
-	});
-
-});
-
-$(function() {
-	$('#helpform').click(function() {
-		$('#overlayform').fadeIn(200, function() {
-			$('#boxform').animate({
-				'top' : '20px'
-			}, 200);
-		});
-		return false;
-	});
-	$('#boxformclose').click(function() {
-		$('#boxform').animate({
-			'top' : '-300px'
-		}, 500, function() {
-			$('#overlayform').fadeOut('fast');
-		});
-	});
-
-});
-
-$(function() {
-	$('#login').click(function() {
-		$('#overlayloginform').fadeIn(200, function() {
-			$('#loginform').animate({
-				'top' : '20px'
-			}, 200);
-		});
-		return false;
-	});
-	$('#loginformclose').click(function() {
-		$('#loginform').animate({
-			'top' : '-480px'
-		}, 500, function() {
-			$('#overlayloginform').fadeOut('fast');
-		});
-	});
-
-});
-
-$(function() {
-	$('#message').click(function() {
-		$('#overlaymessagebox').fadeIn(200, function() {
-			$('#messagebox').animate({
-				'top' : '20px'
-			}, 200);
-		});
-		return false;
-	});
-	$('#messageboxclose').click(function() {
-		$('#messagebox').animate({
-			'top' : '-300px'
-		}, 500, function() {
-			$('#overlaymessagebox').fadeOut('fast');
-		});
-	});
-
-});
 
 function saveFormGallery() {
 	console.log("submit......")
@@ -126,21 +5,24 @@ function saveFormGallery() {
 	let isValid = validForm();
 	if (isValid) {
 		console.log("modeModification = "+modeModification)
-		if (modeModification == "update"){
-			
+		if (modeModification == "addGalleries"){
+			addFormGalleries(currentGalleries,galleryForm);
+//			console(galleriesName, currentGallery);
+
+		} else if (modeModification == "update"){
 			modifyFormGallery(currentGalleries, currentGallery, document.galleryForm, currentAccordion);
 		} else if (modeModification == "add"){
 			addFormGallery(currentGalleries, currentGallery, document.galleryForm);
 		}
-		setAccordionFromSessionCurrentGallery(currentGalleries, currentGallery);
+		
+		setAccordionFromSession(currentGalleries, currentGallery);
+		//setAccordionFromSessionCurrentGallery(currentGalleries, currentGallery);
 		document.getElementById("accordion").style.display = "block";
-		document.getElementById("galleryPopup").style.display = "none";
+		document.getElementById("galleryform").style.display = "none";
 		document.getElementById("groupButton1").style.display = "block";
 		document.getElementById("groupButton2").style.display = "none";
 
 	}
-
-
 	
 	return isValid;
 
@@ -171,6 +53,8 @@ function addGallery() {
 	if (window.sessionStorage.getItem("user") == null) {
 		document.getElementById("message_content").innerHTML = "You cannot Add gallery you are not logged in!";
 		$('#message').click();
+	} else if (currentGallery == undefined){ //add galleries or topic
+		document.getElementById("add").click();
 	} else {
 		console.log(currentAccordion + " - " + currentAccordion.length);
 		document.galleryForm.reset();
@@ -181,7 +65,7 @@ function addGallery() {
 		document.getElementById("groupButton1").style.display = "none";
 		document.getElementById("groupButton2").style.display = "block";
 		document.getElementById("accordion").style.display = "none";
-		document.getElementById("galleryPopup").style.display = "block";
+		document.getElementById("galleryform").style.display = "block";
 		modeModification = "add"
 
 	}
@@ -211,9 +95,9 @@ function modifyGallery() {
 			document.galleryForm.description.value = obj.description.split("|")[0];
 			document.galleryForm.media.value = obj.media;
 			if (obj.media == "image") {
-				document.galleryForm.image_text.value = obj.src;
+				document.galleryForm.image_url.value = obj.src;
 			} else if (obj.media == "youtube") {
-				document.galleryForm.youtube_text.value = obj.videoid;
+				document.galleryForm.youtube_id.value = obj.videoid;
 			}
 
 			showMediaTextField();
@@ -225,7 +109,7 @@ function modifyGallery() {
 			document.getElementById("groupButton1").style.display = "none";
 			document.getElementById("groupButton2").style.display = "block";
 			document.getElementById("accordion").style.display = "none";
-			document.getElementById("galleryPopup").style.display = "block";
+			document.getElementById("galleryform").style.display = "block";
 
 		}
 
@@ -239,7 +123,7 @@ function cancelGallery() {
 	document.getElementById("groupButton1").style.display = "block";
 	document.getElementById("groupButton2").style.display = "none";
 	document.getElementById("accordion").style.display = "block";
-	document.getElementById("galleryPopup").style.display = "none";
+	document.getElementById("galleryform").style.display = "none";
 }
 
 function deleteGallery() {
@@ -250,17 +134,20 @@ function deleteGallery() {
 	} else if (currentAccordion.length == 0) {
 		document.getElementById("message_content").innerHTML = "Select and Open a Gallery to delete it!";
 		$('#message').click();
-	} else {
-		if (confirm("Do you want to delete ("+currentAccordion+")?")){
+	} else if (confirm("Do you want to delete ("+currentAccordion+")?")){
+		if (currentGallery != undefined){
 			modeModification = "delete";
 			deleteCurrentGallery(currentGalleries, currentGallery, currentAccordion);
-			setAccordionFromSessionCurrentGallery(currentGalleries, currentGallery);
-			document.getElementById("accordion").style.display = "block";
-			document.getElementById("galleryPopup").style.display = "none";
-			document.getElementById("groupButton1").style.display = "block";
-			document.getElementById("groupButton2").style.display = "none";
+		} else {
+			deleteCurrentGalleries(currentGalleries, currentGallery, currentAccordion)		
 		}
+		setAccordionFromSession(currentGalleries, currentGallery);
+		document.getElementById("accordion").style.display = "block";
+		document.getElementById("galleryform").style.display = "none";
+		document.getElementById("groupButton1").style.display = "block";
+		document.getElementById("groupButton2").style.display = "none";
 	}
+	
 }
 
 function resetAccordion() {
@@ -280,8 +167,8 @@ function validForm() {
 
 	let message = "";
 
-	if (document.getElementById("youtube_text").value == ""
-			&& document.getElementById("image_text").value == ""
+	if (document.getElementById("youtube_id").value == ""
+			&& document.getElementById("image_url").value == ""
 			|| document.getElementById("media").value == "Select a Media") {
 		message += "Select Media and Enter value in field Media or youtube.\n";
 	}
@@ -355,6 +242,56 @@ function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 	
 }
 
+function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) {
+	let key = currentGalleries + "|0";
+	let obj = (window.sessionStorage.getItem(key));
+	let arrayJSON = [];
+	let index = 0;
+	let indextoDell = 0;
+	let cptDell = 0;
+	
+	currentSearh = currentSearh.replace(" ","");
+	while (obj != null) {
+		key = currentGalleries + "|" + index;
+		obj = (window.sessionStorage.getItem(key));
+
+		if (obj != null) {
+			key = currentGalleries + "|" + index;
+			obj = (window.sessionStorage.getItem(key));
+			objJSON = JSON.parse(new Object(obj));
+		    
+			let desc = objJSON.description.split("|")[0]
+			arrayJSON[index] = window.sessionStorage.getItem(key);
+		    window.sessionStorage.removeItem(key);
+		    
+		    console.log("("+objJSON.gallery+")---("+currentSearh+")")
+			if (currentSearh.indexOf(objJSON.gallery) != -1) {
+				if (indextoDell == 0){
+					indextoDell = index;
+				}
+				cptDell++;
+			}
+
+		}
+		index++;
+
+	}
+	window.sessionStorage.setItem("changed", true);
+	
+	arrayJSON.splice(indextoDell, cptDell, );
+	
+	
+	
+	for (let k in arrayJSON) {
+	    let value = arrayJSON[k];
+	  // console.log(k+" - "+value)
+	    window.sessionStorage.setItem(currentGalleries + "|" +k,value);
+	}
+	
+    let temp = window.sessionStorage.getItem("menuGalleries-" +currentGalleries);
+    window.sessionStorage.setItem("menuGalleries-" +currentGalleries,temp.replace(currentSearh+"|",""));
+    
+}
 
 function modifyFormGallery(currentGalleries, currentGallery, galleryForm, currentSearh) {
 	let key = currentGalleries + "|0";
@@ -433,13 +370,33 @@ function addFormGallery(currentGalleries, currentGallery, galleryForm) {
 	
 }
 
+function addFormGalleries(currentGalleries,galleryForm) {
+
+	let key = currentGalleries + "|0";
+	let obj = (window.sessionStorage.getItem(key));
+	let index = 0;
+	while (obj != null) {
+		key = currentGalleries + "|" + index;
+		obj = (window.sessionStorage.getItem(key));
+		index++;
+	}
+	
+	obj = {};
+	obj.gallery = jsUcfirst(galleryForm.galleryname.value.toLowerCase()); 
+	//console.log('{"gallery":"'+galleryForm.galleryname.value+'"}');
+
+	let objJSON = JSON.parse('{"gallery":"'+obj.gallery+'"}');
+	objJSON = setobjJSON(objJSON, galleryForm)
+	
+    window.sessionStorage.setItem(currentGalleries +"|"+(index-1) ,JSON.stringify(objJSON));
+	window.sessionStorage.setItem("changed", true);
+	
+}
 
 function setobjJSON(objJSON, galleryForm){
-	objJSON.src = "";
-	objJSON.videoid = "";
 	if (galleryForm.media.value == "image") {
 		objJSON.media = galleryForm.media.value;
-		objJSON.src = galleryForm.image_text.value;
+		objJSON.src = galleryForm.image_url.value;
 		objJSON.description = galleryForm.description.value;
 		if (galleryForm.link.value != "") {
 			objJSON.description += "|" + galleryForm.link.value;
@@ -447,7 +404,7 @@ function setobjJSON(objJSON, galleryForm){
 
 	} else if (galleryForm.media.value == "youtube") {
 		objJSON.media = galleryForm.media.value;
-		objJSON.videoid = galleryForm.youtube_text.value;
+		objJSON.videoid = galleryForm.youtube_id.value;
 		objJSON.description = galleryForm.description.value;
 		if (galleryForm.link.value != "") {
 			objJSON.description += "|" + galleryForm.link.value;
@@ -533,4 +490,21 @@ function closeLogin(){
      
 	window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
 
+}
+function closeAdd(){
+	document.getElementById("overlayaddform").style.display = "none";
+	document.getElementById("addform").style.display = "none";
+}
+
+function selectAdd(){
+	//$('#message').click();
+
+
+	//alert(document.getElementById("topic").checked)
+
+/*    if (document.getElementById("gallery").checked == true){
+    	alert("document.getElementById("top").checked")
+    	//addGallery();
+    };
+*/	
 }

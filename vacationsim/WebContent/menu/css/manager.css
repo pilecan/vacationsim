@@ -254,7 +254,9 @@ a.boxformclose{
     position:fixed;
     top:-5000px;
     left:40%;
-    right:40%;
+    right:40%;`
+    min-width: 300px;
+    display: inline-block;
     background-color:#fff;
     color:#7F7F7F;
     padding:20px;
@@ -287,6 +289,92 @@ a.loginformclose{
 } */
 
 .loginform h2{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+}
+
+.loginform p{
+    background-color:lightblue;
+    color:blue;
+  
+}
+
+/********************************** addform *****************************************/
+ .overlayaddform{
+    background: black;
+    opacity: .5;
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+}
+.addform h2{
+    border-bottom: 1px dashed #7F7F7F;
+    margin:-20px -20px 0px -20px;
+    padding:10px;
+    background-color:lightblue;
+    color:blue;
+    -moz-border-radius:10px 10px 0px 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-top-left-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+}
+
+.addform p{
+    background-color:lightblue;
+    color:blue;
+  
+}
+
+.addform{
+    position:fixed;
+    top:-500px;
+    left:20%;
+    right:20%;`
+    min-width: 300px;
+    display: inline-block;
+    background-color:#fff;
+    color:#7F7F7F;
+    padding:20px;
+    border:2px solid #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius:20px;
+    -khtml-border-radius:20px;
+    -moz-box-shadow: 0 1px 5px #333;
+    -webkit-box-shadow: 0 1px 5px #333;
+    z-index:1001;
+} 
+a.addformclose{
+    float:right;
+    margin-top:-30px;
+    margin-right:-30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+.addformclose:before {
+    content: "x";
+}
+
+.addform h2{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
     padding:10px;
@@ -415,7 +503,7 @@ a.loginformclose{
   opacity: 0.8;
 }
 
-#galleryPopup {
+#galleryform {
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
