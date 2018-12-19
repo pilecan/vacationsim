@@ -45,10 +45,10 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 			
 			//console.log(objJSON);
 			if (arrayGalleries[objJSON.gallery] != undefined){
-			    arrayGalleries[objJSON.gallery] += objJSON.description.split("|")[0]+"<br>";
+			    arrayGalleries[objJSON.gallery] += objJSON.description.split("[[")[0]+"<br>";
 				
 			} else {
-			    arrayGalleries[objJSON.gallery] = objJSON.description.split("|")[0]+"<br>";
+			    arrayGalleries[objJSON.gallery] = objJSON.description.split("[[")[0]+"<br>";
 
 			}
 
@@ -112,10 +112,10 @@ function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 
 /**************************************************************************************/	
 function setLine(line, objJSON) {
-	line += "<div class='group'><h3><span style='margin-left:30px'>"+objJSON.description.split("|")[0]
+	line += "<div class='group'><h3><span style='margin-left:30px'>"+objJSON.description.split("[[")[0]
 			+ "</span></h3><div>";
 
-	let desclink = objJSON.description.split("|");
+	let desclink = objJSON.description.split("[[");
 	// caractere alt+255 comme séparateur
 	if (objJSON.media == "image") {
 		line += " <span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";
@@ -183,7 +183,7 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 
 				obj.gallery = currentGallery;
 				if (obj.link != "undefined" && obj.link != "No link") {
-					obj.description = obj.description + "|" + obj.link
+					obj.description = obj.description + "[[" + obj.link
 				}
 
 				delete obj.title;

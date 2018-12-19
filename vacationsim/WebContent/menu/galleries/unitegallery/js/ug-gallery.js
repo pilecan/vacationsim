@@ -706,8 +706,8 @@ function UniteGalleryMain(){
 		 if(!objItem.description)
 			 objItem.description = "";
 		 else if(objItem.description.indexOf("http") != -1){
-			 var desc = objItem.description.substring(0,objItem.description.indexOf("http")-1);
-			 var urlDescription = objItem.description.replace(desc+"|","");
+			 var desc = objItem.description.substring(0,objItem.description.indexOf("http")-2);
+			 var urlDescription = objItem.description.replace(desc+"\[\[","");
 			objItem.description = "<a class='flash' href='"+urlDescription+"'   target='_blank'>"+desc+"</a>"  ;
 
 		 }

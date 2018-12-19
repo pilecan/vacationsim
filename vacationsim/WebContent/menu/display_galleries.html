@@ -72,10 +72,26 @@
 <body>
   
   
-  <div id="entete" class="title-sim">Vacation SIM Voyage&nbsp;<br>.com</div>
+  <div id="entete" class="title-sim"><br>Vacation SIM Voyage&nbsp;<br>.com</div>
+  <div class='title-slogan'>Manage your Media</div>
 
-  <div id="userlog" class="userlog flash">Tripperman  </div>
+  <div id="userlog" class="userlog flash"><br>Voyager</div>
   <div id="imglog" class="imglog"> <img  width="50px" src="./images/superman_small.gif"></div>
+<!-- 
+  <div id="info-runway" class="title-info">
+  Voyageur<br>
+  Pierre Legault<br>
+  Senior Web Developer<br>
+  Montréal Canada<br>
+  (Québec)
+  </div>
+  
+  <div id="info" class="title-info">simvoyage.com <br>
+  pierre.legault@gmail.com<br>
+  1-514-528-5693
+   
+  </div>
+ -->
 
   <script>
     value = "value"
@@ -104,8 +120,8 @@
     <input id="btn-edit" type="image" src="./images/up_button.png" height="50" alt="forward" onclick="editGalleries()" />
     <input id="btn-next" type="image" src="./images/forward_button.png" width="70" alt="forward" onclick="getNextGalleries()" />
 <div>    
-<p class='flash' style="font-size: large;" id="decompte"></p>
-</div>    
+<!-- <p class='flash' style="font-size: large;" id="decompte"></p>
+ --></div>    
 </div>
   
 
@@ -125,7 +141,7 @@
 	    if (window.sessionStorage.getItem("user") != null){
 	      	  document.getElementById("userlog").innerHTML = window.sessionStorage.getItem("user");
 	    } else {
-	      	  document.getElementById("userlog").innerHTML = "Tripperman!";
+	      	  document.getElementById("userlog").innerHTML = "Voyager";
 	    }
  
 		if (window.sessionStorage.getItem("currentGalleries") == null){

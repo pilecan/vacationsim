@@ -92,7 +92,7 @@ function modifyGallery() {
 		} else {
 			modeModification = "update";
 			obj = getGallery(currentGalleries, currentGallery, currentAccordion);
-			document.galleryForm.description.value = obj.description.split("|")[0];
+			document.galleryForm.description.value = obj.description.split("[[")[0];
 			document.galleryForm.media.value = obj.media;
 			if (obj.media == "image") {
 				document.galleryForm.image_url.value = obj.src;
@@ -102,8 +102,9 @@ function modifyGallery() {
 
 			showMediaTextField();
 			
-			if (obj.description.indexOf("\\|") != -1){
-				document.galleryForm.link.value = obj.description.split("|")[1];
+
+			if (obj.description.indexOf("\[\[") != -1){
+				document.galleryForm.link.value = obj.description.split("[[")[1];
 			}
 
 			document.getElementById("groupButton1").style.display = "none";
@@ -127,7 +128,7 @@ function cancelGallery() {
 }
 
 function deleteGallery() {
-	console.log(currentAccordion + " - " + currentAccordion.length);
+	//console.log(currentAccordion + " - " + currentAccordion.length);
 	if (window.sessionStorage.getItem("user") == null) {
 		document.getElementById("message_content").innerHTML = "You cannot Delete a gallery you are not logged in!";
 		$('#message').click();
@@ -217,7 +218,7 @@ function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 		    
-			let desc = objJSON.description.split("|")[0]
+			let desc = objJSON.description.split("[[")[0]
 			arrayJSON[index] = window.sessionStorage.getItem(key);
 		    window.sessionStorage.removeItem(key);
 
@@ -251,6 +252,7 @@ function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) 
 	let cptDell = 0;
 	
 	currentSearh = currentSearh.replace(" ","");
+	
 	while (obj != null) {
 		key = currentGalleries + "|" + index;
 		obj = (window.sessionStorage.getItem(key));
@@ -260,11 +262,10 @@ function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) 
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 		    
-			let desc = objJSON.description.split("|")[0]
+			let desc = objJSON.description.split("[[")[0]
 			arrayJSON[index] = window.sessionStorage.getItem(key);
 		    window.sessionStorage.removeItem(key);
 		    
-		    console.log("("+objJSON.gallery+")---("+currentSearh+")")
 			if (currentSearh.indexOf(objJSON.gallery) != -1) {
 				if (indextoDell == 0){
 					indextoDell = index;
@@ -307,7 +308,7 @@ function modifyFormGallery(currentGalleries, currentGallery, galleryForm, curren
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 
-			let desc = objJSON.description.split("|")[0]
+			let desc = objJSON.description.split("[[")[0]
 
 			if (objJSON.gallery == currentGallery && currentSearh == desc) {
 				objJSON = setobjJSON(objJSON, galleryForm);
@@ -399,7 +400,7 @@ function setobjJSON(objJSON, galleryForm){
 		objJSON.src = galleryForm.image_url.value;
 		objJSON.description = galleryForm.description.value;
 		if (galleryForm.link.value != "") {
-			objJSON.description += "|" + galleryForm.link.value;
+			objJSON.description += "[[" + galleryForm.link.value;
 		}
 
 	} else if (galleryForm.media.value == "youtube") {
@@ -407,7 +408,7 @@ function setobjJSON(objJSON, galleryForm){
 		objJSON.videoid = galleryForm.youtube_id.value;
 		objJSON.description = galleryForm.description.value;
 		if (galleryForm.link.value != "") {
-			objJSON.description += "|" + galleryForm.link.value;
+			objJSON.description += "[[" + galleryForm.link.value;
 		}
 	}
 	
@@ -428,7 +429,7 @@ function getGallery(currentGalleries, currentGallery, currentSearh) {
 			console.log(objJSON.description + " - " + currentSearh + " = "
 					+ currentSearh == objJSON.description)
 
-			let desc = objJSON.description.split("|")[0]
+			let desc = objJSON.description.split("[[")[0]
 
 			if (objJSON.gallery == currentGallery
 					&& currentSearh == desc) {

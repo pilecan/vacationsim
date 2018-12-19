@@ -16,14 +16,17 @@ body {
 
 .userlog {
  position: absolute;
-    top: 20px;
-    right: 60px;	
+    top:40px;
+    right: 80px;	
 }
+
+
+
 
 .imglog {
  position: absolute;
-    top: 20px;
-    right: 10px;	
+    top: 40px;
+    right: 30px;	
 }
 
 
@@ -152,10 +155,13 @@ body {
 
 .title-sim {
   font-family: sans-serif;
-  font-size:3.6em ;
+  font-size:3.4em ;
   line-height: .8;
   text-shadow: 2px 2px rgb(0, 110, 255);
 }
+
+
+
 
 .title-gallery {
   font-family: sans-serif;
@@ -164,8 +170,42 @@ body {
   text-shadow: 2px 2px rgb(255, 0, 0);
   position: fixed;
   left: 50%;
-  bottom: 100px;
+  bottom: 110px;
   transform: translate(-50%, -50%);
+  margin: 0 auto;  
+}
+
+.title-slogan {
+  font-family: sans-serif;
+  font-size:2.5em ;
+  line-height: .2;
+  text-shadow: 2px 2px rgb(255, 0, 0);
+  position: fixed;
+  left: 50%;
+  top: 155px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;  
+}
+
+
+.title-info {
+  font-family: sans-serif;
+  font-size:1.1em ;
+  line-height: 1.1;
+  text-shadow: 1px 1px rgb(255, 0, 0);
+}
+
+#info {
+ position: absolute;
+    bottom: 280px;
+    right: 165px;
+  margin: 0 auto;  
+}
+
+#info-runway {
+ position: absolute;
+    bottom: 295px;
+    left: 215px;
   margin: 0 auto;  
 }
 

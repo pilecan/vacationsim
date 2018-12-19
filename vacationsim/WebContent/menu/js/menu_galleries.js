@@ -162,8 +162,8 @@ function editGalleries() {
 	var width = $(document).width();
 	var height = $(document).height()-100;
 	
-	console.log("width : "+width)
-	console.log("height : "+height)
+	//console.log("width : "+width)
+	//console.log("height : "+height)
 	
     //document.getElementById("loggon" ).click();
 

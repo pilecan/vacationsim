@@ -4,7 +4,7 @@
 	let centerImage = [];
 	let currentGalleriesNumber = 0;
 	let galleriesIds = [];
-
+	
 	function getDBinfo(onBefore, onAfter) {
 
 		if (onBefore) {
