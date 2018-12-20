@@ -40,13 +40,75 @@ function saveGallery() {
 		$('#message').click();
 	} else {
 		window.parent.$("#dialog").dialog('close');
-
 	}
 
 }
 
 function closeQuit() {
-	window.parent.$("#dialog").dialog('close');
+ 	if (window.sessionStorage.getItem("changed") == "true"){
+		$.confirm({
+		    title: 'Quit?',
+		    content: 'Do you want to save your modification(s)?',
+		    type: 'gray',
+		    typeAnimated: true,
+		    draggable: true,
+		    buttons: {
+		        Yes: function () {
+		            btnClass: 'btn-green',
+		            $.alert('Confirmed!');
+	 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
+		           	removeTempItems();
+		            window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+					setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
+		     	    window.sessionStorage.setItem("changed",false);
+		     		window.parent.$("#dialog").dialog('close');
+		        },
+		        No: {
+		            text: 'no',
+		            btnClass: 'btn-red',
+		            action: function(){
+		                $.alert('NO');
+		                resetSession();
+		            	window.parent.$("#dialog").dialog('close');
+		            }
+		        },
+		        cancel: function () {
+		            btnClass: 'btn-blue',
+		            $.alert('Canceled!');
+		        },
+		    }
+		});
+ 	} else {
+        resetSession();
+    	window.parent.$("#dialog").dialog('close');
+ 	} 
+
+
+}
+
+function resetSession(){
+	currentGalleries = window.sessionStorage.getItem("currentGalleries");
+    
+  	//transfert and remove temp
+	
+	let key = currentGalleries + "|0";
+	let obj = (window.sessionStorage.getItem("temp|0"));
+
+	let index = 0;
+	while (obj != null && obj != undefined) {
+		window.sessionStorage.setItem(key,obj)
+		index++;
+		obj = (window.sessionStorage.getItem("temp|"+index));
+		key = currentGalleries + "|" + index;
+	}
+		
+	obj = window.sessionStorage.getItem("temp-"+currentGalleries);
+	window.sessionStorage.setItem("menuGalleries-"+currentGalleries,obj);
+	
+	removeTempItems();
+	
+    window.sessionStorage.setItem("changed",false);
+	
 }
 
 function addGallery() {
@@ -83,12 +145,40 @@ function modifyGallery() {
 		if (currentAccordion.length == 0) {
 			document.getElementById("message_content").innerHTML = "Select and Open a Gallery to modify it!";
 			$('#message').click();
+
+		
 		} else if (currentGallery == undefined){
-			currentGalleries = jsUcfirst(currentGalleries) + "-" + currentAccordion.replace(" ","");
-			window.parent.parent.document.getElementById("gallery_name").innerHTML  = currentGalleries;
-		    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries + "-" + currentGalleries);
-		    window.parent.document.getElementById("accordionIframe").click();
-			window.parent.$("#dialog").dialog('option', 'title', currentGalleries);
+			$.confirm({
+				  title: 'Modification type',
+				    content: "Gallery Name ("+ currentGalleries+") or Gallery Content ("+jsUcfirst(currentGalleries) + "-" + currentAccordion+") ?",
+				    type: 'gray',
+				    typeAnimated: true,
+				    columnClass: 'col-md-1 col-md-offset-1',
+				    draggable: true,
+
+				    buttons: {
+				        Name: {
+				            text: 'Name',
+				            btnClass: 'btn-yellow',
+				            action: function(){
+				            }
+				        },
+				        Gallery: {
+				            text: 'Gallery',
+				            btnClass: 'btn-blue',
+				            action: function(){
+								currentGalleries = jsUcfirst(currentGalleries) + "-" + currentAccordion;
+								window.parent.parent.document.getElementById("gallery_name").innerHTML  = currentGalleries;
+							    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries + "-" + currentGalleries);
+							    window.parent.document.getElementById("accordionIframe").click();
+								window.parent.$("#dialog").dialog('option', 'title', currentGalleries);
+			            }
+				        },
+				        Cancel: function () {
+				        }
+				    }
+			});			
+			
 		} else {
 			modeModification = "update";
 			obj = getGallery(currentGalleries, currentGallery, currentAccordion);
@@ -498,6 +588,7 @@ function closeAdd(){
 }
 
 function selectAdd(){
+	alert("selecAdd");
 	//$('#message').click();
 
 
@@ -508,4 +599,17 @@ function selectAdd(){
     	//addGallery();
     };
 */	
+}
+function removeTempItems(){
+	let obj = (window.sessionStorage.getItem("temp|0"));
+	let index = 0;
+	while (obj != null && obj != undefined) {
+		window.sessionStorage.removeItem("temp|"+index)
+		index++;
+		obj = window.sessionStorage.getItem("temp|"+index)
+	}
+	
+	window.sessionStorage.removeItem("temp-"+window.sessionStorage.getItem("currentGalleries"));					
+	window.sessionStorage.removeItem("temp-"+currentGalleries);
+	
 }

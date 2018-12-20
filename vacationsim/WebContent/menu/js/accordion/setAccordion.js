@@ -63,7 +63,7 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 	for (gallery in arrayGalleries){
 		//console.log(gallery+" -> "+arrayGalleries[gallery])
 		line += "<div class='group'><h3><span style='margin-left:30px'>" + gallery
-			+ "</span></h3><div>"+arrayGalleries[gallery]+"</div></div>";
+			+ "</span></h3><div id='contain' onclick=\"modifyGallery()\">"+arrayGalleries[gallery]+"</div></div>";
 	}
 
 	document.getElementById("accordion").innerHTML = line;
@@ -118,7 +118,7 @@ function setLine(line, objJSON) {
 	let desclink = objJSON.description.split("[[");
 	// caractere alt+255 comme séparateur
 	if (objJSON.media == "image") {
-		line += " <span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";
+		line += " <div id='contain' onclick=\"modifyGallery()\"><span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";
 		line += " Media: " + objJSON.media + " <br>";
 		line += " <span style='white-space: nowrap;'>Src: " + objJSON.src
 				+ " </span><br>";
@@ -129,8 +129,9 @@ function setLine(line, objJSON) {
 			line += " <span style='white-space: nowrap;'>Link: No link "
 
 		}
+		line += "</div>"
 	} else {
-		line += " <span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";		
+		line += " <div id='contain' onclick=\"modifyGallery()\"><span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";		
 		line += " Media: " + objJSON.media + " <br>";
 		line += " Videoid: " + objJSON.videoid + " <br>";
 		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1] != ""){
@@ -140,6 +141,7 @@ function setLine(line, objJSON) {
 			line += " <span style='white-space: nowrap;'>Link: No link "
 
 		}
+		line += "</div>"
 	}
 
 	line += "</div></div>";
