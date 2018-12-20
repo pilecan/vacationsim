@@ -52,29 +52,36 @@ function closeQuit() {
 		    type: 'gray',
 		    typeAnimated: true,
 		    draggable: true,
+		    boxWidth: '30%',
+		    animation: 'top',
+		    closeAnimation: 'scale',
+		    theme: 'supervan',
+
+
 		    buttons: {
-		        Yes: function () {
+		        Yes: {
+		            text: 'Yes',
 		            btnClass: 'btn-green',
-		            $.alert('Confirmed!');
-	 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
-		           	removeTempItems();
-		            window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
-					setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
-		     	    window.sessionStorage.setItem("changed",false);
-		     		window.parent.$("#dialog").dialog('close');
+		            action: function(){
+		 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
+			           	removeTempItems();
+			           	setNewSession(currentGalleries, currentGallery);
+			            window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+						setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
+			     	    window.sessionStorage.setItem("changed",false);
+			     		window.parent.$("#dialog").dialog('close');
+		            }
 		        },
 		        No: {
-		            text: 'no',
+		            text: 'No',
 		            btnClass: 'btn-red',
 		            action: function(){
-		                $.alert('NO');
 		                resetSession();
 		            	window.parent.$("#dialog").dialog('close');
 		            }
 		        },
-		        cancel: function () {
-		            btnClass: 'btn-blue',
-		            $.alert('Canceled!');
+		        Cancel: function () {
+		            btnClass: 'btn-blue'
 		        },
 		    }
 		});
@@ -133,10 +140,55 @@ function addGallery() {
 	}
 }
 
+function changeGalleryName(){
+	$.confirm({
+	    title: 'Modifiy ('+currentAccordion+") Name?",
+	    content: '' +
+	    '<form action="" class="formName">' +
+	    '<div class="form-group">' +
+	    '<label>Enter the new name please </label>' +
+	    '<input type="text" placeholder="New hame here" class="name form-control" required />' +
+	    '</div>' +
+	    '</form>',
+	    buttons: {
+	        formSubmit: {
+	            text: 'Submit',
+	            btnClass: 'btn-blue',
+	            action: function () {
+	                var name = this.$content.find('.name').val();
+	                if(!name){
+	                    $.alert('provide a valid name');
+	                    return false;
+	                }
+	                modifyGalleryName(currentGalleries, currentAccordion, name);
+		           // setNewSession(currentGalleries, currentGallery);
+					setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
+				    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries);
+				    window.parent.document.getElementById("accordionIframe").click();
+					window.parent.$("#dialog").dialog('option', 'title', currentGalleries);
+
+
+	            }
+	        },
+	        cancel: function () {
+	            //close
+	        },
+	    },
+	    onContentReady: function () {
+	        // bind to events
+	        var jc = this;
+	        this.$content.find('form').on('submit', function (e) {
+	            // if the user submits the form by pressing enter in the field.
+	            e.preventDefault();
+	            jc.$$formSubmit.trigger('click'); // reference the button and click it
+	        });
+	    }
+	});	
+}
+
 function modifyGallery() {
 	console.log(currentGalleries + "-" + currentGallery + " = "
 			+ currentAccordion + " = " + currentAccordion.length);
-	
 
 	if (window.sessionStorage.getItem("user") == null) {
 		document.getElementById("message_content").innerHTML = "You cannot Modify a gallery you are not logged in!";
@@ -150,18 +202,20 @@ function modifyGallery() {
 		} else if (currentGallery == undefined){
 			$.confirm({
 				  title: 'Modification type',
-				    content: "Gallery Name ("+ currentGalleries+") or Gallery Content ("+jsUcfirst(currentGalleries) + "-" + currentAccordion+") ?",
+				    content: "Gallery Name or Gallery Content?",
 				    type: 'gray',
 				    typeAnimated: true,
 				    columnClass: 'col-md-1 col-md-offset-1',
 				    draggable: true,
+				    theme: 'supervan',
 
 				    buttons: {
 				        Name: {
 				            text: 'Name',
-				            btnClass: 'btn-yellow',
+				            btnClass: 'btn-orange',
 				            action: function(){
-				            }
+				            	changeGalleryName();
+											            }
 				        },
 				        Gallery: {
 				            text: 'Gallery',
@@ -291,6 +345,34 @@ function showMediaTextField() {
 }
 
 
+function modifyGalleryName(currentGalleries, currentGallery, newName) {
+	let key = currentGalleries + "|0";
+	let obj = (window.sessionStorage.getItem(key));
+	let index = 0;
+	let oldName = currentGallery;
+	while (obj != null) {
+		key = currentGalleries + "|" + index;
+		obj = (window.sessionStorage.getItem(key));
+
+		if (obj != null) {
+			objJSON = JSON.parse(new Object(obj));
+		    console.log(key+" > "+objJSON.gallery+" == "+currentGallery+" == "+newName)
+			if (objJSON.gallery == currentGallery) {
+				objJSON.gallery = newName;
+				window.sessionStorage.setItem(key,JSON.stringify(objJSON));
+				window.sessionStorage.setItem("changed", true);
+			}
+
+		}
+		index++;
+
+	}
+	
+    let temp = window.sessionStorage.getItem("menuGalleries-" +currentGalleries);
+    window.sessionStorage.setItem("menuGalleries-" +currentGalleries,temp.replace(oldName,newName));
+	
+}
+
 function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 	let key = currentGalleries + "|0";
 	let obj = (window.sessionStorage.getItem(key));
@@ -332,6 +414,7 @@ function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 	}
 	
 }
+
 
 function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) {
 	let key = currentGalleries + "|0";

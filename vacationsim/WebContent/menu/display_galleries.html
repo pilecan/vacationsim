@@ -120,8 +120,34 @@
    	  	$("#button-sim").click();
    	    $("#button-sim").click();
    		 currentGalleries = getParameterByName("g");
-   
-      
+   		 
+/*    		var images = [
+   		  "./images/1.jpg",
+   		  "./images/2.jpg",
+   		  "./images/3.jpg"
+   		],
+   		c = 0,
+   		intv;
+
+   		for(var i =0; i< images.length; i++){
+   		   var img = new Image().src = images[i]; // Preload all images
+   		}
+
+   		intv = setInterval(function(){
+   		   document.body.style.backgroundImage = "url("+ images[++c%images.length] +")";
+   		}, 6500);
+   		
+   		window.setInterval(function(){
+   		    var url = getCurrent();
+   		    //start animation
+   		    $('#slidesPartenairesHome').delay( 500 ).fadeTo(500, 0.3, function()
+   		    {
+   		        $(this).css('background-image', 'url(' + url + ')');
+   		    }).fadeTo('slow', 1);
+   		}, 1000);
+   		
+ */   		 
+   	       
 	    if (window.sessionStorage.getItem("user") != null){
 	      	  document.getElementById("userlog").innerHTML = window.sessionStorage.getItem("user");
 	    } else {

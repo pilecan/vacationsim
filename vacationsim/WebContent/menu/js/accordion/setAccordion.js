@@ -238,6 +238,7 @@ function setNewSessionGalleries(currentGalleries) {
 	    }
 	  }
 	  
+	  console.log("currentGalleries = "+currentGalleries)
 	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,"");
 	  let galleries_line = "";
 	  index = 0
