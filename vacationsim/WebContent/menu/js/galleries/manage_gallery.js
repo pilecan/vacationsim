@@ -29,7 +29,6 @@ function saveFormGallery() {
 }
 
 function resetFormGallery() {
-	console.log("submit......")
 	document.galleryForm.reset();
 }
 
@@ -122,9 +121,48 @@ function addGallery() {
 	if (window.sessionStorage.getItem("user") == null) {
 		document.getElementById("message_content").innerHTML = "You cannot Add gallery you are not logged in!";
 		$('#message').click();
-	} else if (currentGallery == undefined){ //add galleries or topic
-		document.getElementById("add").click();
-	} else {
+	} else if (currentGallery == "" || currentGallery == undefined ){
+
+		$.confirm({
+			  title: 'What do you want to Add?',
+			    content: "Topic or Gallery?",
+			    type: 'gray',
+			    typeAnimated: true,
+			    columnClass: 'col-md-1 col-md-offset-1',
+			    theme: 'supervan',
+
+			    buttons: {
+			        Topic: {
+			            text: 'Topic',
+			            btnClass: 'btn-orange',
+			            action: function(){
+					    	window.document.getElementById("topicform").style.display = "block";
+					    	window.document.getElementById("accordion").style.display = "none";
+							document.getElementById("groupButton1").style.display = "none";
+							document.getElementById("groupButton2").style.display = "none";
+							document.getElementById("groupButton3").style.display = "block";
+			            }
+			        },
+			        Gallery: {
+			            text: 'Gallery',
+			            btnClass: 'btn-blue',
+			            action: function(){
+			                alert(currentGallery);
+			    	    	modeModification = "addGalleries";
+					    	currentGalleries = window.sessionStorage.getItem("currentGalleries");
+					    	window.document.getElementById("galleriesfield").style.display = "block";
+					    	window.document.getElementById("galleryform").style.display = "block";
+					    	window.document.getElementById("accordion").style.display = "none";
+							document.getElementById("groupButton1").style.display = "none";
+							document.getElementById("groupButton2").style.display = "block";
+						}
+			        },
+			        Cancel: function () {
+			        }
+			    }
+		});			
+	} else { // new diapo
+        alert(currentGallery);
 		console.log(currentAccordion + " - " + currentAccordion.length);
 		document.galleryForm.reset();
 		
@@ -136,9 +174,31 @@ function addGallery() {
 		document.getElementById("accordion").style.display = "none";
 		document.getElementById("galleryform").style.display = "block";
 		modeModification = "add"
-
+		
 	}
+
+	
 }
+
+function saveNewTopic(){
+	$.alert("submit")
+	//document.topicform.submit();
+}
+
+function resetNewTopic(){
+	document.topicform.reset();
+	
+}
+
+function cancelNewTopic(){
+	document.getElementById("groupButton1").style.display = "block";
+	document.getElementById("groupButton2").style.display = "none";
+	document.getElementById("groupButton3").style.display = "none";
+	document.getElementById("accordion").style.display = "block";
+	document.getElementById("topicform").style.display = "none";
+}
+
+
 
 function changeGalleryName(){
 	$.confirm({
@@ -147,7 +207,7 @@ function changeGalleryName(){
 	    '<form action="" class="formName">' +
 	    '<div class="form-group">' +
 	    '<label>Enter the new name please </label>' +
-	    '<input type="text" placeholder="New hame here" class="name form-control" required />' +
+	    '<input type="text" placeholder="New name here" class="name form-control" required />' +
 	    '</div>' +
 	    '</form>',
 	    buttons: {
@@ -157,7 +217,7 @@ function changeGalleryName(){
 	            action: function () {
 	                var name = this.$content.find('.name').val();
 	                if(!name){
-	                    $.alert('provide a valid name');
+	                    $.alert('Provide a valid name Please!');
 	                    return false;
 	                }
 	                modifyGalleryName(currentGalleries, currentAccordion, name);
@@ -201,7 +261,7 @@ function modifyGallery() {
 		
 		} else if (currentGallery == undefined){
 			$.confirm({
-				  title: 'Modification type',
+				  title: 'What do you want to Modify?',
 				    content: "Gallery Name or Gallery Content?",
 				    type: 'gray',
 				    typeAnimated: true,
@@ -215,7 +275,7 @@ function modifyGallery() {
 				            btnClass: 'btn-orange',
 				            action: function(){
 				            	changeGalleryName();
-											            }
+				            }
 				        },
 				        Gallery: {
 				            text: 'Gallery',
@@ -226,7 +286,7 @@ function modifyGallery() {
 							    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries + "-" + currentGalleries);
 							    window.parent.document.getElementById("accordionIframe").click();
 								window.parent.$("#dialog").dialog('option', 'title', currentGalleries);
-			            }
+				            }
 				        },
 				        Cancel: function () {
 				        }
@@ -269,6 +329,7 @@ function cancelGallery() {
 	document.getElementById("groupButton2").style.display = "none";
 	document.getElementById("accordion").style.display = "block";
 	document.getElementById("galleryform").style.display = "none";
+	document.getElementById("topicform").style.display = "none";
 }
 
 function deleteGallery() {
@@ -671,7 +732,7 @@ function closeAdd(){
 }
 
 function selectAdd(){
-	alert("selecAdd");
+	//alert("selecAdd");
 	//$('#message').click();
 
 
