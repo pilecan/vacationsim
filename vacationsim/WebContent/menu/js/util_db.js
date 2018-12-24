@@ -102,7 +102,7 @@ function createRequest(currentGalleries){
 	    '"centerimage" : "'+window.sessionStorage.getItem("centerimage-"+currentGalleries)+'",'+
 		'"'+currentGalleries+'" : [\n'+jsonRequest+'\n]}';
 
-	console.log(jsonRequest);
+	//console.log(jsonRequest);
 
 	return jsonRequest;
 }
