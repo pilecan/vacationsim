@@ -41,25 +41,25 @@
 			  <form name="topicform" action="#"  class="form-container" onsumbit= "return saveNewTopic();">
 			  
 		    	<label for="topic"><b>Topic Name</b></label>
-			    <input id ="topic_name" type="text" placeholder="Enter Topic Name here" name="topic" required>
+			    <input id ="topic_name" type="text" placeholder="Enter Topic Name here" value ="Newtopic" name="topic" required>
 				
 			    <label for="description"><b>Description</b></label>
-			    <input id="description" type="text" placeholder="Enter Short Description here" name="description" required>
+			    <input id="description" type="text" placeholder="Enter Short Description here" value ="Newtopic description"  name="description" required>
 
 		    	<label for="background"><b>Background</b></label>
-			    <input id ="background_url" type="text" placeholder="Enter URL Background image here" name="background" required >
+			    <input id ="background_url" type="text" placeholder="Enter URL Background image here" value ="./images/montreal.jpg"  name="background" required >
 
 		    	<label for="image"><b>Center image</b></label>
 			    <input id ="image_url" value= "./images/earth.jpg" type="text" placeholder="Enter Center image here" name="image" disabled>
 			
 			    <label for="gallery_1"><b>Gallery 1</b></label>
-			    <input id="gallery_1" type="text" placeholder="Enter First Gallery name" name="gallery_1" required>
+			    <input id="gallery_1" type="text" placeholder="Enter First Gallery name" value="gallery_1"  name="gallery_1" required>
 			
 			    <label for="gallery_2"><b>Gallery 2</b></label>
-			    <input id="gallery_2" type="text" placeholder="Enter Second Gallery name" name="gallery_2" required>
+			    <input id="gallery_2" type="text" placeholder="Enter Second Gallery name"  value="gallery_2"  name="gallery_2" required>
 
 			    <label for="gallery_3"><b>Gallery 3</b></label>
-			    <input id="gallery_3" type="text" placeholder="Enter Third Gallery name" name="gallery_3" required>
+			    <input id="gallery_3" type="text" placeholder="Enter Third Gallery name" value="gallery_2" name="gallery_3" required>
 			  </form>
 			</div>
 			
@@ -226,10 +226,7 @@
 			currentGalleries = array[0].toLowerCase();
 			currentGallery = array[1];
 			
-		   // alert("editor galleries(" +currentGalleries+")  - "+window.sessionStorage.getItem("currentGalleries")+" == "+currentGallery) 
-		    
-		    if (currentGalleries == ""){
-			    }
+
 			setAccordionFromSession(currentGalleries, currentGallery);
 
 			

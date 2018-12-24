@@ -60,6 +60,28 @@ function updateDB(currentGalleries) {
 	});	
 }
 
+
+/** ************************************************************************ */
+function createDB(currentGalleries) {
+	let objJSON = createRequest(currentGalleries);
+	let id = window.sessionStorage.getItem("galleriesIds-" + currentGalleries);
+
+	$.ajax({
+		url : xxx(abc)+"/"+id + xxx1(aaa)+iii,
+		data : objJSON,
+		type : "PUT",
+		contentType: "application/json;charset=utf-8",
+		cache : true
+	}).done(function(server_data) {
+		//console.log(server_data)
+		console.log("done :)")
+	}).fail(function() {
+		console.log("failed :(")
+	});	
+}
+
+
+
 function createRequest(currentGalleries){
 	let index = 0;
 	let json = ""; 
@@ -67,7 +89,6 @@ function createRequest(currentGalleries){
 	while (json != null) {
 		json = window.sessionStorage.getItem(currentGalleries + "|"+ (index));
 		//console.log(json);
-
 		
 		if (json != ""){
 			jsonRequest += json+","
@@ -81,7 +102,7 @@ function createRequest(currentGalleries){
 	    '"centerimage" : "'+window.sessionStorage.getItem("centerimage-"+currentGalleries)+'",'+
 		'"'+currentGalleries+'" : [\n'+jsonRequest+'\n]}';
 
-//	console.log(jsonRequest);
+	console.log(jsonRequest);
 
 	return jsonRequest;
 }

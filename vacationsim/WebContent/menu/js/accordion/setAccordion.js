@@ -8,16 +8,23 @@ function setAccordionFromSession(galleriesName, currentGallery) {
 	let key = galleriesName + "|0";
 	let obj = (window.sessionStorage.getItem(key));
 
-	let index = 0;
-	while (obj != null && obj != undefined) {
-		window.sessionStorage.setItem("temp|"+index,obj);
-		index++;
-		key = galleriesName + "|" + index;
-		obj = (window.sessionStorage.getItem(key));
+	if ( window.sessionStorage.getItem("temp|0") == null){
+		let index = 0;
+		while (obj != null && obj != undefined) {
+			window.sessionStorage.setItem("temp|"+index,obj);
+			index++;
+			key = galleriesName + "|" + index;
+			obj = (window.sessionStorage.getItem(key));
+		}
+		
+		obj = window.sessionStorage.getItem("menuGalleries-"+galleriesName);
+		window.sessionStorage.setItem("menuGalleries-temp",obj);
+		obj = window.sessionStorage.getItem("background-"+galleriesName);
+		window.sessionStorage.setItem("background-temp",obj);
+		obj = window.sessionStorage.getItem("centerimage-"+galleriesName);
+		window.sessionStorage.setItem("centerimage-temp",obj);
+
 	}
-	
-	obj = window.sessionStorage.getItem("menuGalleries-"+galleriesName);
-	window.sessionStorage.setItem("temp-"+galleriesName,obj);
 	
 	if (currentGallery != undefined){
 		setAccordionFromSessionCurrentGallery(galleriesName, currentGallery);
@@ -33,12 +40,12 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 	
 	let arrayGalleries = [];
 
-	let key = galleriesName + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 
 	let index = 0;
 	while (obj != null && obj != undefined) {
-		key = galleriesName + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 		if (obj != null) {
 			objJSON = JSON.parse(new Object(obj));
@@ -77,14 +84,14 @@ function setAccordionFromSessionGalleries(galleriesName ) {
 function setAccordionFromSessionCurrentGallery(galleriesName, currentGallery) {
 	let line = "";
 
-	let key = galleriesName + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 
 	firstIndex = 0;
 
 	let index = 0;
 	while (obj != null) {
-		key = galleriesName + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 		if (obj != null && obj != "undefined") {
 			objJSON = JSON.parse(new Object(obj));
@@ -165,7 +172,7 @@ function setNewSession(currentGalleries, currentGallery) {
 function setNewSessionGallery(currentGalleries, currentGallery) {
 	$(".group").each(function(index) {
 				// console.log( index + ": " + $( this ).html());
-				key = currentGalleries + "|" + (index + firstIndex);
+				key = "temp|" + (index + firstIndex);
 
 				let obj = new Object();
 				obj.gallery = currentGallery;
@@ -214,7 +221,7 @@ function setNewSessionGalleries(currentGalleries) {
 	    let value = "";
 	    let isFinish = false;
 	    while (isFinish == false){
-	    	value = window.sessionStorage.getItem(currentGalleries+"|"+index);
+	    	value = window.sessionStorage.getItem("temp|"+index);
 	    	if (value != null) {
 				objJSON = JSON.parse(new Object(value));
 
@@ -239,7 +246,7 @@ function setNewSessionGalleries(currentGalleries) {
 	  }
 	  
 	  console.log("currentGalleries = "+currentGalleries)
-	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,"");
+	  window.sessionStorage.setItem("menuGalleries-temp","");
 	  let galleries_line = "";
 	  index = 0
 	  for (let element of elements) {
@@ -251,24 +258,24 @@ function setNewSessionGalleries(currentGalleries) {
 		  if (work != undefined){
 		      values = work.split("____");
 		      for (let i=0;i<values.length-1;i++){
-				    window.sessionStorage.setItem(currentGalleries+"|"+index,values[i]);
+				    window.sessionStorage.setItem("temp|"+index,values[i]);
 				    index++;
 		      }
 		  }
 		
 	  }
-	  window.sessionStorage.setItem("menuGalleries-"+currentGalleries,galleries_line+"All");
+	  window.sessionStorage.setItem("menuGalleries-temp",galleries_line+"All");
 	  
 	 // setMenuGallery(currentGalleries);
 }
 
 function resetSession(currentGalleries){
-	let obj = (window.sessionStorage.getItem("temp|0"));
+	let obj = (window.sessionStorage.getItem(currentGalleries+"|0"));
 	let index = 0;
 	while (obj != null && obj != undefined) {
-		window.sessionStorage.setItem(currentGalleries+"|"+index,obj);
+		window.sessionStorage.setItem("temp|"+index,obj);
 		index++;
-		obj = window.sessionStorage.getItem("temp|"+index);
+		obj = window.sessionStorage.getItem(currentGalleries+"|"+index);
 	}	
 	
 

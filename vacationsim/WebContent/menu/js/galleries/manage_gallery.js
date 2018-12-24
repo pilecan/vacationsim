@@ -62,9 +62,13 @@ function closeQuit() {
 		            text: 'Yes',
 		            btnClass: 'btn-green',
 		            action: function(){
-		 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
-			           	removeTempItems();
 			           	setNewSession(currentGalleries, currentGallery);
+		            	removeSessionItems(currentGalleries);
+		            	tempToSession(currentGalleries);
+		            	removeTempItems();
+
+		 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
+		            	
 			            window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
 						setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
 			     	    window.sessionStorage.setItem("changed",false);
@@ -75,7 +79,7 @@ function closeQuit() {
 		            text: 'No',
 		            btnClass: 'btn-red',
 		            action: function(){
-		                resetSession();
+			           	removeTempItems();
 		            	window.parent.$("#dialog").dialog('close');
 		            }
 		        },
@@ -86,6 +90,8 @@ function closeQuit() {
 		});
  	} else {
         resetSession();
+    	removeTempItems();
+
     	window.parent.$("#dialog").dialog('close');
  	} 
 
@@ -94,25 +100,12 @@ function closeQuit() {
 
 function resetSession(){
 	currentGalleries = window.sessionStorage.getItem("currentGalleries");
+	
+	console.log(currentGalleries);
     
-  	//transfert and remove temp
-	
-	let key = currentGalleries + "|0";
-	let obj = (window.sessionStorage.getItem("temp|0"));
-
-	let index = 0;
-	while (obj != null && obj != undefined) {
-		window.sessionStorage.setItem(key,obj)
-		index++;
-		obj = (window.sessionStorage.getItem("temp|"+index));
-		key = currentGalleries + "|" + index;
-	}
-		
-	obj = window.sessionStorage.getItem("temp-"+currentGalleries);
-	window.sessionStorage.setItem("menuGalleries-"+currentGalleries,obj);
-	
 	removeTempItems();
 	
+	setAccordionFromSession(currentGalleries, currentGallery);	
     window.sessionStorage.setItem("changed",false);
 	
 }
@@ -147,7 +140,6 @@ function addGallery() {
 			            text: 'Gallery',
 			            btnClass: 'btn-blue',
 			            action: function(){
-			                alert(currentGallery);
 			    	    	modeModification = "addGalleries";
 					    	currentGalleries = window.sessionStorage.getItem("currentGalleries");
 					    	window.document.getElementById("galleriesfield").style.display = "block";
@@ -162,7 +154,7 @@ function addGallery() {
 			    }
 		});			
 	} else { // new diapo
-        alert(currentGallery);
+        ///alert(currentGallery);
 		console.log(currentAccordion + " - " + currentAccordion.length);
 		document.galleryForm.reset();
 		
@@ -283,7 +275,7 @@ function modifyGallery() {
 				            action: function(){
 								currentGalleries = jsUcfirst(currentGalleries) + "-" + currentAccordion;
 								window.parent.parent.document.getElementById("gallery_name").innerHTML  = currentGalleries;
-							    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries + "-" + currentGalleries);
+							    window.parent.document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + currentGalleries);
 							    window.parent.document.getElementById("accordionIframe").click();
 								window.parent.$("#dialog").dialog('option', 'title', currentGalleries);
 				            }
@@ -357,7 +349,7 @@ function deleteGallery() {
 }
 
 function resetAccordion() {
-	resetSession(currentGalleries)
+	resetSession()
 	let request = currentGalleries + "-" + currentGallery;
 	if (currentGallery == undefined) {
 		request = currentGalleries;
@@ -407,12 +399,12 @@ function showMediaTextField() {
 
 
 function modifyGalleryName(currentGalleries, currentGallery, newName) {
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 	let index = 0;
 	let oldName = currentGallery;
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 
 		if (obj != null) {
@@ -429,25 +421,27 @@ function modifyGalleryName(currentGalleries, currentGallery, newName) {
 
 	}
 	
-    let temp = window.sessionStorage.getItem("menuGalleries-" +currentGalleries);
-    window.sessionStorage.setItem("menuGalleries-" +currentGalleries,temp.replace(oldName,newName));
+    let temp = window.sessionStorage.getItem("menuGalleries-temp");
+    window.sessionStorage.setItem("menuGalleries-temp",temp.replace(oldName,newName));
 	
 }
 
 function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 	let arrayJSON = [];
 	let index = 0;
 	let newJSON
 	let indextoDell = 0;
 	let isFound = false;
+	currentSearh = currentSearh.trim();
+
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 
 		if (obj != null) {
-			key = currentGalleries + "|" + index;
+			key = "temp|" + index;
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 		    
@@ -455,7 +449,7 @@ function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 			arrayJSON[index] = window.sessionStorage.getItem(key);
 		    window.sessionStorage.removeItem(key);
 
-			if (objJSON.gallery == currentGallery && currentSearh == desc) {
+			if (currentSearh == desc) {
 				indextoDell = index;
 				isFound = true;
 				window.sessionStorage.setItem("changed", true);
@@ -471,28 +465,28 @@ function deleteCurrentGallery(currentGalleries, currentGallery, currentSearh) {
 	for (let k in arrayJSON) {
 	    let value = arrayJSON[k];
 	   // console.log(k+" - "+value)
-	    window.sessionStorage.setItem(currentGalleries + "|" +k,value);
+	    window.sessionStorage.setItem("temp|" +k,value);
 	}
 	
 }
 
 
 function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) {
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 	let arrayJSON = [];
 	let index = 0;
 	let indextoDell = 0;
 	let cptDell = 0;
 	
-	currentSearh = currentSearh.replace(" ","");
+	currentSearh = currentSearh.trim();
 	
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 
 		if (obj != null) {
-			key = currentGalleries + "|" + index;
+			key = "temp|" + index;
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 		    
@@ -500,7 +494,7 @@ function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) 
 			arrayJSON[index] = window.sessionStorage.getItem(key);
 		    window.sessionStorage.removeItem(key);
 		    
-			if (currentSearh.indexOf(objJSON.gallery) != -1) {
+			if (currentSearh == objJSON.gallery) {
 				if (indextoDell == 0){
 					indextoDell = index;
 				}
@@ -520,11 +514,11 @@ function deleteCurrentGalleries(currentGalleries, currentGallery, currentSearh) 
 	for (let k in arrayJSON) {
 	    let value = arrayJSON[k];
 	  // console.log(k+" - "+value)
-	    window.sessionStorage.setItem(currentGalleries + "|" +k,value);
+	    window.sessionStorage.setItem("temp|" +k,value);
 	}
 	
-    let temp = window.sessionStorage.getItem("menuGalleries-" +currentGalleries);
-    window.sessionStorage.setItem("menuGalleries-" +currentGalleries,temp.replace(currentSearh+"|",""));
+    let temp = window.sessionStorage.getItem("menuGalleries-temp");
+    window.sessionStorage.setItem("menuGalleries-temp",temp.replace(currentSearh+"|",""));
     
 }
 
@@ -534,17 +528,17 @@ function modifyFormGallery(currentGalleries, currentGallery, galleryForm, curren
 	let isUpdate = false;
 	let index = 0;
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 
 		if (obj != null) {
-			key = currentGalleries + "|" + index;
+			key = "temp|" + index;
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 
 			let desc = objJSON.description.split("[[")[0]
 
-			if (objJSON.gallery == currentGallery && currentSearh == desc) {
+			if (currentSearh == desc) {
 				objJSON = setobjJSON(objJSON, galleryForm);
 				
 				window.sessionStorage.setItem(key, JSON.stringify(objJSON));
@@ -555,16 +549,13 @@ function modifyFormGallery(currentGalleries, currentGallery, galleryForm, curren
 			index++;
 
 		}
-		
 
 	}
-	
-		
 
 }
 
 function addFormGallery(currentGalleries, currentGallery, galleryForm) {
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 	let arrayJSON = [];
 	let index = 0;
@@ -572,11 +563,11 @@ function addFormGallery(currentGalleries, currentGallery, galleryForm) {
 	let indextoAdd = 0;
 	let isAdded = false;
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 
 		if (obj != null) {
-			key = currentGalleries + "|" + index;
+			key = "temp|" + index;
 			obj = (window.sessionStorage.getItem(key));
 			objJSON = JSON.parse(new Object(obj));
 
@@ -599,19 +590,18 @@ function addFormGallery(currentGalleries, currentGallery, galleryForm) {
 	
 	for (let k in arrayJSON) {
 	    let value = arrayJSON[k];
-	   // console.log(k+" - "+value)
-	    window.sessionStorage.setItem(currentGalleries + "|" +k,value);
+	    window.sessionStorage.setItem("temp|" +k,value);
 	}
 	
 }
 
 function addFormGalleries(currentGalleries,galleryForm) {
 
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 	let index = 0;
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 		index++;
 	}
@@ -623,7 +613,11 @@ function addFormGalleries(currentGalleries,galleryForm) {
 	let objJSON = JSON.parse('{"gallery":"'+obj.gallery+'"}');
 	objJSON = setobjJSON(objJSON, galleryForm)
 	
-    window.sessionStorage.setItem(currentGalleries +"|"+(index-1) ,JSON.stringify(objJSON));
+    window.sessionStorage.setItem("temp|"+(index-1) ,JSON.stringify(objJSON));
+	let temp = window.sessionStorage.getItem("menuGalleries-temp");
+	temp = temp.replace("All",galleryForm.galleryname.value+"|All")
+	window.sessionStorage.setItem("menuGalleries-temp",temp);
+
 	window.sessionStorage.setItem("changed", true);
 	
 }
@@ -651,12 +645,12 @@ function setobjJSON(objJSON, galleryForm){
 }
 
 function getGallery(currentGalleries, currentGallery, currentSearh) {
-	let key = currentGalleries + "|0";
+	let key = "temp|0";
 	let obj = (window.sessionStorage.getItem(key));
 
 	let index = 0;
 	while (obj != null) {
-		key = currentGalleries + "|" + index;
+		key = "temp|" + index;
 		obj = (window.sessionStorage.getItem(key));
 		if (obj != null) {
 			objJSON = JSON.parse(new Object(obj));
@@ -753,7 +747,37 @@ function removeTempItems(){
 		obj = window.sessionStorage.getItem("temp|"+index)
 	}
 	
-	window.sessionStorage.removeItem("temp-"+window.sessionStorage.getItem("currentGalleries"));					
-	window.sessionStorage.removeItem("temp-"+currentGalleries);
+	window.sessionStorage.removeItem("menuGalleries-temp");					
+	window.sessionStorage.removeItem("background-temp");
+	window.sessionStorage.removeItem("centerimage-temp");
+}
+
+function removeSessionItems(currentGalleries){
+	let obj = (window.sessionStorage.getItem(currentGalleries+"|0"));
+	let index = 0;
+	while (obj != null) {
+		window.sessionStorage.removeItem(currentGalleries+"|"+index)
+		index++;
+		obj = window.sessionStorage.getItem(currentGalleries+"|"+index)
+	}
+	
+	window.sessionStorage.removeItem("menuGalleries-"+currentGalleries);					
+	window.sessionStorage.removeItem("background-"+currentGalleries);
+	window.sessionStorage.removeItem("centerimage-"+currentGalleries);
+	
+}
+
+function tempToSession(currentGalleries){
+	let obj = (window.sessionStorage.getItem("temp|0"));
+	let index = 0;
+	while (obj != null) {
+		window.sessionStorage.setItem(currentGalleries + "|" + index,obj);
+		index++;
+		obj = window.sessionStorage.getItem("temp|"+index)
+	}
+	
+	window.sessionStorage.setItem("menuGalleries-"+currentGalleries,window.sessionStorage.getItem("menuGalleries-temp"));					
+	window.sessionStorage.setItem("background-"+currentGalleries,window.sessionStorage.getItem("background-temp"));
+	window.sessionStorage.setItem("centerimage-"+currentGalleries,window.sessionStorage.getItem("centerimage-temp"));
 	
 }
