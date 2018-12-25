@@ -13,181 +13,225 @@
             "gallery" : "Paris",
             "media" : "image",
             "src" : "https://www.parisinfo.com/var/otcp/sites/images/node_43/node_51/node_77884/node_77889/a%C3%A9roport-de-paris-charles-de-gaulle-terminal-1-vue-a%C3%A9rienne-%7C-630x405-%7C-%C2%A9-jouanneaux,-jean-marc-pour-a%C3%A9roports-de-paris/11527099-1-fre-FR/A%C3%A9roport-de-Paris-Charles-de-Gaulle-terminal-1-vue-a%C3%A9rienne-%7C-630X405-%7C-%C2%A9-JOUANNEAUX,-Jean-Marc-pour-A%C3%A9roports-de-Paris.jpg",
-            "description" : "Charles de Gaulle sur Google Maps|https://www.google.ca/maps/place/Paris-Charles+De+Gaulle/@49.0082069,2.5425443,1286m/data=!3m1!1e3!4m5!3m4!1s0x47e63e038e4ccf5b:0x42be0982f5ba62c!8m2!3d49.0096906!4d2.5479245"
+            "description" : "Charles de Gaulle sur Google Maps[[https://www.google.ca/maps/place/Paris-Charles+De+Gaulle/@49.0082069,2.5425443,1286m/data=!3m1!1e3!4m5!3m4!1s0x47e63e038e4ccf5b:0x42be0982f5ba62c!8m2!3d49.0096906!4d2.5479245"
+        }, 
+        {
+            "gallery" : "Los Angeles",
+            "description" : "LAS[[https://www.routard.com/guide/code_dest/los_angeles.htm",
+            "media" : "image",
+            "src" : "https://media.routard.com/image/47/5/los-angeles.1468475.142.jpg"
+        }, 
+        {
+            "gallery" : "Los Angeles",
+            "description" : "Los Angeles city",
+            "media" : "youtube",
+            "videoid" : "LlXJ5pgI84g"
+        }, 
+        {
+            "gallery" : "Los Angeles",
+            "description" : "KLM Boeing B747-400 Landing and others here[[https://www.youtube.com/results?search_query=los+angeles+airport",
+            "media" : "youtube",
+            "videoid" : "APRlZQFAwoA"
+        }, 
+        {
+            "gallery" : "Copenhagen",
+            "description" : "Copenhagen  city ",
+            "media" : "youtube",
+            "videoid" : "I1RM1KpRCaw"
+        }, 
+        {
+            "gallery" : "Copenhagen",
+            "description" : "Copenhagen Airport ",
+            "media" : "youtube",
+            "videoid" : "dYldsq0C_4E"
         }, 
         {
             "gallery" : "Taipei",
             "media" : "youtube",
             "videoid" : "NmrYaeCs5Zc",
-            "description" : "Taipei"
+            "description" : "Taipei city"
         }, 
         {
             "gallery" : "Taipei",
             "media" : "youtube",
             "videoid" : "8lof96bgXCg",
-            "description" : "A330-200 Engine Out Landing in RCTP|https://www.google.ca/maps/place/A%C3%A9roport+international+Taiwan-Taoyuan/@25.0796514,121.234217,3a,102.9y,90t/data:!3m8!1e2!3m6!1shttps:%2F%2Fmigranty.com%2Fuploads%2F036%2F15353618780VWsva9F.jpg!2e7!3e27!6s%2F%2Flh6.googleusercontent.com%2Fproxy%2FPSvBVl5KE4V_0j0a1I5pkjqAUnFJK2PQxRY47Getbei4xJRGan3QjfOWN_PqmD2rKlsE2RiEfZrdLEljORVkYGa3NajetNzEz7ctuZbUuFuOThk8ymSoFtlHsvQ0lPDVyhWfpty365R5ZUWgcO17RIVPi2mV3vA%3Dw203-h134-k-no!7i876!8i580!4m5!3m4!1s0x34429fc062d215d5:0x70a3b690a9b5b109!8m2!3d25.0796514!4d121.234217"
-        }, 
-        {
-            "gallery" : "Los Angeles",
-            "media" : "youtube",
-            "videoid" : "LlXJ5pgI84g",
-            "description" : "Los Angeles city"
-        }, 
-        {
-            "gallery" : "Los Angeles",
-            "media" : "youtube",
-            "videoid" : "APRlZQFAwoA",
-            "description" : "KLM Boeing B747-400 Landing and others here|https://www.youtube.com/results?search_query=los+angeles+airport"
-        }, 
-        {
-            "gallery" : "Copenhagen",
-            "media" : "youtube",
-            "videoid" : "I1RM1KpRCaw",
-            "description" : "Copenhagen  city"
-        }, 
-        {
-            "gallery" : "Copenhagen",
-            "media" : "youtube",
-            "videoid" : "dYldsq0C_4E",
-            "description" : "Copenhagen Airport"
+            "description" : "A330-200 Engine Out Landing in RCTP[[https://www.google.ca/maps/place/A%C3%A9roport+international+Taiwan-Taoyuan/@25.0796514,121.234217,3a,102.9y,90t/data:!3m8!1e2!3m6!1shttps:%2F%2Fmigranty.com%2Fuploads%2F036%2F15353618780VWsva9F.jpg!2e7!3e27!6s%2F%2Flh6.googleusercontent.com%2Fproxy%2FPSvBVl5KE4V_0j0a1I5pkjqAUnFJK2PQxRY47Getbei4xJRGan3QjfOWN_PqmD2rKlsE2RiEfZrdLEljORVkYGa3NajetNzEz7ctuZbUuFuOThk8ymSoFtlHsvQ0lPDVyhWfpty365R5ZUWgcO17RIVPi2mV3vA%3Dw203-h134-k-no!7i876!8i580!4m5!3m4!1s0x34429fc062d215d5:0x70a3b690a9b5b109!8m2!3d25.0796514!4d121.234217"
         }, 
         {
             "gallery" : "Hong Kong",
+            "description" : "Hong Kong by Night  ",
+            "media" : "image",
+            "src" : "http://scd.rfi.fr/sites/filesrfi/dynimagecache/113/0/599/337/1024/578/sites/images.rfi.fr/files/aef_image/hong-kong-864884_960_720_0.jpg"
+        }, 
+        {
+            "gallery" : "Hong Kong",
+            "description" : "Hong Kong  city  ",
             "media" : "youtube",
-            "videoid" : "AWKEWqx8OyA",
-            "description" : "Hong Kong  city"
+            "videoid" : "AWKEWqx8OyA"
+        }, 
+        {
+            "gallery" : "Hong Kong",
+            "description" : "Trois jours à Hong Kong  ",
+            "media" : "image",
+            "src" : "https://pagtour.info/wp-content/uploads/2018/07/hong-kong-tradicion-y-modernidad-t.jpg"
+        }, 
+        {
+            "gallery" : "Chicago",
+            "description" : "Chicago from Michigan Lake",
+            "media" : "image",
+            "src" : "https://sparkprogram.org/wp-content/uploads/2017/06/chicago.jpg"
+        }, 
+        {
+            "gallery" : "Chicago",
+            "description" : "Chicago Vacation[[https://www.expedia.com/Chicago.d178248.Destination-Travel-Guides",
+            "media" : "youtube",
+            "videoid" : "QSwvg9Rv2EI"
         }, 
         {
             "gallery" : "Beijing",
-            "media" : "youtube",
-            "videoid" : "-UuJxmU6OCQ",
-            "description" : "Beijing  city"
-        }, 
-        {
-            "gallery" : "Salzburg",
-            "media" : "youtube",
-            "videoid" : "9uHFt3Ujk4Y",
-            "description" : "Salzburg  city"
-        }, 
-        {
-            "gallery" : "Salzburg",
-            "media" : "youtube",
-            "videoid" : "5Hi4NS9Lg5c",
-            "description" : "Salzburg Airport Prepar3D|https://en.wikipedia.org/wiki/Salzburg_Airport "
-        }, 
-        {
-            "gallery" : "Salzburg",
+            "description" : " Beijing! - We Are Social ",
             "media" : "image",
-            "src" : "http://auerhahn-salzburg.at/en/wp-content/uploads/sites/4/2014/07/header-salzburg-1030x376.jpg",
-            "description" : "Salzburg Airport Google Maps|https://www.google.ca/maps/place/Salzburg+Airport/@47.7926466,13.0029274,3a,75y,90t/data=!3m9!1e2!3m6!1sAF1QipOGY5zInJlQG9lr3BWx10UVEP5_ENBfDiGJR6DB!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOGY5zInJlQG9lr3BWx10UVEP5_ENBfDiGJR6DB%3Dw129-h86-k-no!7i2048!8i1365!5s0x4776902674750667:0x43db10817f602f2!4m5!3m4!1s0x477690249a164131:0x1e3c6f4356c8996f!8m2!3d47.7926466!4d13.0029274"
+            "src" : "https://wearesocial-net.s3.amazonaws.com/wp-content/uploads/2017/06/Beijing-city.jpg"
+        }, 
+        {
+            "gallery" : "Beijing",
+            "description" : "Beijing  city ",
+            "media" : "youtube",
+            "videoid" : "-UuJxmU6OCQ"
+        }, 
+        {
+            "gallery" : "Beijing",
+            "description" : "Beijing Wikipedia ",
+            "media" : "image",
+            "src" : "https://upload.wikimedia.org/wikipedia/en/c/c6/Modern_Beijing_Traffic.jpg"
+        }, 
+        {
+            "gallery" : "Amsterdam",
+            "media" : "youtube",
+            "videoid" : "LiZY0g5RYlY",
+            "description" : "Things To Do In AMSTERDAM | UNILAD Adventure",
+            "src" : "https://i.dailymail.co.uk/i/pix/2017/12/19/14/475357A200000578-5194613-image-a-8_1513695594661.jpg"
+        }, 
+        {
+            "gallery" : "Amsterdam",
+            "media" : "image",
+            "videoid" : "2U06PicY2C4",
+            "description" : "Roof of Amsterdam[[https://www.dailymail.co.uk/travel/destinations/article-5194613/the-best-rooftop-bars-amsterdam.html",
+            "src" : "https://i.dailymail.co.uk/i/pix/2017/12/19/14/475357A200000578-5194613-image-a-8_1513695594661.jpg"
+        }, 
+        {
+            "gallery" : "Amsterdam",
+            "media" : "youtube",
+            "videoid" : "2U06PicY2C4",
+            "description" : "Jacques Brel"
+        }, 
+        {
+            "gallery" : "Salzburg",
+            "description" : "Salzburg  city ",
+            "media" : "youtube",
+            "videoid" : "9uHFt3Ujk4Y"
+        }, 
+        {
+            "gallery" : "Salzburg",
+            "description" : "Salzburg Airport Prepar3D[[https://en.wikipedia.org/wiki/Salzburg_Airport ",
+            "media" : "youtube",
+            "videoid" : "5Hi4NS9Lg5c"
         }, 
         {
             "gallery" : "Montréal",
+            "description" : "Montreal ",
             "media" : "youtube",
-            "videoid" : "lO6s0IjA80U",
-            "description" : "Ville de Montréal"
+            "videoid" : "lO6s0IjA80U"
         }, 
         {
             "gallery" : "Montréal",
+            "description" : "Aéroport de Montréal Simulation  ",
             "media" : "youtube",
-            "videoid" : "V_n0ErunBA4",
-            "description" : "Aéroport de Montréal Simulation"
+            "videoid" : "V_n0ErunBA4"
+        }, 
+        {
+            "gallery" : "Montréal",
+            "description" : "Panorama Montreal  ",
+            "media" : "image",
+            "src" : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Panorama_Montr%C3%A9al-Mont_royal.jpg/600px-Panorama_Montr%C3%A9al-Mont_royal.jpg"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Smile [[https://www.facebook.com/photo.php?fbid=10214555697720415&set=a.10214555690240228&type=3&theater",
+            "media" : "image",
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32089907_10214555697800417_7048957341886054400_n.jpg?_nc_cat=107&oh=a0065675af7728fb666cedb5dd86d106&oe=5C4FF9F0"
+        }, 
+        {
+            "gallery" : "Demo",
+            "description" : "Bodø to Andøya Norway and others[[https://www.youtube.com/playlist?list=PLGNmh2tWWAmV54nYKJshwi8FvARZkQ4xz",
             "media" : "youtube",
-            "videoid" : "hHMSctUSSeE",
-            "description" : "Approach and Landing at Skiathos Intl Airport LGSK"
+            "videoid" : "9IIxeU42_OM"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Approach and Landing at Skiathos Intl Airport LGSK  ",
             "media" : "youtube",
-            "videoid" : "9IIxeU42_OM",
-            "description" : "Bodø to Andøya Norway and others|https://www.youtube.com/playlist?list=PLGNmh2tWWAmV54nYKJshwi8FvARZkQ4xz"
+            "videoid" : "hHMSctUSSeE"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Time passes like passersby ",
             "media" : "image",
-            "src" : "https://media.springernature.com/lw900/springer-static/image/art%3A10.1038%2Fs41560-018-0137-9/MediaObjects/41560_2018_137_Fig1_HTML.jpg",
-            "description" : "Histogram of specific investment costs"
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32147697_10214555694200327_2732414466653159424_o.jpg?_nc_cat=102&oh=e259b303f9c90ea5d3f9e8bd4f53e593&oe=5C40E48B"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Histogram of specific investment costs  ",
             "media" : "image",
-            "src" : "https://www.desjardins.com/ressources/images/d00-rsc-lgbt-defile-fierte.jpg?resVer=1516810668000",
-            "description" : "Desjardins Playlist|https://www.youtube.com/channel/UCr5I8xaDyQoFKsPNxDM_scw"
+            "src" : "https://media.springernature.com/lw900/springer-static/image/art%3A10.1038%2Fs41560-018-0137-9/MediaObjects/41560_2018_137_Fig1_HTML.jpg"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Desjardins Playlist[[https://www.youtube.com/channel/UCr5I8xaDyQoFKsPNxDM_scw",
+            "media" : "image",
+            "src" : "https://www.desjardins.com/ressources/images/d00-rsc-lgbt-defile-fierte.jpg?resVer=1516810668000"
+        }, 
+        {
+            "gallery" : "Demo",
+            "description" : "You can include youtube videos easily!  ",
             "media" : "youtube",
-            "videoid" : "A3PDXmYoF5U",
-            "description" : "You can include youtube videos easily!"
+            "videoid" : "A3PDXmYoF5U"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Access to Playlist[[https://www.youtube.com/playlist?list=PL4853B57D73369BCF",
             "media" : "youtube",
-            "videoid" : "AO_i2vFY9u4",
-            "description" : "Access to Playlist|https://www.youtube.com/playlist?list=PL4853B57D73369BCF"
+            "videoid" : "AO_i2vFY9u4"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Look on Facebook[[https://www.facebook.com/pierre.legault.5/media_set?set=a.10214383676299987&type=3",
             "media" : "image",
-            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/30707838_10214383721021105_3070943582765449216_o.jpg?_nc_cat=107&oh=f943c9b896cdc4b6cceb28a48c03a4b0&oe=5C5C3393",
-            "description" : "Look on Facebook|https://www.facebook.com/pierre.legault.5/media_set?set=a.10214383676299987&type=3"
+            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/30707838_10214383721021105_3070943582765449216_o.jpg?_nc_cat=107&oh=f943c9b896cdc4b6cceb28a48c03a4b0&oe=5C5C3393"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "On Google+ Mekong river at Luang Prabang, Laos[[https://plus.google.com/u/0/photos/106574931658318359497/album/5982850170807462129/5982850256569139602",
             "media" : "image",
-            "src" : "https://lh3.googleusercontent.com/-NoquI9qVMiE/UwdanB8ogZI/AAAAAAAAA7c/F6koGVYuY_k/w424-h318-n-rw/IMG_1691.JPG",
-            "description" : "On Google+ Mekong river at Luang Prabang, Laos|https://plus.google.com/u/0/photos/106574931658318359497/album/5982850170807462129/5982850256569139602"
+            "src" : "https://lh3.googleusercontent.com/-NoquI9qVMiE/UwdanB8ogZI/AAAAAAAAA7c/F6koGVYuY_k/w424-h318-n-rw/IMG_1691.JPG"
         }, 
         {
             "gallery" : "Demo",
-            "media" : "youtube",
-            "videoid" : "73234449",
+            "description" : "Belle tomate du balcon  ",
             "media" : "image",
-            "src" : "http://i.vimeocdn.com/video/447294219_200x150.jpg",
-            "description" : "This gallery can also play vimeo videos!"
+            "src" : "images/big/2018-08-24 003.JPG"
         }, 
         {
             "gallery" : "Demo",
-            "media" : "youtube",
-            "videoid" : "73234449",
+            "description" : "Superbe bagnolle  ",
             "media" : "image",
-            "src" : "images/big/2018-08-24 003.JPG",
-            "description" : "Belle tomate du balcon"
+            "src" : "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/gallardo-0638.jpg?itok=-So1NoXA"
         }, 
         {
             "gallery" : "Demo",
+            "description" : "Mapping [my] Self Through Portraits here[[https://medium.com/@DevynSpringer/mapping-my-self-through-portraits-5830b0d12101",
             "media" : "image",
-            "src" : "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/gallardo-0638.jpg?itok=-So1NoXA",
-            "description" : "Superbe bagnolle"
-        }, 
-        {
-            "gallery" : "Demo",
-            "media" : "youtube",
-            "videoid" : "9oedgxuciv",
-            "media" : "image",
-            "src" : "images/thumbs/wistia_video.jpg",
-            "description" : "Hey, the gallery plays Wistia videos too!"
-        }, 
-        {
-            "gallery" : "Demo",
-            "media" : "image",
-            "src" : "https://cdn-images-1.medium.com/max/600/1*IPTDavxQcLKWdB5GKQ0U_g.jpeg",
-            "description" : "Mapping [my] Self Through Portraits here|https://medium.com/@DevynSpringer/mapping-my-self-through-portraits-5830b0d12101"
-        }, 
-        {
-            "gallery" : "Demo",
-            "media" : "image",
-            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32147697_10214555694200327_2732414466653159424_o.jpg?_nc_cat=102&amp;oh=e259b303f9c90ea5d3f9e8bd4f53e593&amp;oe=5C40E48B",
-            "description" : "L’image contient peut-être&nbsp;: une personne ou plus, océan, ciel, plein air et eau"
-        }, 
-        {
-            "gallery" : "Demo",
-            "media" : "image",
-            "src" : "https://scontent.fymq1-1.fna.fbcdn.net/v/t1.0-9/32089907_10214555697800417_7048957341886054400_n.jpg?_nc_cat=107&oh=a0065675af7728fb666cedb5dd86d106&oe=5C4FF9F0",
-            "description" : "Smile"
+            "src" : "https://cdn-images-1.medium.com/max/600/1*IPTDavxQcLKWdB5GKQ0U_g.jpeg"
         }
     ]
 }

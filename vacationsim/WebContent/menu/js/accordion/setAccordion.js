@@ -123,18 +123,17 @@ function setLine(line, objJSON) {
 			+ "</span></h3><div>";
 
 	let desclink = objJSON.description.split("[[");
+
 	// caractere alt+255 comme séparateur
 	if (objJSON.media == "image") {
 		line += " <div id='contain' onclick=\"modifyGallery()\"><span style='white-space: nowrap;'>Description: "+ desclink[0] + " </span><br>";
 		line += " Media: " + objJSON.media + " <br>";
 		line += " <span style='white-space: nowrap;'>Src: " + objJSON.src
 				+ " </span><br>";
-		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1] != ""){
+		
+		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1].trim() != ""){
 			line += " <span style='white-space: nowrap;'>Link: " + desclink[1]
 			+ " </span><br>";
-		} else {
-			line += " <span style='white-space: nowrap;'>Link: No link "
-
 		}
 		line += "</div>"
 	} else {
@@ -142,11 +141,8 @@ function setLine(line, objJSON) {
 		line += " Media: " + objJSON.media + " <br>";
 		line += " Videoid: " + objJSON.videoid + " <br>";
 		if (desclink[1] != undefined && desclink[1] != "undefined" && desclink[1] != ""){
-			line += " <span style='white-space: nowrap;'>Link: " + desclink[1]
+			line += " <span style='white-space: nowrap;'>Link: " + desclink[1].trim()
 			+ " </span><br>";
-		} else {
-			line += " <span style='white-space: nowrap;'>Link: No link "
-
 		}
 		line += "</div>"
 	}
@@ -191,7 +187,7 @@ function setNewSessionGallery(currentGalleries, currentGallery) {
 				});
 
 				obj.gallery = currentGallery;
-				if (obj.link != "undefined" && obj.link != "No link") {
+				if (obj.link != "undefined" && obj.link != undefined &&  obj.link != "") {
 					obj.description = obj.description + "[[" + obj.link
 				}
 

@@ -38,7 +38,21 @@ function saveGallery() {
 		document.getElementById("message_content").innerHTML = "Your change will not save you are not logged in!";
 		$('#message').click();
 	} else {
-		window.parent.$("#dialog").dialog('close');
+		
+ 	    if (window.sessionStorage.getItem("changed") == "true"){
+ 	       	setNewSession(currentGalleries, currentGallery);
+ 	    	removeSessionItems(currentGalleries);
+ 	    	tempToSession(currentGalleries);
+			setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
+
+ 	        updateDB(window.sessionStorage.getItem("currentGalleries"));
+ 	        
+     	    window.sessionStorage.setItem("changed",false);
+
+            $.alert('Your modifications have been saved!');
+ 	    }
+
+		
 	}
 
 }
