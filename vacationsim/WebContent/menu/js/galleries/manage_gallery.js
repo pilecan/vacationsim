@@ -216,6 +216,8 @@ function changeGalleryName(){
 	    '<input type="text" placeholder="New name here" class="name form-control" required />' +
 	    '</div>' +
 	    '</form>',
+	    theme: 'supervan',
+
 	    buttons: {
 	        formSubmit: {
 	            text: 'Submit',
@@ -704,13 +706,13 @@ function processUserResponse(responseText) {
 		// window.parent.$("#dialog").dialog('close');
 		// return true;
 	} else if (obj[0].password == md5(document.loginform.password.value)) {
-		alert("Welcome Again " + obj[0].username)
+		console.log("Welcome again " + obj[0].username)
 		window.sessionStorage.setItem("user", obj[0].username);
-		window.parent.document.getElementById("userlog").innerHTML = obj[0].username;
-
+		window.parent.parent.document.getElementById("userlog").innerHTML = obj[0].username;
+		document.getElementById("overlayloginform").style.display = "none";
+		document.getElementById("loginform").style.display = "none";
 		return true;
 
-		// window.parent.$("#dialog").dialog('close');
 	}
 
 }
@@ -722,6 +724,7 @@ function errorHandler(statusCode) {
 function closeLogin(){
 	document.getElementById("overlayloginform").style.display = "none";
 	document.getElementById("loginform").style.display = "none";
+	document.getElementById("login").style.display = "none";
 	 $("#button-sim", window.parent.document).click();
      $("#button-sim", window.parent.document).click();
 
@@ -731,7 +734,9 @@ function closeLogin(){
      $("#btn-edit", window.parent.document).show();
      $("#btn-next", window.parent.document).show();
      
-	window.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+	window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
+	window.parent.$("#dialog").dialog('close');
+
 
 }
 function closeAdd(){

@@ -44,6 +44,7 @@ $(function() {
 					});
 });
 
+
 $(function() {
 	$('#help').click(function() {
 		$('#overlay').fadeIn(200, function() {

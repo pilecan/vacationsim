@@ -51,52 +51,22 @@
     <iframe id="accordionIframe" class="none" src=""  width="600" height="400"></iframe>
   </div>
   
-	<div class="loginform" id="loginform">
-	 <a class="loginformclose" id="loginformclose"></a>
-	 <h3> <img id="flip" src="../images/superman_small.gif" width="50px"  alt="Avatar"> Login</h3>
-	   <p>
- 			<form name="loginform" class="modal-content animate" action="#" onsubmit="return validUser(this);">
-	   
-	   	<div class="container">
-	      <label for="uname"><b>Username</b></label>
-	      <input id="username" type="text" placeholder="Enter Username" value="pile" name="uname" required>
-	
-	      <label for="psw"><b>Password</b></label>
-	      <input id="password" type="password" placeholder="Enter Password" value="pile" name="psw" required>
-	        
-	      <button type="submit">Login</button> <button type="button" onclick="closeLogin()">Cancel</button>
-	      <label>
-	        <input type="checkbox" checked="checked" name="remember"> Remember me
-	      </label>
-	    </div>
-	    </form>
-	    </p>
-	</div>
-
-		
-   	<button style="display:none" id="login"></button>
-	<div class="overlay" id="overlayloginform" style="display:none"></div>
-  
-  
+ 
   <script>
     $(document).ready(function () {
       galleries = getParameterByName("g");
 
       
-      if (window.sessionStorage.getItem("user") == null){
-      	$('#login').click();
-      } else {
-    	$("#dialog").dialog('open');
-         
-  	      document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + window.parent.document.getElementById("gallery_name").innerHTML);
-	 	  document.getElementById("accordionIframe").click();
-	      
-	 	  $("#dialog").dialog('option', 'title', galleries);
-	      let position = $('.selector').dialog('option', 'position');
-	      //setter
-	      $('.selector').dialog('option', 'position', 'top');
-      }
-      
+  	$("#dialog").dialog('open');
+    
+      document.getElementById('accordionIframe').setAttribute("src", "./galleries_editor.html?g=" + window.parent.document.getElementById("gallery_name").innerHTML);
+	  document.getElementById("accordionIframe").click();
+    
+	  $("#dialog").dialog('option', 'title', galleries);
+    let position = $('.selector').dialog('option', 'position');
+    //setter
+    $('.selector').dialog('option', 'position', 'top');
+
 
 
     });

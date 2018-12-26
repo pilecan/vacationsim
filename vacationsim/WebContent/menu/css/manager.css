@@ -223,6 +223,13 @@ a.boxformclose{
 }
  
 /********************************** login form *****************************************/
+
+
+#loginform {
+	left: 0px;
+	top: 0px;
+	
+}
  .overlayloginform{
     background: black;
     opacity: .5;
@@ -236,7 +243,7 @@ a.boxformclose{
 .loginform h2{
     border-bottom: 1px dashed #7F7F7F;
     margin:-20px -20px 0px -20px;
-    padding:10px;
+    padding:5px;
     background-color:lightblue;
     color:blue;
     -moz-border-radius:10px 10px 0px 0px;
@@ -255,8 +262,6 @@ a.boxformclose{
 .loginform{
     position:fixed;
     top:-5000px;
-    left:40%;
-    right:40%;`
     min-width: 300px;
     display: inline-block;
     background-color:#fff;
@@ -696,6 +701,11 @@ img.avatar {
 .container {
     padding: 16px;
 }
+
+.login-container {
+    padding: 16px;
+}
+
 
 span.psw {
     float: right;

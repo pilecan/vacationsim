@@ -17,7 +17,6 @@
 <script type='text/javascript' src='../js/util.js'></script>
 <script type='text/javascript' src='../js/util_db.js'></script>
 <script type='text/javascript' src='../js/galleries_init.js'></script>
-<script type='text/javascript' src='../js/login.js'></script>
 <script type='text/javascript' src='../js/menu_galleries.js'></script>
 <script type='text/javascript' src="../js/accordion/setAccordion.js"></script>
 <script type='text/javascript' src="../js/galleries/menus.js"></script>
@@ -30,11 +29,11 @@
 		<div id="top">
 			<div id="accordion" class="accordion blockAccordion animate" style="display:block">
 				<div class="group">
-					<h3>Oups!</h3>
+<!-- 					<h3>Oups!</h3>
 					<div>
 						<p>Little problem here ;)</p>
 					</div>
-				</div>
+ -->				</div>
 			</div>
 			<!-- ------------------- New topic form  ------------------------>
 			<div id="topicform" class="form-popup blockAccordion animate" style="display:none;">
@@ -43,14 +42,14 @@
 		    	<label for="topic"><b>Topic Name</b></label>
 			    <input id ="topic_name" type="text" placeholder="Enter Topic Name here" value ="Newtopic" name="topic" required>
 				
-			    <label for="description"><b>Description</b></label>
-			    <input id="description" type="text" placeholder="Enter Short Description here" value ="Newtopic description"  name="description" required>
+			    <label for="descript"><b>Description</b></label>
+			    <input id="descript" type="text" placeholder="Enter Short Description here" value ="Newtopic description"  name="descript" required>
 
 		    	<label for="background"><b>Background</b></label>
 			    <input id ="background_url" type="text" placeholder="Enter URL Background image here" value ="./images/montreal.jpg"  name="background" required >
 
-		    	<label for="image"><b>Center image</b></label>
-			    <input id ="image_url" value= "./images/earth.jpg" type="text" placeholder="Enter Center image here" name="image" disabled>
+		    	<label for="imageurl"><b>Center image</b></label>
+			    <input id ="imageurl" value= "./images/earth.jpg" type="text" placeholder="Enter Center image here" name="imageurl" disabled>
 			
 			    <label for="gallery_1"><b>Gallery 1</b></label>
 			    <input id="gallery_1" type="text" placeholder="Enter First Gallery name" value="gallery_1"  name="gallery_1" required>
@@ -210,6 +209,38 @@
 		
    		<button style="display:none" id="message"></button>
 		<div class="overlay" id="overlaymessagebox" style="display:none"></div>
+
+	<div class="loginform" id="loginform" style="display:none;">
+	 <a class="loginformclose" id="loginformclose"></a>
+<!-- 	 <h2> <img id="flip" src="../images/superman_small.gif" width="50px"  alt="Avatar"> Login</h2>
+ -->		
+ 		<h2>
+         <div>
+		  <img id="flip" style="vertical-align:middle" src="../images/superman_small.gif" width="50px" >
+		 <span style="">Login</span>
+		</div>	 
+ 		</h2>
+	 
+	   <p>
+ 		<form name="loginform" class="modal-content animate" action="#" onsubmit="return validUser(this);">
+	   
+	   	<div class="login-container">
+	      <label for="uname"><b>Username</b></label>
+	      <input id="username" type="text" placeholder="Enter Username" name="uname" required>
+	
+	      <label for="psw"><b>Password</b></label>
+	      <input id="password" type="password" placeholder="Enter Password" name="psw" required>
+	        
+	      <button type="submit">Login</button> <button type="button" onclick="closeLogin()">Cancel</button>
+	    </div>
+	    </form>
+	    </p>
+	</div>
+
+		
+   	<button style="display:none" id="login"></button>
+	<div class="overlay" id="overlayloginform" style="display:none"></div>
+		
 		
  </div>
 	
@@ -226,16 +257,14 @@
 			currentGalleries = array[0].toLowerCase();
 			currentGallery = array[1];
 			
-
 			setAccordionFromSession(currentGalleries, currentGallery);
-
 			
 			$("#dialog").dialog('option', 'title', currentGalleries);
 			if (window.sessionStorage.getItem("user") == null){
-			//     $('#login').click();
+				document.getElementById("overlayloginform").style.display = "block";
+				document.getElementById("loginform").style.display = "block";
 
-		  		//document.loginform.username.value = "Tripperman";
-		  		//document.loginform.password.value = "Tripperman";
+			} else {
 
 			}
 		});

@@ -276,11 +276,7 @@ body {
 
 body {font-family: Arial, Helvetica, sans-serif;}
 
-#loginform {
-	left: 108px;
-	top: -6px;
-	
-}
+
 
 /* Full-width input fields */
 input[type=text], input[type=password] {

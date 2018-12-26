@@ -1,6 +1,6 @@
     $(function () {
       $("#dialog").dialog({
-    	
+ 	
         autoOpen: false,
         show: "fade",
         hide: "fade",
