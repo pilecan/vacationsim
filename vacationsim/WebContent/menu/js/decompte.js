@@ -8,6 +8,11 @@ var x = setInterval(function () {
 
   // Find the distance between now and the count down date
   var distance = countDownDate - now;
+  
+  if (distance < 0) {
+	  countDownDate = new Date("May 13, 2019 1:00").getTime();
+	  distance = countDownDate - now;
+  }
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
