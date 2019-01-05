@@ -76,7 +76,7 @@ function closeQuit() {
 		            text: 'Yes',
 		            btnClass: 'btn-green',
 		            action: function(){
-			           	setNewSession(currentGalleries, currentGallery);
+			          // 	setNewSession(currentGalleries, currentGallery);
 		            	removeSessionItems(currentGalleries);
 		            	tempToSession(currentGalleries);
 		            	removeTempItems();
@@ -257,6 +257,8 @@ function changeGalleryName(){
 function modifyGallery() {
 	console.log(currentGalleries + "-" + currentGallery + " = "
 			+ currentAccordion + " = " + currentAccordion.length);
+	currentGalleries = window.sessionStorage.getItem("currentGalleries");
+
 
 	if (window.sessionStorage.getItem("user") == null) {
 		document.getElementById("message_content").innerHTML = "You cannot Modify a gallery you are not logged in!";
