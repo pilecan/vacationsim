@@ -166,10 +166,13 @@ function setNewSession(currentGalleries, currentGallery) {
 
 /**************************************************************************************/	
 function setNewSessionGallery(currentGalleries, currentGallery) {
+	if (firstIndex == 1){
+		firstIndex = 0;
+	}
+
 	$(".group").each(function(index) {
 				// console.log( index + ": " + $( this ).html());
 				key = "temp|" + (index + firstIndex);
-
 				let obj = new Object();
 				obj.gallery = currentGallery;
 				//alt 255 for spance

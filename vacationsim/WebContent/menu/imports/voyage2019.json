@@ -5,9 +5,28 @@
     "voyage2019" : [ 
         {
             "gallery" : "Bangkok",
+            "description" : "Wat Arun[[http://www.bangkok.com/attraction-temple/wat-arun.htm",
+            "media" : "image",
+            "videoid" : "84aTgGr9N04",
+            "src" : "http://static.asiawebdirect.com/m/bangkok/portals/bangkok-com/homepage/attraction-temple/wat-arun/pagePropertiesImage/wat-arun-in-bangkok.jpg"
+        }, 
+        {
+            "gallery" : "Bangkok",
+            "description" : "BANGKOK, THAILAND [4K] AERIAL DRONE FOOTAGE",
             "media" : "youtube",
-            "videoid" : "NuJTSpRIvP4",
-            "description" : "Bangkok"
+            "videoid" : "pQjc8Zk-VOc"
+        }, 
+        {
+            "gallery" : "Bangkok",
+            "description" : "BANGKOK DRONE 4K | MAVIC PRO",
+            "media" : "youtube",
+            "videoid" : "84aTgGr9N04"
+        }, 
+        {
+            "gallery" : "Bangkok",
+            "description" : "Bangkok Balcony[[https://www.facebook.com/photo.php?fbid=10216337898554322&set=ms.c.eJxNzMENwEAMAsGOImPgfPTfWH6Jv6vRohqHnJtri90P~%3BiKKyFdSxYjnLpOJaG7jiMP9gUX0Mp7IxRc37hlD.bps.a.10216337897794303&type=3&theater",
+            "media" : "image",
+            "src" : "https://scontent.fbkk5-3.fna.fbcdn.net/v/t1.0-9/49299187_10216337898754327_683270052014718976_o.jpg?_nc_cat=111&_nc_ht=scontent.fbkk5-3.fna&oh=a8eb334edbb09b5ce4b961bef42f18c0&oe=5CCB9DE9"
         }, 
         {
             "gallery" : "Bali",
@@ -16,7 +35,7 @@
             "description" : "Bali"
         }, 
         {
-            "gallery" : "H� Chi Minh",
+            "gallery" : "Ho Chi Minh",
             "media" : "youtube",
             "videoid" : "UjWxeLicdbU",
             "description" : "Saigon"
@@ -28,7 +47,7 @@
             "description" : "Manila"
         }, 
         {
-            "gallery" : "H�n�i",
+            "gallery" : "Hanoi",
             "media" : "youtube",
             "videoid" : "MWhox_M7WNk",
             "description" : "Hanoi"
@@ -107,17 +126,15 @@
         }, 
         {
             "gallery" : "Etc",
-            "media" : "youtube",
-            "videoid" : "73234449",
             "media" : "image",
+            "videoid" : "73234449",
             "src" : "http://i.vimeocdn.com/video/447294219_200x150.jpg",
             "description" : "This gallery can also play vimeo videos!"
         }, 
         {
             "gallery" : "Etc",
-            "media" : "youtube",
-            "videoid" : "73234449",
             "media" : "image",
+            "videoid" : "73234449",
             "src" : "images/big/2018-08-24 003.JPG",
             "description" : "Belle tomate du balcon"
         }, 
@@ -129,9 +146,8 @@
         }, 
         {
             "gallery" : "Etc",
-            "media" : "youtube",
-            "videoid" : "9oedgxuciv",
             "media" : "image",
+            "videoid" : "9oedgxuciv",
             "src" : "images/thumbs/wistia_video.jpg",
             "description" : "Hey, the gallery plays Wistia videos too!"
         }, 
