@@ -2,7 +2,11 @@
 function setMenuGallery(currentGalleries,isModification) {
 	if (menuGalleries[currentGalleries] == undefined) {
 		console.log("currentGalleries = " + currentGalleries + " not found...");
-		currentGalleries = "welcome";
+		if (window.sessionStorage.getItem("currentGalleries") == "sim"){
+			currentGalleries = "welcome";
+		} else {
+			currentGalleries = window.sessionStorage.getItem("currentGalleries");
+		}
 	}
 
 	menuGalleries[currentGalleries] = window.sessionStorage.getItem("menuGalleries-"+currentGalleries);

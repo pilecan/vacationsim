@@ -45,8 +45,14 @@
 	<script type="text/javascript">
     $(document).ready(function(){
 			var galleries = getParameterByName("g");
-			if (galleries == ""){
-				galleries = "welcome";
+			var user = getParameterByName("u");
+			if (user == ""){
+				window.sessionStorage.setItem("user","sim");
+				if (galleries == ""){
+					galleries = "welcome";
+				}
+			} else {
+				window.sessionStorage.setItem("user",user);
 			}
           //  console.log('galleries=' + galleries);
 

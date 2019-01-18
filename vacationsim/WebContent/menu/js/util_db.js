@@ -5,12 +5,13 @@ function getDBGalleries(galleries_name, id) {
 		console.log(galleries_name + " loaded!")
 		return;
 	}
+	
 
-	console.log(galleries_name + " reading...")
+	console.log(galleries_name + " reading...");
 
 	try {
 		var request = new XMLHttpRequest();
-		request.open("GET",xxx(abc) + "/" + id + xxx1(aaa)+iii,false
+		request.open("GET",xxx(abc) +window.sessionStorage.getItem("user")+ "collection/" + id + xxx1(aaa)+iii,false
 		);
 
 		var rq = null;
@@ -47,7 +48,7 @@ function updateDB(currentGalleries) {
 	let id = window.sessionStorage.getItem("galleriesIds-" + currentGalleries);
 
 	$.ajax({
-		url : xxx(abc)+"/"+id + xxx1(aaa)+iii,
+		url : xxx(abc)+window.sessionStorage.getItem("user")+ "collection/" +id + xxx1(aaa)+iii,
 		data : objJSON,
 		type : "PUT",
 		contentType: "application/json;charset=utf-8",
@@ -67,9 +68,9 @@ function createDB(currentGalleries) {
 	let id = window.sessionStorage.getItem("galleriesIds-" + currentGalleries);
 
 	$.ajax({
-		url : xxx(abc)+"/"+id + xxx1(aaa)+iii,
+		url : xxx(abc)+window.sessionStorage.getItem("user")+ "collection" + xxx1(aaa)+iii,
 		data : objJSON,
-		type : "PUT",
+		type : "POST",
 		contentType: "application/json;charset=utf-8",
 		cache : true
 	}).done(function(server_data) {
@@ -101,6 +102,7 @@ function createRequest(currentGalleries){
 	    '"background" : "'+window.sessionStorage.getItem("background-"+currentGalleries)+'",'+
 	    '"centerimage" : "'+window.sessionStorage.getItem("centerimage-"+currentGalleries)+'",'+
 		'"'+currentGalleries+'" : [\n'+jsonRequest+'\n]}';
+	//'"test" : [\n'+jsonRequest+'\n]}';
 
 	//console.log(jsonRequest);
 

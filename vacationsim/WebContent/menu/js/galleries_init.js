@@ -5,6 +5,11 @@
 	let currentGalleriesNumber = 0;
 	let galleriesIds = [];
 	
+	if (window.sessionStorage.getItem("user") == null){
+		window.sessionStorage.setItem("user","sim");
+	}
+
+	
 	function getDBinfo(onBefore, onAfter) {
 
 		if (onBefore) {
@@ -39,7 +44,7 @@
 		try {
 			var rw = "";
 			request.open("GET",
-				xxx(abc)+xxx1(aaa)+iii,false
+				xxx(abc)+window.sessionStorage.getItem("user")+ "collection/"+xxx1(aaa)+iii,false
 			);
 
 			request.onload = function () {
@@ -65,8 +70,10 @@
 								var array = JSON.stringify(jsonResponse[i]).split(",");
 								galleries_name = array[3].substring(1, array[3].indexOf(":") - 1);
 
-								//console.log("---------------------------------------------")
-								//console.log(galleries_name)
+							//	console.log("---------------------------------------------")
+							//	console.log("user -->"+window.sessionStorage.getItem("user"));
+								
+								window.sessionStorage.setItem("currentGalleries",galleries_name);
 
 								rq = eval("jsonResponse[" + i + "].background");
 								bgImage[galleries_name] = rq;

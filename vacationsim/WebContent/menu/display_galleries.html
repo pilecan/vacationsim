@@ -167,6 +167,10 @@
  	   }
 
       document.getElementById("gallery_name").innerHTML = jsUcfirst(currentGalleries);
+      
+      if (currentGalleries == ""){
+			currentGalleries = window.sessionStorage.getItem("currentGalleries");
+      }
 
       setMenuGallery(currentGalleries,false);
       getDBGalleries(currentGalleries, galleriesIds[currentGalleries]);

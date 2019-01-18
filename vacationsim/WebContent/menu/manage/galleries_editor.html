@@ -260,7 +260,7 @@
 			setAccordionFromSession(currentGalleries, currentGallery);
 			
 			$("#dialog").dialog('option', 'title', currentGalleries);
-			if (window.sessionStorage.getItem("user") == null){
+			if (window.sessionStorage.getItem("log"+window.sessionStorage.getItem("user")) == null){
 				document.getElementById("overlayloginform").style.display = "block";
 				document.getElementById("loginform").style.display = "block";
 

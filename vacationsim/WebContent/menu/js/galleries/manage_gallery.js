@@ -82,6 +82,7 @@ function closeQuit() {
 		            	removeTempItems();
 
 		 	           	updateDB(window.sessionStorage.getItem("currentGalleries"));
+		            	//createDB(window.sessionStorage.getItem("currentGalleries"));
 		            	
 			            window.parent.parent.document.getElementById("gallery_name").innerHTML=jsUcfirst(window.sessionStorage.getItem("currentGalleries"));
 						setMenuGallery(window.sessionStorage.getItem("currentGalleries"), true); 
@@ -709,7 +710,7 @@ function processUserResponse(responseText) {
 		// return true;
 	} else if (obj[0].password == md5(document.loginform.password.value)) {
 		console.log("Welcome again " + obj[0].username)
-		window.sessionStorage.setItem("user", obj[0].username);
+		window.sessionStorage.setItem("log"+obj[0].username, "");
 		window.parent.parent.document.getElementById("userlog").innerHTML = obj[0].username;
 		document.getElementById("overlayloginform").style.display = "none";
 		document.getElementById("loginform").style.display = "none";
