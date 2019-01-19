@@ -708,7 +708,7 @@ function processUserResponse(responseText) {
 		// wait(1000);
 		// window.parent.$("#dialog").dialog('close');
 		// return true;
-	} else if (obj[0].password == md5(document.loginform.password.value)) {
+	} else if (obj[0].password == md5(document.loginform.password.value) && document.loginform.username.value == window.window.sessionStorage.getItem("user")) {
 		console.log("Welcome again " + obj[0].username)
 		window.sessionStorage.setItem("log"+obj[0].username, "");
 		window.parent.parent.document.getElementById("userlog").innerHTML = obj[0].username;
