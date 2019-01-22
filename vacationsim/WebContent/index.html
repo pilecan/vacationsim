@@ -44,6 +44,8 @@
 
 	<script type="text/javascript">
     $(document).ready(function(){
+            window.sessionStorage.clear();
+
 			var galleries = getParameterByName("g");
 			var user = getParameterByName("u");
 			if (user == ""){
@@ -55,6 +57,8 @@
 				window.sessionStorage.setItem("user",user);
 			}
           //  console.log('galleries=' + galleries);
+          
+
 
            // console.log("./menu/menupopup.html?g="+galleries)
            document.getElementById('snippet-preview').setAttribute("src", "./menu/display_galleries.html?g=" + galleries.toLowerCase())
