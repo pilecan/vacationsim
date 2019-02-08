@@ -702,20 +702,22 @@ function processUserResponse(responseText) {
 
 	if (obj[0] == undefined
 			|| md5(document.loginform.password.value) != obj[0].password) {
-		console.log("invalid user name or password");
-		document.getElementById("message_content").innerHTML = "Invalid username or password";
-		// $('#message').click();
-		// wait(1000);
-		// window.parent.$("#dialog").dialog('close');
-		// return true;
+		alert("Invalid User name or Password");
+		 return false;
 	} else if (obj[0].password == md5(document.loginform.password.value) && document.loginform.username.value == window.window.sessionStorage.getItem("user")) {
 		console.log("Welcome again " + obj[0].username)
 		window.sessionStorage.setItem("log"+obj[0].username, "");
 		window.parent.parent.document.getElementById("userlog").innerHTML = obj[0].username;
 		document.getElementById("overlayloginform").style.display = "none";
 		document.getElementById("loginform").style.display = "none";
+		document.getElementById("accordionIframe").height = "400"; 
+		setAccordionFromSession(currentGalleries, currentGallery);
+
 		return true;
 
+	} else {
+		$.alert("You cannot modify this topic.")
+		 return false;
 	}
 
 }
@@ -742,6 +744,22 @@ function closeLogin(){
 
 
 }
+
+function showRegistration(){
+	document.getElementById("overlayloginform").style.display = "none";
+	document.getElementById("loginform").style.display = "none";
+	document.getElementById("login").style.display = "none";
+	document.getElementById("accordion").style.display = "none";
+	document.getElementById("groupButton1").style.display = "none";
+	
+	
+	document.getElementById("registerform").style.display = "block";
+
+
+
+}
+
+
 function closeAdd(){
 	document.getElementById("overlayaddform").style.display = "none";
 	document.getElementById("addform").style.display = "none";
