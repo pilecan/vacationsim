@@ -401,6 +401,26 @@ function validForm() {
 	return (message == "");
 }
 
+function validRegistration() {
+
+	let message = "";
+
+	if (document.getElementById("email").value != document.getElementById("email_repeat").value) {
+		message += "Email repeat is not equal.\n";
+	}
+	if (document.getElementById("psw").value != document.getElementById("psw_repeat").value) {
+		message += "Password repeat is not equal.\n";
+	}
+	
+	
+	if (message != "") {
+		$.alert(message);
+	}
+	
+	return (message == "");
+}
+
+
 function showMediaTextField() {
 	var media = document.getElementById("media").value;
 	if (media == "image") {
@@ -751,11 +771,7 @@ function showRegistration(){
 	document.getElementById("login").style.display = "none";
 	document.getElementById("accordion").style.display = "none";
 	document.getElementById("groupButton1").style.display = "none";
-	
-	
 	document.getElementById("registerform").style.display = "block";
-
-
 
 }
 
